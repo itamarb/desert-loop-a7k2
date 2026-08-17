@@ -356,8 +356,7 @@ const NAV = {
   desertview:{name:T('Desert View Watchtower','Desert View Watchtower'), addr:'Desert View Watchtower, Grand Canyon National Park, AZ 86023'},
   cameron:   {name:T('Cameron Trading Post','Cameron Trading Post'), addr:'466 N Highway 89, Cameron, AZ 86020'},
   horseshoe: {name:T('חניון Horseshoe Bend','Horseshoe Bend parking lot'), addr:'36.8791,-111.5100'},
-  lower:     {name:T('Lower Antelope Canyon','Lower Antelope Canyon'), addr:'36.9011,-111.4095'},
-  upper:     {name:T('Upper Antelope — צ׳ק-אין בעיר','Upper Antelope — town check-in'), addr:'22 S Lake Powell Blvd, Page, AZ 86040'},
+  antelope:  {name:T('נקודת המפגש — אנטילופ','Antelope meeting point'), addr:'36.897254,-111.407440'},
   damview:   {name:T('Glen Canyon Dam Overlook','Glen Canyon Dam Overlook'), addr:'Glen Canyon Dam Overlook, Scenic View Dr, Page, AZ 86040'},
   carlhayden:{name:T('Carl Hayden Visitor Center','Carl Hayden Visitor Center'), addr:'Carl Hayden Visitor Center, Page, AZ 86040'},
   lonerock:  {name:T('Lone Rock Beach','Lone Rock Beach'), addr:'Lone Rock Beach, Big Water, UT 84741'},
@@ -413,8 +412,9 @@ const DAYS = [
     },
     { slot:'evening', time:'~18:00',
       title:T('הגעה לפלגסטאף','Arrive Flagstaff'),
-      desc:T('הדירה נמצאת בתוך מרכז העיר ההיסטורי, כ-8 דקות הליכה מ-Heritage Square. פלגסטאף יושבת ב-2,100 מטר — הלילות קרירים (~12°C), אז תוציאו סווטשירטים מהמזוודה.','The apartment is inside the historic downtown grid, about an 8-minute walk from Heritage Square. Flagstaff sits at 2,100 m — nights are cool (~12°C), so dig out sweatshirts.'),
+      desc:T('דירה 4, בתוך מרכז העיר ההיסטורי, כ-8 דקות הליכה מ-Heritage Square. צ׳ק-אין מ-16:00 — אתם מגיעים ממילא אחרי. חונים ליד הבית הירוק הגדול, נכנסים מהשער האחורי הגבוה מימין לבית והולכים לדירה הארוכה שמול העיניים. פלגסטאף יושבת ב-2,100 מטר — הלילות קרירים (~12°C), אז תוציאו סווטשירטים.','Apartment #4, inside the historic downtown grid, about an 8-minute walk from Heritage Square. Check-in from 16:00 — you’ll arrive after that anyway. Park next to the big green house, come in through the tall back gate to the right of the house and head for the long apartment in view. Flagstaff sits at 2,100 m — nights are cool (~12°C), so dig out sweatshirts.'),
       nav:'flagstaff',
+      chips:[T('צ׳ק-אין 16:00','Check-in 16:00'), T('דירה 4','Apt #4'), T('2,100 מ׳ גובה','2,100 m elevation')],
       photos:[
         P('Downtown_Flagstaff_Clock.jpg','Downtown_Flagstaff_Clock.jpg',T('שעון העיר במרכז ההיסטורי של פלגסטאף','Historic downtown Flagstaff and the town clock')),
         P('Downtown_Flagstaff%2C_Arizona.jpg','Downtown_Flagstaff,_Arizona.jpg',T('חזיתות חנויות צבעוניות במרכז פלגסטאף','Colourful storefronts in downtown Flagstaff')),
@@ -424,11 +424,14 @@ const DAYS = [
       tips:[
         {who:'all', text:T('<b>לא נוסעים לתוך העיר — הולכים.</b> אתם כבר בפנים. חניה זו בעיה של אחרים.','<b>Don’t drive downtown — walk.</b> You’re already in it. Parking is somebody else’s problem.')},
         {who:'tali', text:T('רוב החנויות העצמאיות נסגרות ב-18:00–20:00, אז זה יהיה ״ארוחה וסיבוב״ ולא קניות רציניות. הקניות האמיתיות — מחר בערב או ב-Walmart.','Most independent shops shut between 18:00 and 20:00, so this is a stroll-and-dinner evening rather than real shopping. The serious shopping is tomorrow evening or at Walmart.')},
-        {who:'all', warn:true, text:T('<b>לקנות מים והכל להיום ומחר עוד הערב.</b> Walmart ב-Huntington פתוח עד 23:00. ארגז מים + קרח + צידנית זולה = מציל את שני הימים הבאים.','<b>Buy water and everything for tomorrow tonight.</b> Walmart on Huntington is open until 23:00. A case of water + ice + a cheap cooler saves the next two days.')}
+        {who:'all', warn:true, text:T('<b>לקנות מים והכל להיום ומחר עוד הערב.</b> Walmart ב-Huntington פתוח עד 23:00. ארגז מים + קרח + צידנית זולה = מציל את שני הימים הבאים.','<b>Buy water and everything for tomorrow tonight.</b> Walmart on Huntington is open until 23:00. A case of water + ice + a cheap cooler saves the next two days.')},
+        {who:'tali', text:T('<b>מי הברז בפלגסטאף מצוינים</b> — Rae כותבת את זה במפורש. למלא את כל הבקבוקים מהברז לפני היציאה מחר בבוקר במקום לקנות; את המים בארגזים שומרים למדבר.','<b>The tap water in Flagstaff is excellent</b> — Rae says so explicitly. Fill every bottle from the tap before you leave tomorrow morning rather than buying; save the bottled water for the desert.')},
+        {who:'all', text:T('<b>אינסטלציה ישנה — רק נייר טואלט לאסלה.</b> ואין טלוויזיה בדירה בכוונה, יש רק ויי-פיי (הסיסמה על המקרר).','<b>Old plumbing — flush toilet paper only.</b> And there’s no TV by design, just wifi (the password is on the fridge).')}
       ],
       food:[
-        {n:'Alpine Pizza', m:T('פיצה + ארקייד וינטג׳ + חצר. המקום הכי סלחני לערב שבו כולם הרוסים.','Pizza, a vintage arcade and a backyard patio. The most forgiving option for an evening when everyone is wrecked.'), a:'22 N Leroux St'},
-        {n:'Tinderbox Kitchen', m:T('🥩 <b>סטייק של איתמר.</b> פילה מיניון ברוטב פלפל שחור, וגם פילה אייל בשביל שי. חובה להזמין מקום.','🥩 <b>Itamar’s steak.</b> Filet mignon au poivre, plus an elk tenderloin for Shai. Reservation essential.'), a:'34 S San Francisco St · 928-226-8400'},
+        {n:'Dark Sky Brewery', m:T('🍕 <b>המלצת המארחת, 3 דקות הליכה</b> (כניסה מרחוב Beaver) — פיצה בתנור עצים ובירה מקומית. הכי הגיוני לערב שבו כולם הרוסים מהטיסה והנהיגה.','🍕 <b>The host’s recommendation, a 3-minute walk</b> (entrance on Beaver Ave) — wood-fired pizza and local beer. The most sensible option for an evening when everyone is wrecked from the flight and the drive.'), a:'Beaver Ave entrance'},
+        {n:'Alpine Pizza', m:T('🕹️ פיצה + ארקייד וינטג׳ + חצר. אם רוצים משהו שיעסיק את אור.','🕹️ Pizza, a vintage arcade and a backyard patio. If you want something to occupy Or.'), a:'22 N Leroux St'},
+        {n:'Tinderbox Kitchen', m:T('🥩 <b>הסטייק של איתמר — וזה הערב היחיד בפלגסטאף</b>, כי מחר כבר ישנים בפייג׳. פילה מיניון ברוטב פלפל שחור, ופילה אייל בשביל שי. חובה להזמין. אם אין כוח אחרי הנהיגה — הגיבוי הוא Charcoal Venice בערב האחרון ב-LA.','🥩 <b>Itamar’s steak — and this is the only Flagstaff evening</b>, since tomorrow you sleep in Page. Filet mignon au poivre, and an elk tenderloin for Shai. Reservation essential. If nobody has the energy after the drive, the backup is Charcoal Venice on the last night in LA.'), a:'34 S San Francisco St · 928-226-8400'},
         {n:'MIX Flagstaff', m:T('🥗 בר סלטים אמיתי לטלי, ומשהו לילדים באותו שולחן. פתוח עד 21:00.','🥗 A real salad bar for Tali, and something for the kids at the same table. Open to 21:00.'), a:'120 N Leroux St'},
         {n:'Bashas’ / Walmart', m:T('🛒 מים בארגזים, חטיפים לדרך, קרח, צידנית.','🛒 Cases of water, trail snacks, ice, a cooler.'), a:'1000 N Humphreys St / 2601 E Huntington Dr'}
       ]
@@ -446,8 +449,9 @@ const DAYS = [
     { slot:'morning', time:'06:45',
       title:T('יציאה מפלגסטאף — כביש US-180','Leave Flagstaff — US-180'),
       desc:T('הדרך היפה והקצרה. עוצרים לקפה בדרך החוצה: The Station יושב ממש על כביש 180, ו-Kickstand פתוח מ-06:00.','The short, pretty route. Grab coffee on the way out: The Station sits directly on US-180, and Kickstand opens at 06:00.'),
-      chips:[T('129 ק״מ','129 km')],
+      chips:[T('129 ק״מ','129 km'), T('צ׳ק-אאוט 11:00','Checkout 11:00')],
       tips:[
+        {who:'all', warn:true, text:T('<b>זה גם צ׳ק-אאוט — לוקחים הכל.</b> אתם לא חוזרים לפלגסטאף; הלילה כבר בפייג׳. לארוז את כל המזוודות לרכב, ו<b>להחזיר את המפתח לתיבה</b> (לא לנעול אותו בפנים — עוזרת הבית צריכה אותו). לעבור על כל החדרים לפני שסוגרים את הדלת.','<b>This is also checkout — take everything.</b> You’re not coming back to Flagstaff; tonight is already Page. Load every bag into the car, and <b>return the key to the lockbox</b> — don’t lock it inside, the housekeeper needs it. Sweep every room before you shut the door.')},
         {who:'drive', warn:true, text:T('<b>אייל על הכביש בשעת עלות השחר.</b> אייל בוגר שוקל 300 ק״ג ובפגיעה במהירות כביש הוא עולה על מכסה המנוע ונכנס לשמשה. הכלל: <b>לבלום חזק ולא לסטות.</b> אם אחד חוצה — עוד באים אחריו. 80 קמ״ש בקטע הזה, אור גבוה.','<b>Elk on the road at first light.</b> An adult elk weighs 300 kg and at highway speed comes over the bonnet and through the windscreen. The rule: <b>brake hard, do not swerve.</b> If one crosses, more are coming. 80 km/h through here, high beams on.')},
         {who:'all', text:T('<b>אין תחנת דלק בכפר של הגרנד קניון.</b> ממלאים בפלגסטאף לפני היציאה. התדלוק הבא בפארק הוא ב-Desert View, ושם זה 24 שעות במשאבה.','<b>There is no petrol station in Grand Canyon Village.</b> Fill up in Flagstaff before leaving. The next fuel inside the park is at Desert View, 24h at the pump.')}
       ]
@@ -501,13 +505,14 @@ const DAYS = [
     { slot:'evening', time:'~17:00',
       title:T('דרך קמרון לפייג׳','Via Cameron to Page'),
       desc:T('יוצאים בשער המזרחי, 48 ק״מ לקמרון ואז 125 ק״מ צפונה בכביש 89. עצירה אחרונה טובה: Cameron Trading Post — דלק, שירותים נקיים, וגלריה.','Exit the East Entrance, 48 km to Cameron then 125 km north on US-89. Last good stop: Cameron Trading Post — fuel, clean restrooms and a gallery.'),
-      nav:'cameron',
-      chips:[T('~2:15 ש׳','~2h15')],
+      nav:'page',
+      chips:[T('~2:15 ש׳','~2h15'), T('צ׳ק-אין בפייג׳ מ-16:00','Page check-in from 16:00'), T('יחידה 12','Unit 12')],
       tips:[
         {who:'drive', warn:true, text:T('כביש 89 הוא <b>שטח מרעה פתוח</b> — פרות וסוסים על הכביש. סוס כהה בלילה נמצא <b>מעל</b> אלומת הפנסים ואין לו החזר אור. להגיע לפייג׳ לפני החשכה (שקיעה ~19:15), ולנסוע 90 קמ״ש לא 110.','US-89 is <b>open range</b> — cattle and horses on the road. A dark horse at night sits <b>above</b> your headlight beam and has no eyeshine. Get to Page before dark (sunset ~19:15) and drive 90 km/h, not 110.')},
         {who:'all', text:T('<b>אורות דלוקים 24 שעות</b> בקטע קמרון–פייג׳ — זה חוק מסומן בשלטים.','<b>Headlights on 24 hours</b> on the Cameron–Page stretch — it’s posted law.')},
         {who:'all', warn:true, text:T('הקטע הזה הוא <b>שטח נאוואחו — יבש לחלוטין.</b> החזקה או הסעה של אלכוהול ברכב אסורה, גם בקבוק סגור בתא המטען. פייג׳ עצמה כן מוכרת אלכוהול.','This stretch is <b>Navajo Nation land — completely dry.</b> Possessing or transporting alcohol in the car is an offence, even an unopened bottle in the boot. Page itself does sell alcohol.')},
-        {who:'all', text:T('<b>אין קליטה סלולרית</b> בחלק גדול מהדרך. להוריד מפות אופליין של Cameron→Page לפני היציאה מהפארק.','<b>No cell coverage</b> for much of this drive. Download offline maps for Cameron→Page before leaving the park.')}
+        {who:'all', text:T('<b>אין קליטה סלולרית</b> בחלק גדול מהדרך. להוריד מפות אופליין של Cameron→Page לפני היציאה מהפארק. עצירה אחרונה טובה בדרך: Cameron Trading Post, 466 N Highway 89 — דלק, שירותים נקיים וטאקו נאוואחו.','<b>No cell coverage</b> for much of this drive. Download offline maps for Cameron→Page before leaving the park. Last good stop en route: Cameron Trading Post, 466 N Highway 89 — fuel, clean restrooms and a Navajo taco.')},
+        {who:'all', text:T('<b>הגעה ליחידה 12:</b> החניה היא התא האחרון בצד היחידה, ליד החצר האחורית, ומשם שער לדלת האחורית. מנעול חכם — הקוד נפתח בשעת הצ׳ק-אין ונמצא בהודעה של Mark. פרטי הוויי-פיי מתפרסמים 48 שעות לפני.','<b>Arriving at unit 12:</b> parking is the last stall on the side of the unit next to the back yard, and there’s a gate from there to the back door. Smart lock — the code activates at check-in and is in Mark’s message. The wifi details appear 48 hours beforehand.')}
       ],
       food:[
         {n:'The Barnyard', m:T('🥩 פריים ריב בשבת בערב, מיני-גולף ומתקנים לילדים, ומרשמלו על המדורה. פותר את כולם בבת אחת. פתוח עד 23:00.','🥩 Saturday-night prime rib, mini golf and a play structure, and s’mores on the fire pit. Solves everyone at once. Open to 23:00.'), a:'643 Haul Rd, Page'},
@@ -521,9 +526,9 @@ const DAYS = [
   id:'day-3', n:3, date:'23.08', dow:T('ראשון','Sun'),
   tab:T('3 · אנטילופ','3 · Antelope'),
   title:T('אנטילופ קניון, הפרסה ואגם פאוול','Antelope Canyon, the Bend and Lake Powell'),
-  sub:T('הכל בפייג׳ בטווח של 10 דקות נסיעה. את הכל עושים בבוקר — אחרי הצהריים זה חום ורעמים.','Everything in Page is within a 10-minute drive. Do it all in the morning — afternoons are heat and thunder.'),
+  sub:T('הסיור באנטילופ ב-13:00 מעגן את היום. הבוקר שייך לפרסה ולסכר, אחרי הסיור — מים.','The 13:00 Antelope tour anchors the day. The morning belongs to the Bend and the dam; after the tour, water.'),
   banner:'slot',
-  chips:[T('40°C','40°C'), T('4 ליטר לאדם','4 L per person'), T('הכל לפני 12:00','Everything before 12:00')],
+  chips:[T('40°C','40°C'), T('4 ליטר לאדם','4 L per person'), T('אנטילופ 13:00','Antelope 13:00')],
   items:[
     { slot:'morning', time:'06:30',
       title:T('Horseshoe Bend','Horseshoe Bend'),
@@ -542,32 +547,7 @@ const DAYS = [
         {who:'all', text:T('אין מים ואין חנות בשביל — רק שירותים בחניון. ליטר לאדם מינימום, גם להליכה של שעה.','No water and no shop on the trail — only restrooms at the car park. One litre per person minimum, even for a one-hour walk.')}
       ]
     },
-    { slot:'morning', time:T('לפי ההזמנה','Your slot'),
-      title:T('Antelope Canyon','Antelope Canyon'),
-      desc:T('קניון חריץ על אדמת נאוואחו — כניסה רק עם מדריך מוסמך, אין אפשרות להיכנס לבד. יש שני קניונים שונים לגמרי עם מפעילים נפרדים וכרטיסים נפרדים.','A slot canyon on Navajo land — entry only with a licensed guide, no independent access. There are two entirely different canyons with separate operators and separate tickets.'),
-      chips:[T('15$ אגרה לאדם','$15 permit pp'), T('טיפ במזומן','Tip in cash'), T('בלי תיקים','No bags')],
-      photos:[
-        P('Upper_Antelope_Canyon_03_2013.jpg','Upper_Antelope_Canyon_03_2013.jpg',T('קירות אבן חול מסולסלים בקניון אנטילופ העליון','Swirling sandstone walls in Upper Antelope Canyon')),
-        P('Lower_Antelope_Canyon_478.jpg','Lower_Antelope_Canyon_478.jpg',T('החריץ הצר של אנטילופ התחתון','The narrow slot of Lower Antelope Canyon')),
-        P('Upper_Antelope_Canyon_Heart_Formation_2013.jpg','Upper_Antelope_Canyon_Heart_Formation_2013.jpg',T('תצורת הלב באנטילופ העליון','The heart formation in Upper Antelope Canyon'))
-      ],
-      video:{id:'sMFxq0_sHEU', title:T('Lower Antelope Canyon — סיור עם מדריכים נאוואחו','Lower Antelope Canyon — a Navajo-guided tour')},
-      links:[
-        {l:T('Ken’s Tours (תחתון)','Ken’s Tours (Lower)'), u:'https://lowerantelope.com/'},
-        {l:T('Dixie Ellis (תחתון)','Dixie Ellis (Lower)'), u:'https://www.antelopelowercanyon.com/'},
-        {l:T('Roger Ekis (עליון)','Roger Ekis (Upper)'), u:'https://www.antelopecanyon.com/'},
-        {l:T('מפעילים מורשים — נאוואחו','Authorised operators — Navajo Parks'), u:'https://navajonationparks.org/guided-tour-operators/antelope-canyon-tour-operators/'}
-      ],
-      tips:[
-        {who:'all', warn:true, text:T('<b>תחתון או עליון?</b> ה<b>תחתון</b> (Ken’s / Dixie Ellis, ~80.5$) הוא ההמלצה: יורדים בחמישה גרמי מדרגות מתכת, 60–90 דקות בפנים, מגיעים ברגל מהחניון. ה<b>עליון</b> (~92$+15$) שטוח לגמרי ויש בו את קרני האור בין 11:00–13:30, אבל רק 30–40 דקות בפנים ונסיעת 4x4 בחול. באוגוסט קרני האור כבר נחלשות.','<b>Lower or Upper?</b> The <b>Lower</b> (Ken’s / Dixie Ellis, ~$80.50) is the pick: five flights of steel stairs down, 60–90 minutes inside, walk in from the car park. The <b>Upper</b> (~$92 + $15) is completely flat and has the light beams between 11:00–13:30, but only 30–40 minutes inside and a 4x4 ride over sand. By late August the beams are already weakening.')},
-        {who:'shai', text:T('התחתון הוא הכיפי — מדרגות מתכת תלולות, חריצים צרים, אור שנופל מלמעלה. זה הקניון שמצלמים.','The Lower is the fun one — steep steel stairs, tight slots, light dropping from above. It’s the canyon you photograph.')},
-        {who:'or', text:T('בתחתון צריך לרדת ולעלות מדרגות מתכת לבד — אור בהחלט מסוגל, אבל צריך לדעת מראש. <b>שימו לב:</b> חלק מהמפעילים בעליון (Adventurous) לא מקבלים ילדים מתחת לגיל 8.','In the Lower he has to climb steel stairs unaided — Or is entirely capable, but know it in advance. <b>Note:</b> some Upper operators (Adventurous) don’t accept children under 8 at all.')},
-        {who:'all', warn:true, text:T('<b>אסור: תיקים (גם שקופים בתחתון), חצובות, מקלות סלפי, רחפנים.</b> טלפון או מצלמה ביד עם רצועה בלבד. בקבוק מים ביד מותר. להגיע 30–45 דקות לפני הזמן — זה תנאי צ׳ק-אין, לא המלצה.','<b>Banned: bags (even clear ones at the Lower), tripods, selfie sticks, drones.</b> Phone or camera in hand on a strap only. A water bottle in hand is fine. Check in 30–45 minutes early — that’s a requirement, not a suggestion.')},
-        {who:'all', warn:true, text:T('<b>מלכודת השעון:</b> הסיורים רצים על <b>שעון אריזונה</b> (כמו פייג׳ ופיניקס), למרות שהקניון על אדמת נאוואחו שכן עוברת לשעון קיץ. הטלפון עלול לקפוץ שעה קדימה בלי להודיע. <b>כבו ״עדכון אזור זמן אוטומטי״</b> ותצליבו מול השעון ברכב.','<b>The clock trap:</b> tours run on <b>Arizona time</b> (same as Page and Phoenix), even though the canyon is on Navajo land which does observe DST. Your phone may silently jump an hour forward. <b>Turn off “set time zone automatically”</b> and cross-check against the car clock.')},
-        {who:'money', text:T('המדריכים חיים מטיפים. <b>20–40$ במזומן</b> למשפחה עבור סיור טוב, ישירות למדריך בסוף. אין כספומט בקניון — למשוך מראש.','Guides live on tips. <b>$20–40 cash</b> from the family for a good tour, handed to the guide at the end. There’s no ATM in the canyon — withdraw beforehand.')}
-      ]
-    },
-    { slot:'afternoon', time:'~13:00',
+    { slot:'morning', time:'~08:45',
       title:T('הסכר ומרכז המבקרים','The dam & visitor center'),
       desc:T('שתי נקודות שונות במרחק 2.5 ק״מ זו מזו. התצפית (Glen Canyon Dam Overlook) היא הצילום — 290 מטר של מדרגות אבן במורד הסלע, חינם. מרכז המבקרים Carl Hayden הוא הבניין הממוזג עם החלונות הענקיים מעל הסכר.','Two different places 2.5 km apart. The Overlook is the photograph — 290 m of stone steps cut down the rock, free. The Carl Hayden Visitor Center is the air-conditioned building with huge windows over the dam.'),
       nav:'damview',
@@ -581,6 +561,31 @@ const DAYS = [
         {who:'tali', text:T('אם החום מתחיל להיות בלתי נסבל — זו התחנה הממוזגת של היום. סרט קצר, חנות ספרים, שירותים נקיים.','If the heat becomes unbearable this is the air-conditioned stop of the day. A short film, a bookshop, clean restrooms.')}
       ]
     },
+    { slot:'afternoon', time:'13:00',
+      title:T('Upper Antelope Canyon — הסיור שלכם','Upper Antelope Canyon — your tour'),
+      desc:T('Antelope Canyon Navajo Tours, Guided Sightseers Tour ל-4. יוצאים מהבית ב-12:00 — נקודת המפגש היא חניון עפר על כביש 98, לא משרד בעיר. מחפשים את <b>הטנדרים הכחולים המוגבהים</b>, מתייצבים אצל הקופאים ואז לאזור ההמתנה בבניין משמאל. משם נסיעת 4x4 של ~20 דקות, חצי על אספלט וחצי בערוץ חול.','Antelope Canyon Navajo Tours, Guided Sightseers Tour for 4. Leave the house at 12:00 — the meeting point is a dirt car park on Hwy 98, not a town office. Look for the <b>lifted blue trucks</b>, check in with the cashiers, then the waiting area in the building on the left. From there a ~20-minute 4x4 ride, half paved and half up a sandy wash.'),
+      nav:'antelope',
+      chips:[T('13:00 שעון אריזונה','13:00 Arizona time'), T('לצאת מהבית 12:00','Leave the house 12:00'), T('בלי תיקים בכלל','No bags at all'), T('טיפ במזומן','Tip in cash')],
+      photos:[
+        P('Upper_Antelope_Canyon_03_2013.jpg','Upper_Antelope_Canyon_03_2013.jpg',T('קירות אבן חול מסולסלים בקניון אנטילופ העליון','Swirling sandstone walls in Upper Antelope Canyon')),
+        P('Lower_Antelope_Canyon_478.jpg','Lower_Antelope_Canyon_478.jpg',T('החריץ הצר של אנטילופ התחתון','The narrow slot of Lower Antelope Canyon')),
+        P('Upper_Antelope_Canyon_Heart_Formation_2013.jpg','Upper_Antelope_Canyon_Heart_Formation_2013.jpg',T('תצורת הלב באנטילופ העליון','The heart formation in Upper Antelope Canyon'))
+      ],
+      video:{id:'W5LqkHeuXHY', title:T('הליכה בתוך Upper Antelope Canyon','A walk through Upper Antelope Canyon')},
+      links:[
+        {l:T('המפעיל שלכם — Antelope Canyon Navajo Tours','Your operator — Antelope Canyon Navajo Tours'), u:'https://navajotours.com/'},
+        {l:T('חוקי הפארק — נאוואחו','Park rules — Navajo Parks'), u:'https://navajonationparks.org/rules-regulations/'}
+      ],
+      tips:[
+        {who:'all', warn:true, text:T('<b>13:00 שעון אריזונה — המפעיל כתב את זה במפורש:</b> ״WE DO NOT OPERATE ON MOUNTAIN DAYLIGHT SAVING TIME״. זה אותו שעון כמו פייג׳, פלגסטאף ולוס אנג׳לס. הטלפון עלול לקפוץ שעה קדימה בלי להודיע כשנוסעים מזרחה על 98 — <b>כבו ״עדכון אזור זמן אוטומטי״</b> ותצליבו מול השעון ברכב. איחור = ביטול הסיור בלי החזר.','<b>13:00 Arizona time — the operator says it in capitals:</b> “WE DO NOT OPERATE ON MOUNTAIN DAYLIGHT SAVING TIME.” That’s the same clock as Page, Flagstaff and Los Angeles. Your phone may silently jump an hour forward as you drive east on 98 — <b>turn off “set time zone automatically”</b> and cross-check the car clock. Late = cancelled tour, no refund.')},
+        {who:'all', warn:true, text:T('<b>״NO BAGS ARE ALLOWED ON THE TOUR״ — בלי תיקים בכלל.</b> לא תרמיל, לא תיק מותן, לא תיק שקוף. טלפון או מצלמה ביד, ובקבוק מים ביד. כל השאר נשאר ברכב בחניון. גם חצובות, מקלות סלפי ורחפנים אסורים.','<b>“NO BAGS ARE ALLOWED ON THE TOUR” — none at all.</b> Not a backpack, not a bum bag, not a clear bag. Phone or camera in hand, water bottle in hand. Everything else stays in the car. Tripods, selfie sticks and drones are banned too.')},
+        {who:'shai', text:T('<b>13:00 זה דווקא הסלוט הטוב.</b> קרני האור בעליון נופלות בערך בין 11:00 ל-13:30, אז אתם בדיוק בקצה החלון — בתנאי שיש שמש. הקניון העליון שטוח לגמרי, בלי סולמות, אז כל הראש פנוי לצילום. נגבו את העדשה לפני הכניסה, יש שם אבק דק באוויר.','<b>13:00 is actually the good slot.</b> The light beams in the Upper fall roughly between 11:00 and 13:30, so you’re right at the edge of the window — provided it’s sunny. The Upper is completely flat with no ladders, so all your attention is free for photography. Wipe your lens before going in; the air is full of fine dust.')},
+        {who:'or', text:T('הנסיעה בטנדר היא ~20 דקות, חציה בערוץ חול — מטלטל, מאובק וחם, וזה החלק שילדים הכי מתלוננים עליו. באנדנה או מטפחת על הפנים עושה הבדל אמיתי. בתוך הקניון עצמו אין מדרגות ואין סולמות, זו הליכה קלה.','The truck ride is ~20 minutes, half of it up a sandy wash — bumpy, dusty and hot, and it’s the part kids complain about most. A bandana or buff over the face makes a real difference. Inside the canyon itself there are no stairs and no ladders; it’s an easy walk.')},
+        {who:'all', text:T('<b>לחתום על הוויתור מראש</b> — כל ארבעתכם, מהלינק במייל של Peek. ולהגיע מוקדם: הם כותבים שאי-הגעה בזמן לצ׳ק-אין מבטלת את הסיור. 12:30 בחניון זה בטוח.','<b>Sign the waiver in advance</b> — all four of you, from the link in the Peek email. And arrive early: they state that failing to check in on time cancels your tour. 12:30 in the car park is safe.')},
+        {who:'money', text:T('המדריכים חיים מטיפים. <b>20–40$ במזומן</b> למשפחה על סיור טוב, ישירות למדריך בסוף. אין כספומט בחניון — למשוך מראש בפייג׳.','Guides live on tips. <b>$20–40 cash</b> from the family for a good tour, straight to the guide at the end. There’s no ATM at the car park — withdraw in Page beforehand.')},
+        {who:'all', warn:true, text:T('אם יש אזהרת שיטפון פתאומי, המדריכים מפנים את הקניון <b>גם בשמש מלאה</b> — הגשם שגורם לזה יורד 25 ק״מ משם. ביטול מצידם = החזר מלא או תיאום מחדש. זה לא זהירות יתר: ב-1997 נהרגו שם 11 מטיילים.','If there’s a flash-flood warning the guides evacuate the canyon <b>even in full sun</b> — the rain that causes it falls 25 km away. If they cancel you get a full refund or a reschedule. This isn’t over-caution: 11 hikers died there in 1997.')}
+      ]
+    },
     { slot:'afternoon', time:'~15:30',
       title:T('אגם פאוול — רחצה','Lake Powell — swimming'),
       desc:T('המים ~27°C, חמימים באמת. Lone Rock Beach הוא חוף חול אמיתי עם כניסה מדורגת למים, מקלחות חוץ ושירותים — 20 דקות מפייג׳, וכבר בגבול יוטה.','The water is ~27°C, genuinely warm. Lone Rock Beach is an actual sand beach with a gradual entry, outdoor showers and toilets — 20 minutes from Page, just over the Utah line.'),
@@ -592,6 +597,7 @@ const DAYS = [
       video:{id:'uWJkq5HzNhc', title:T('10 דברים לעשות באגם פאוול','Top 10 things to do at Lake Powell')},
       tips:[
         {who:'shai', text:T('<b>זה היום של שי.</b> אחרי שסליד רוק נסגר לעונה, זה מקום המים של הטיול — ופה הם חמים במקום 15°C.','<b>This is Shai’s day.</b> With Slide Rock closed for the season this is the trip’s water stop — and here it’s warm instead of 15°C.')},
+        {who:'all', text:T('<b>ויש גם בריכה בדירה.</b> אחרי סיור ב-13:00 בחום ובאבק, יכול להיות שהתשובה הנכונה היא פשוט לחזור ליחידה 12 ולקפוץ לבריכה — בלי עוד 20 דקות נסיעה וחול. לון רוק שווה את זה אם יש כוח; אם לא, הבריכה מנצחת.','<b>And there’s a pool at the apartment.</b> After a 13:00 tour in the heat and dust, the right answer may simply be to go back to unit 12 and get in the pool — no further 20-minute drive and no sand. Lone Rock is worth it if you have the energy; if not, the pool wins.')},
         {who:'itamar', warn:true, text:T('<b>לא נוסעים עד קו המים.</b> אחרי שהאספלט נגמר החול נעשה עמוק ו-RAV4 שוקע — גוררים משם רכבים כל קיץ. עוצרים על הקרקע הקשיחה והולכים.','<b>Do not drive to the waterline.</b> Once the pavement ends the sand gets deep and a RAV4 will bury itself — they tow cars out of there every summer. Park on the firm ground and walk.')},
         {who:'or', warn:true, text:T('<b>חגורת ציפה חובה עד גיל 12</b> באגם פאוול, וזה נאכף. אין מצילים בשום מקום.','<b>A life jacket is mandatory up to age 12</b> at Lake Powell, and it’s enforced. There are no lifeguards anywhere.')},
         {who:'all', text:T('אפס צל בחוף — שמשייה או אוהל חוף זה לא מותרות. ואם שומעים רעם: יוצאים מהמים ולרכב. מים פתוחים וברק זה השילוב שהורג במונסון.','Zero shade on the beach — an umbrella or pop-up is not a luxury. And at the first thunder: out of the water and into the car. Open water plus lightning is the monsoon killer.')},
@@ -617,6 +623,7 @@ const DAYS = [
       title:T('יציאה מפייג׳','Leave Page'),
       desc:T('כביש 89 דרומה לקמרון ופלגסטאף, ואז I-40 מערבה כל הדרך. ארוחת בוקר: Rustic Thistle בפייג׳ פותח ב-08:00, או פשוט קפה מ-Safeway ולצאת.','US-89 south to Cameron and Flagstaff, then I-40 west the whole way. Breakfast: Rustic Thistle in Page opens 08:00, or just grab coffee from Safeway and go.'),
       nav:'page',
+      chips:[T('צ׳ק-אאוט 10:00','Checkout 10:00')],
       tips:[
         {who:'all', text:T('<b>למלא דלק בפייג׳ לפני היציאה.</b> בין פייג׳ לקמרון יש 180 ק״מ עם כמעט כלום — Bitter Springs ו-The Gap קטנות ולפעמים במזומן בלבד.','<b>Fill up in Page before leaving.</b> There’s 180 km of almost nothing between Page and Cameron — Bitter Springs and The Gap are tiny and sometimes cash-only.')},
         {who:'all', text:T('לוודא שכל התמונות מהטיול <b>עלו לענן</b> לפני שיוצאים מהוויי-פיי. בדרך אין קליטה.','Make sure every photo from the trip has <b>uploaded to the cloud</b> before you leave wifi. There’s no signal on the road.')}
@@ -872,14 +879,22 @@ function viewHome(){
     </button>`).join('');
 
   const beds = [
-    {k:'flagstaff', when:T('שישי + שבת','Fri + Sat'), name:T('דירה במרכז פלגסטאף','Apartment, downtown Flagstaff'), addr:'314 W Cherry Ave, Flagstaff, AZ'},
-    {k:'page',      when:T('ראשון','Sun'),           name:T('דירה בפייג׳','Apartment, Page'),                 addr:'1200 Glen Canyon Dr #12, Page, AZ'},
-    {k:'marriott',  when:T('שני','Mon'),             name:T('Marriott Marina del Rey','Marriott Marina del Rey'), addr:'4100 Admiralty Way, Marina del Rey, CA'}
+    {k:'flagstaff', when:T('שישי בלבד · צ׳ק-אין 16:00 · צ׳ק-אאוט שבת 11:00','Fri only · in 16:00 · out Sat 11:00'),
+     name:T('דירה במרכז פלגסטאף — דירה 4','Apartment #4, downtown Flagstaff'),
+     addr:'314 W Cherry Ave, Apt 4, Flagstaff, AZ',
+     note:T('חניה ליד הבית הירוק הגדול — אחד משלושה מקומות, להשאיר מקום לרכב מכל צד. כניסה מהשער האחורי הגבוה מימין לבית.','Park next to the big green house — one of three spaces, leave room for a car on each side. Enter through the tall back gate to the right of the house.')},
+    {k:'page',      when:T('שבת + ראשון · צ׳ק-אין 16:00 · צ׳ק-אאוט שני 10:00','Sat + Sun · in 16:00 · out Mon 10:00'),
+     name:T('Desert Retreat — יחידה 12 · יש בריכה 🏊','Desert Retreat — unit 12 · has a pool 🏊'),
+     addr:'1200 Glen Canyon Dr #12, Page, AZ',
+     note:T('החניה היא התא האחרון בצד היחידה, ליד החצר האחורית. משם שער לדלת האחורית.','Parking is the last stall on the side of the unit, next to the back yard. There’s a gate from there to the back door.')},
+    {k:'marriott',  when:T('שני','Mon'), name:T('Marriott Marina del Rey','Marriott Marina del Rey'),
+     addr:'4100 Admiralty Way, Marina del Rey, CA'}
   ].map(b=>`
     <div class="card-pad" style="border-top:1px solid var(--line)">
       <div class="eyebrow">${esc(tx(b.when))}</div>
       <h3>${esc(tx(b.name))}</h3>
       <p class="muted" style="margin:4px 0 0">${esc(b.addr)}</p>
+      ${b.note?`<p class="tiny" style="margin:6px 0 0">${esc(tx(b.note))}</p>`:''}
       ${navBtn(b.k)}
     </div>`).join('');
 
@@ -908,6 +923,20 @@ function viewHome(){
     ${LANG==='h'
       ? 'מ-1.1.2026 תיירים לא-אמריקאים מגיל 16 משלמים <b>תוספת של 100$ לאדם</b> בגרנד קניון. ה-<b>Non-Resident Annual Pass ב-250$</b> מבטל את התוספת ומכסה גם את Glen Canyon / אגם פאוול. בלעדיו: 235$ בגרנד קניון + 30$ באגם. אור ושי מתחת ל-16 ופטורים.<br><br><b>לא מכוסים:</b> חניון Horseshoe Bend (10$) ואנטילופ קניון (אדמת נאוואחו).'
       : 'From 1 Jan 2026 non-US visitors aged 16+ pay a <b>$100 per-person surcharge</b> at the Grand Canyon. The <b>$250 Non-Resident Annual Pass</b> waives it and also covers Glen Canyon / Lake Powell. Without it: $235 at the Grand Canyon plus $30 at the lake. Or and Shai are under 16 and exempt.<br><br><b>Not covered:</b> Horseshoe Bend parking ($10) and Antelope Canyon (Navajo land).'}
+  </div>
+
+  <div class="alert red">
+    <b>✍️ ${LANG==='h'?'לחתום על הוויתור של אנטילופ — לפני הנסיעה':'Sign the Antelope waiver — before you travel'}</b>
+    ${LANG==='h'
+      ? 'הסיור מוזמן ל<b>ראשון 23.8, 13:00 שעון אריזונה</b>. <b>כל ארבעת המשתתפים חייבים לחתום על טופס ויתור לפני הכניסה לקניון</b> — הקישור נמצא במייל האישור של Peek. לעשות את זה עכשיו מהבית, לא בחניון בשמש. ובלי ביטול בתוך 72 שעות אין החזר.'
+      : 'The tour is booked for <b>Sunday 23 Aug, 13:00 Arizona time</b>. <b>All four of you must sign a release waiver before entering the canyon</b> — the link is in the Peek confirmation email. Do it now from home, not standing in the car park in the sun. And inside 72 hours there is no refund.'}
+  </div>
+
+  <div class="alert teal">
+    <b>🔒 ${LANG==='h'?'קודים ומספרי הזמנה':'Codes and booking numbers'}</b>
+    ${LANG==='h'
+      ? 'קודי הכניסה לשתי הדירות, מספרי ההזמנה, ה-PNR ומספר הכרטיס <b>לא נמצאים באתר הזה בכוונה</b> — זה דף ציבורי. הקוד של פלגסטאף נמצא בהודעה של Rae ב-Airbnb, והקוד של פייג׳ בהודעה של Mark.'
+      : 'The door codes for both apartments, the booking references, the PNR and the ticket number are <b>deliberately not on this page</b> — it’s public. The Flagstaff code is in Rae’s Airbnb message, the Page code is in Mark’s.'}
   </div>
 
   <div class="alert teal">
@@ -1030,7 +1059,7 @@ function viewCar(){
       <p class="muted" style="margin:6px 0 0">${L
         ? '5 מושבים, 3 מזוודות, אוטומט, מזגן. איסוף והחזרה במרכז ההשכרה המאוחד של LAX.'
         : '5 seats, 3 bags, automatic, A/C. Pickup and return at LAX’s consolidated rental centre.'}</p>
-      ${chipsHTML([T('שולם מראש','Prepaid'),T('ביטוח מורחב','Extended cover'),T('נהג יחיד: איתמר','Single driver: Itamar')])}
+      ${chipsHTML([T('שולם מראש','Prepaid'),T('ביטוח: RentalCover','Cover: RentalCover'),T('נהג יחיד: איתמר','Single driver: Itamar')])}
     </div>
   </div>
 
@@ -1045,7 +1074,8 @@ function viewCar(){
         <li><span class="who">🪪</span><span>${L?'<b>רישיון ישראלי + רישיון בינלאומי + דרכון</b> — שלושתם. רישיון בעברית בלי תרגום בינלאומי הוא הסיבה מס׳ 1 לסירוב בדלפק.':'<b>Israeli licence + International Driving Permit + passport</b> — all three. A Hebrew-only licence with no IDP is the number-one reason counters refuse.'}</span></li>
         <li><span class="who">💳</span><span>${L?'<b>כרטיס האשראי של הנהג הראשי</b>, על שמו, לפיקדון. לא כרטיס של מישהו אחר.':'<b>The main driver’s credit card</b>, in his name, for the deposit. Not somebody else’s card.'}</span></li>
         <li class="warn"><span class="who">🧒</span><span>${L?'<b>מושב הגבהה לאור.</b> חובה חוקית בקליפורניה ובאריזונה, וחייב לשבת מאחור. לבקש מ-Budget בדלפק — לא הזמנתם מראש.':'<b>Booster seat for Or.</b> Legally required in both California and Arizona, and he must sit in the back. Ask Budget at the counter — you didn’t reserve one.'}</span></li>
-        <li><span class="who">🛡️</span><span>${L?'<b>לקחתם ביטוח מורחב.</b> לבקש לראות מה בדיוק כלול ומה ההשתתפות העצמית — ולא לתת למכור לכם את זה שוב.':'<b>You already took extended cover.</b> Ask to see exactly what’s included and what the excess is — and don’t let them sell it to you a second time.'}</span></li>
+        <li class="warn"><span class="who">🛡️</span><span>${L?'<b>הביטוח שלכם הוא RentalCover — לא של Budget.</b> זה משנה הכל בדלפק: Budget עדיין ינסו למכור לכם CDW משלהם, ואפשר לסרב. אבל בתמורה — אם יש נזק, <b>אתם משלמים ל-Budget קודם ותובעים החזר מ-RentalCover אחר כך</b>, וגם תחסם מסגרת גדולה יותר בכרטיס. תשמרו כל מסמך, טופס וצילום.':'<b>Your cover is RentalCover, not Budget’s.</b> That changes the counter completely: Budget will still try to sell you their own CDW, and you can decline. But in exchange — if there’s damage, <b>you pay Budget first and claim it back from RentalCover afterwards</b>, and they’ll hold a larger amount on the card. Keep every document, form and photo.'}</span></li>
+        <li><span class="who">📝</span><span>${L?'<b>לרשום נזק קיים על כל טופס שחותמים עליו.</b> זו הדרישה המפורשת של RentalCover, וזה מה שמכריע תביעה. וגם: RentalCover מכסה נהגים נוספים בחינם — אם בסוף טלי כן תנהג, לוודא ששמה רשום בהסכם של Budget.':'<b>Write down existing damage on any form you sign.</b> That’s RentalCover’s explicit requirement and it’s what decides a claim. Also: RentalCover covers additional drivers free — so if Tali does end up driving, make sure her name is on the Budget agreement.'}</span></li>
         <li><span class="who">📸</span><span>${L?'<b>לצלם את הרכב מכל הצדדים</b> לפני שיוצאים מהחניון, כולל שריטות קיימות והמצב של הצמיגים.':'<b>Photograph the car from every side</b> before leaving the stall, including existing scratches and the state of the tyres.'}</span></li>
         <li><span class="who">🛣️</span><span>${L?'לשאול <b>״האם יש בזה שדר FasTrak?״</b> — נתיבי האגרה ב-LA מצולמים בלבד ומגיעים אליכם עם קנס חודשים אחרי.':'Ask <b>“does this have a FasTrak transponder?”</b> — LA’s toll lanes are camera-only and reach you with a penalty months later.'}</span></li>
       </ul>
@@ -1070,6 +1100,9 @@ function viewCar(){
   <div class="card">
     <div class="card-pad">
       <div class="slot"><span class="dot" style="background:var(--evening)"></span><span class="lbl">${L?'החזרה':'Return'}</span><span class="tm num">25.08 · 08:30</span></div>
+      <div class="alert amber" style="margin:0 0 12px">${L
+        ? '<b>🛡️ אם יש נזק — לפני שעוזבים</b>לצלם הכל, לקחת עותק של דוח הנזק מ-Budget, ולפתוח תביעה מול RentalCover. בלי הדוח שלהם אין תביעה.'
+        : '<b>🛡️ If there’s damage — before you leave</b>Photograph everything, get a copy of Budget’s damage report, and open a claim with RentalCover. Without their report there is no claim.'}</div>
       <h3>${L?'חזרה ל-LAX':'Back to LAX'}</h3>
       <p class="muted" style="margin:6px 0 0">${L
         ? 'אותו מקום שבו אספתם. יציאה מהמלון ב-07:45, תדלוק בדרך, החזרה ב-08:30, שאטל 15–20 דקות, ואתם בטרמינל B סביב 09:15 — כמעט ארבע שעות לפני LY6.'
