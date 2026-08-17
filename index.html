@@ -174,6 +174,31 @@ main{max-width:var(--maxw);margin:0 auto;padding:14px 14px 60px}
 .suntbl tr:last-child td{border-bottom:0}
 .scroller{overflow-x:auto}
 
+/* collapsible stop cards */
+details.item{padding:0}
+details.item > summary{
+  list-style:none;cursor:pointer;padding:13px 14px;display:block;
+  -webkit-tap-highlight-color:transparent
+}
+details.item > summary::-webkit-details-marker{display:none}
+details.item > summary::marker{content:''}
+details.item > summary:focus-visible{outline:2px solid var(--rust);outline-offset:-2px;border-radius:var(--r)}
+.sumrow{display:flex;align-items:center;gap:10px;margin-top:3px}
+.sumrow h3{flex:1;min-width:0}
+.chev{flex:0 0 auto;color:var(--ink3);transition:transform .18s ease}
+details.item[open] .chev{transform:rotate(180deg)}
+details.item[open] > summary{padding-bottom:4px}
+.peek{
+  font-size:13px;color:var(--ink3);margin:4px 0 0;
+  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden
+}
+details.item[open] .peek{display:none}
+.dayctl{display:flex;gap:8px;padding:0 2px 12px}
+.dayctl button{
+  flex:1;padding:9px 12px;border-radius:12px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink2);font-size:13px;font-weight:700;cursor:pointer
+}
+
 /* ---------- food ---------- */
 .food{margin:12px 0 0;display:grid;gap:8px}
 .food .f{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:var(--sand2)}
@@ -339,6 +364,8 @@ const UI = {
   food:      T('אוכל','Food'),
   photo:     T('📸 צילום','📸 Photo'),
   shots:     T('צילום','Photography'),
+  expandAll: T('פתיחת הכל','Expand all'),
+  collapseAll:T('סגירת הכל','Collapse all'),
   where:     T('איפה ישנים','Where we sleep'),
   live:      T('מיקום חי','Live position'),
   liveWait:  T('בודק…','Checking…'),
@@ -363,8 +390,12 @@ const NAV = {
   marriott:  {name:T('Marriott Marina del Rey','Marriott Marina del Rey'), addr:'4100 Admiralty Way, Marina del Rey, CA 90292'},
   conrac:    {name:T('Budget — מרכז ההשכרה של LAX','Budget — LAX Rental Car Center'), addr:'5251 W 98th St, Los Angeles, CA 90045'},
   barstow:   {name:T('In-N-Out Barstow','In-N-Out Barstow'), addr:'2821 Lenwood Rd, Barstow, CA 92311'},
-  gcvc:      {name:T('Grand Canyon Visitor Center','Grand Canyon Visitor Center'), addr:'36.0589,-112.1092'},
-  desertview:{name:T('Desert View Watchtower','Desert View Watchtower'), addr:'Desert View Watchtower, Grand Canyon National Park, AZ 86023'},
+  gcvc:      {name:T('Grand Canyon Visitor Center','Grand Canyon Visitor Center'), addr:'36.05936,-112.10763'},
+  yavapai:   {name:T('Yavapai — מוזיאון הגיאולוגיה','Yavapai Geology Museum'), addr:'36.06606,-112.11763'},
+  village:   {name:T('Bright Angel Lodge — הכפר ההיסטורי','Bright Angel Lodge — historic village'), addr:'36.05701,-112.14086'},
+  grandview: {name:T('Grandview Point','Grandview Point'), addr:'35.99609,-111.98600'},
+  moran:     {name:T('Moran Point','Moran Point'), addr:'36.00521,-111.92427'},
+  desertview:{name:T('Desert View Watchtower','Desert View Watchtower'), addr:'36.04401,-111.82621'},
   cameron:   {name:T('Cameron Trading Post','Cameron Trading Post'), addr:'466 N Highway 89, Cameron, AZ 86020'},
   horseshoe: {name:T('חניון Horseshoe Bend','Horseshoe Bend parking lot'), addr:'36.8791,-111.5100'},
   antelope:  {name:T('נקודת המפגש — אנטילופ','Antelope meeting point'), addr:'36.897254,-111.407440'},
@@ -507,6 +538,7 @@ const DAYS = [
     { slot:'morning', time:'09:45',
       title:T('Yavapai — מוזיאון הגיאולוגיה','Yavapai Geology Museum'),
       desc:T('עולים על השאטל הכתום (Kaibab Rim) מהמרכז — הוא היחיד שמגיע ל-Yaki Point ועוצר ב-Yavapai. חלונות מרצפה עד תקרה מעל הקניון, מיזוג, ומודל תבליט תלת-ממדי שסוף סוף גורם לגיאולוגיה להתחבר. אפשר גם ללכת ברגל מ-Mather לאורך ה-Rim Trail (שטוח וסלול) ולחזור בשאטל.','Take the orange Kaibab Rim shuttle from the visitor center — it’s the only route to Yaki Point and it stops at Yavapai. Floor-to-ceiling windows over the canyon, air conditioning, and a 3D relief model that finally makes the geology click. You can also walk there from Mather along the flat, paved Rim Trail and shuttle back.'),
+      nav:'yavapai',
       chips:[T('שאטל חינם','Free shuttle'), T('45–60 דק׳','45–60 min'), T('ממוזג','Air-conditioned')],
       tips:[
         {who:'shai', text:T('המודל התלת-ממדי כאן הוא ההסבר הכי טוב בפארק לאיך נחתך הקניון. שווה 10 דקות.','The 3D model here is the best explanation in the park of how the canyon was cut. Worth 10 minutes.')},
@@ -516,6 +548,7 @@ const DAYS = [
     { slot:'morning', time:'11:00',
       title:T('הכפר ההיסטורי','The historic village'),
       desc:T('Bright Angel Lodge ומסביבו הכפר ההיסטורי. <b>Lookout Studio</b> ו-<b>Kolb Studio</b> שניהם בנויים תלויים מעל שפת הקניון — זו החוויה הכי מגניבה כאן ושתיהן חינם. ה-Rim Trail בקטע הזה שטוח וסלול לגמרי. זו גם נקודת הצהריים.','Bright Angel Lodge and the historic village around it. <b>Lookout Studio</b> and <b>Kolb Studio</b> are both built cantilevered out over the rim — the coolest thing here, and both are free. The Rim Trail along this stretch is completely flat and paved. This is also your lunch point.'),
+      nav:'village',
       chips:[T('~2 שעות','~2 hours'), T('כולל צהריים','Lunch included'), T('שטוח','Flat')],
       tips:[
         {who:'itamar', text:T('<b>Arizona Steakhouse</b> על השפה עם חלונות לקניון — צהריים בהזמנה חופשית מ-11:30. החלופה השקטה: פיקניק מהצידנית באחת התצפיות, ואז אין תור בכלל.','<b>Arizona Steakhouse</b> is on the rim with canyon windows — lunch is walk-in from 11:30. The calm alternative: a picnic from the cooler at a viewpoint, and then there’s no queue at all.')},
@@ -526,6 +559,8 @@ const DAYS = [
     { slot:'afternoon', time:'13:45',
       title:T('Grandview Point','Grandview Point'),
       desc:T('העצירה הרצינית הראשונה מזרחה על Desert View Drive, ואחת הטובות בפארק — הקניון נפתח כאן לרוחב ורואים עומק אמיתי. עצירה קצרה נוספת אפשרית ב-Moran Point בהמשך.','The first serious stop heading east on Desert View Drive, and one of the best in the park — the canyon opens out here and you get a real sense of depth. Moran Point further along is a good short second stop.'),
+      nav:'grandview',
+      nav2:'moran',
       chips:[T('20–30 דק׳','20–30 min'), T('20 דק׳ נסיעה','20 min drive')],
       tips:[
         {who:'all', warn:true, text:T('<b>Lipan Point סגור עד דצמבר 2026.</b> במקומו: Moran Point או Navajo Point.','<b>Lipan Point is closed until December 2026.</b> Use Moran Point or Navajo Point instead.')},
@@ -892,10 +927,10 @@ function banner(kind){
   return `<svg class="banner" viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">${S[kind]||S.road}</svg>`;
 }
 
-function navBtn(key){
+function navBtn(key, secondary){
   if(!key) return '';
   const n = NAV[key]; if(!n) return '';
-  return `<button class="btn primary" data-nav="${key}">🧭 ${esc(tx(UI.navTo))} ${esc(tx(n.name))}</button>`;
+  return `<button class="btn ${secondary?'':'primary'}" data-nav="${key}">🧭 ${esc(tx(UI.navTo))} ${esc(tx(n.name))}</button>`;
 }
 
 function galleryHTML(photos){
@@ -1038,20 +1073,34 @@ function viewHome(){
   </div>`;
 }
 
+const CHEV = `<svg class="chev" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+// Strip tags so the collapsed one-line preview never shows markup.
+const plain = html => String(html).replace(/<[^>]*>/g,'');
+
 function viewDay(d){
+  const openAll = localStorage.getItem('expand') === '1';
+
   const items = d.items.map(it=>{
     const time = typeof it.time === 'string' ? it.time : tx(it.time);
-    return `<div class="card">
-      <div class="card-pad">
+    return `<details class="card item"${openAll?' open':''}>
+      <summary>
         <div class="slot">
           <span class="dot" style="background:${slotColor(it.slot)}"></span>
           <span class="lbl">${esc(slotLabel(it.slot))}</span>
           <span class="tm num">${esc(time)}</span>
         </div>
-        <h3>${esc(tx(it.title))}</h3>
+        <div class="sumrow">
+          <h3>${esc(tx(it.title))}</h3>
+          ${CHEV}
+        </div>
+        <p class="peek">${esc(plain(tx(it.desc)))}</p>
+      </summary>
+      <div class="card-pad" style="padding-top:0">
         <p class="muted" style="margin:6px 0 0">${tx(it.desc)}</p>
         ${chipsHTML(it.chips)}
         ${navBtn(it.nav)}
+        ${navBtn(it.nav2, true)}
         ${linksHTML(it.links)}
       </div>
       ${galleryHTML(it.photos)}
@@ -1061,7 +1110,7 @@ function viewDay(d){
         ${shotsHTML(it.shots)}
         ${foodHTML(it.food)}
       </div>
-    </div>`;
+    </details>`;
   }).join('');
 
   return `<div class="card">
@@ -1072,7 +1121,11 @@ function viewDay(d){
         <p class="muted" style="margin:6px 0 0">${esc(tx(d.sub))}</p>
         ${chipsHTML(d.chips)}
       </div>
-    </div>${items}`;
+    </div>
+    <div class="dayctl">
+      <button id="toggleAll">${openAll ? esc(tx(UI.collapseAll)) : esc(tx(UI.expandAll))}</button>
+    </div>
+    ${items}`;
 }
 
 function viewFlights(){
@@ -1361,6 +1414,13 @@ function render(){
    INTERACTIONS
    ============================================================ */
 document.addEventListener('click', e=>{
+  if(e.target.closest('#toggleAll')){
+    const now = localStorage.getItem('expand') === '1';
+    localStorage.setItem('expand', now ? '0' : '1');
+    render();
+    return;
+  }
+
   const go = e.target.closest('[data-goto]');
   if(go){ location.hash = '#' + go.dataset.goto; return; }
 
