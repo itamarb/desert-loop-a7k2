@@ -205,6 +205,14 @@ details.item[open] .peek{display:none}
 .food .f b{display:block;font-size:14.5px}
 .food .f .m{font-size:12.5px;color:var(--ink2);margin-top:2px}
 .food .f .a{font-size:12px;color:var(--ink3);margin-top:3px}
+.food .f .arow{display:flex;align-items:center;gap:8px;margin-top:5px;flex-wrap:wrap}
+.food .f .arow .a{margin-top:0;flex:1;min-width:0}
+.fnav{
+  flex:0 0 auto;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;
+  border:1px solid var(--line);background:var(--card);color:var(--river);cursor:pointer;
+  display:inline-flex;align-items:center;gap:4px;white-space:nowrap
+}
+.fnav:active{background:var(--sand2)}
 
 /* ---------- alerts ---------- */
 .alert{
@@ -313,7 +321,7 @@ footer{max-width:var(--maxw);margin:0 auto;padding:6px 14px 34px;color:var(--ink
     <div class="grab"></div>
     <div class="eyebrow" id="navEyebrow"></div>
     <h2 id="navName" style="font-size:18px;font-weight:800"></h2>
-    <p class="muted" id="navAddr" style="margin:6px 0 0"></p>
+    <p class="muted" id="navAddr" dir="ltr" style="margin:6px 0 0;text-align:start"></p>
     <a class="btn primary" id="navWaze" target="_blank" rel="noopener">Waze</a>
     <a class="btn" id="navGmaps" target="_blank" rel="noopener">Google Maps</a>
     <button class="btn ghost" id="navClose"></button>
@@ -366,6 +374,7 @@ const UI = {
   shots:     T('צילום','Photography'),
   expandAll: T('פתיחת הכל','Expand all'),
   collapseAll:T('סגירת הכל','Collapse all'),
+  navShort:  T('ניווט','Navigate'),
   where:     T('איפה ישנים','Where we sleep'),
   live:      T('מיקום חי','Live position'),
   liveWait:  T('בודק…','Checking…'),
@@ -475,11 +484,12 @@ const DAYS = [
         {who:'itamar', text:T('בירידה מקינגמן לפלגסטאף בין 17:00 ל-18:30 האור נמוך על המדבר ועננות המונסון בונה מגדלים — זה החלון הכי טוב של היום. אם עוצרים, לעצור ב<b>מפרץ עצירה מסומן</b> ולא בשוליים של I-40.','On the climb from Kingman to Flagstaff between 17:00 and 18:30 the light goes low across the desert and the monsoon cloud builds towers — the best window of the day. If you stop, use a <b>marked pull-out</b>, never the I-40 shoulder.')}
       ],
       food:[
-        {n:'Dark Sky Brewery', m:T('🍕 <b>המלצת המארחת, 3 דקות הליכה</b> (כניסה מרחוב Beaver) — פיצה בתנור עצים ובירה מקומית. הכי הגיוני לערב שבו כולם הרוסים מהטיסה והנהיגה.','🍕 <b>The host’s recommendation, a 3-minute walk</b> (entrance on Beaver Ave) — wood-fired pizza and local beer. The most sensible option for an evening when everyone is wrecked from the flight and the drive.'), a:'Beaver Ave entrance'},
-        {n:'Alpine Pizza', m:T('🕹️ פיצה + ארקייד וינטג׳ + חצר. אם רוצים משהו שיעסיק את אור.','🕹️ Pizza, a vintage arcade and a backyard patio. If you want something to occupy Or.'), a:'22 N Leroux St'},
-        {n:'Tinderbox Kitchen', m:T('🥩 <b>הסטייק של איתמר — וזה הערב היחיד בפלגסטאף</b>, כי מחר כבר ישנים בפייג׳. פילה מיניון ברוטב פלפל שחור, ופילה אייל בשביל שי. חובה להזמין. אם אין כוח אחרי הנהיגה — הגיבוי הוא Charcoal Venice בערב האחרון ב-LA.','🥩 <b>Itamar’s steak — and this is the only Flagstaff evening</b>, since tomorrow you sleep in Page. Filet mignon au poivre, and an elk tenderloin for Shai. Reservation essential. If nobody has the energy after the drive, the backup is Charcoal Venice on the last night in LA.'), a:'34 S San Francisco St · 928-226-8400'},
-        {n:'MIX Flagstaff', m:T('🥗 בר סלטים אמיתי לטלי, ומשהו לילדים באותו שולחן. פתוח עד 21:00.','🥗 A real salad bar for Tali, and something for the kids at the same table. Open to 21:00.'), a:'120 N Leroux St'},
-        {n:'Bashas’ / Walmart', m:T('🛒 מים בארגזים, חטיפים לדרך, קרח, צידנית.','🛒 Cases of water, trail snacks, ice, a cooler.'), a:'1000 N Humphreys St / 2601 E Huntington Dr'}
+        {n:'Dark Sky Brewing', m:T('🍕 <b>המלצת המארחת, 3 דקות הליכה</b> — פיצה בתנור עצים ובירה מקומית. הכי הגיוני לערב שבו כולם הרוסים מהטיסה והנהיגה. ⚠️ <b>ללכת לסניף ברחוב Beaver</b> — זה המקום המשפחתי. גן הבירה שלהם ברחוב Birch הוא 21+ ולא ייתן לילדים להיכנס.','🍕 <b>The host’s recommendation, a 3-minute walk</b> — wood-fired pizza and local beer. The most sensible option for an evening when everyone is wrecked from the flight and the drive. ⚠️ <b>Go to the Beaver St taproom</b> — that’s the family-friendly one. Their Birch St beer garden is 21+ and won’t let the kids in.'), a:'117 N Beaver St', nav:'117 N Beaver St, Flagstaff, AZ 86001'},
+        {n:'Alpine Pizza', m:T('🕹️ פיצה + ארקייד וינטג׳ + חצר. אם רוצים משהו שיעסיק את אור.','🕹️ Pizza, a vintage arcade and a backyard patio. If you want something to occupy Or.'), a:'7 N Leroux St', nav:'7 N Leroux St, Flagstaff, AZ 86001'},
+        {n:'Tinderbox Kitchen', m:T('🥩 <b>הסטייק של איתמר — וזה הערב היחיד בפלגסטאף</b>, כי מחר כבר ישנים בפייג׳. פילה מיניון ברוטב פלפל שחור, ופילה אייל בשביל שי. חובה להזמין. אם אין כוח אחרי הנהיגה — הגיבוי הוא Charcoal Venice בערב האחרון ב-LA.','🥩 <b>Itamar’s steak — and this is the only Flagstaff evening</b>, since tomorrow you sleep in Page. Filet mignon au poivre, and an elk tenderloin for Shai. Reservation essential. If nobody has the energy after the drive, the backup is Charcoal Venice on the last night in LA.'), a:'34 S San Francisco St · 928-226-8400', nav:'34 S San Francisco St, Flagstaff, AZ 86001'},
+        {n:'MIX Flagstaff', m:T('🥗 בר סלטים אמיתי לטלי, ומשהו לילדים באותו שולחן. פתוח עד 21:00.','🥗 A real salad bar for Tali, and something for the kids at the same table. Open to 21:00.'), a:'120 N Leroux St', nav:'120 N Leroux St, Flagstaff, AZ 86001'},
+        {n:'Walmart Supercenter', m:T('🛒 <b>הקנייה הגדולה של הערב:</b> ארגז מים, קרח, צידנית זולה וחטיפים. פתוח עד 23:00 — היחיד שעדיין פתוח אם מגיעים מאוחר.','🛒 <b>Tonight’s big shop:</b> a case of water, ice, a cheap cooler and snacks. Open until 23:00 — the only one still open if you arrive late.'), a:'2601 E Huntington Dr', nav:'2601 E Huntington Dr, Flagstaff, AZ 86004'},
+        {n:'Bashas’', m:T('🛒 הסופר הקרוב ביותר ברגל, ויושב בדיוק על הדרך היוצאת לגרנד קניון. פותח ב-06:00.','🛒 The closest supermarket on foot, and it sits exactly on the road out toward the Grand Canyon. Opens at 06:00.'), a:'1000 N Humphreys St', nav:'1000 N Humphreys St, Flagstaff, AZ 86001'}
       ]
     }
   ]
@@ -603,9 +613,9 @@ const DAYS = [
         {who:'all', text:T('<b>הגעה ליחידה 12:</b> החניה היא התא האחרון בצד היחידה, ליד החצר האחורית, ומשם שער לדלת האחורית. מנעול חכם — הקוד נפתח בשעת הצ׳ק-אין ונמצא בהודעה של Mark. פרטי הוויי-פיי מתפרסמים 48 שעות לפני.','<b>Arriving at unit 12:</b> parking is the last stall on the side of the unit next to the back yard, and there’s a gate from there to the back door. Smart lock — the code activates at check-in and is in Mark’s message. The wifi details appear 48 hours beforehand.')}
       ],
       food:[
-        {n:'The Barnyard', m:T('🥩 פריים ריב בשבת בערב, מיני-גולף ומתקנים לילדים, ומרשמלו על המדורה. פותר את כולם בבת אחת. פתוח עד 23:00.','🥩 Saturday-night prime rib, mini golf and a play structure, and s’mores on the fire pit. Solves everyone at once. Open to 23:00.'), a:'643 Haul Rd, Page'},
-        {n:'Big John’s Texas BBQ', m:T('🔥 בריסקט וצלעות בתחנת דלק משופצת, מוזיקה חיה כל ערב. <b>אין הזמנת מקום</b> — להגיע ב-17:15 או לחכות 45 דקות בחוץ.','🔥 Brisket and ribs in a converted petrol station, live music nightly. <b>No reservations ever</b> — arrive 17:15 or wait 45 min outside.'), a:'153 S Lake Powell Blvd'},
-        {n:'Safeway', m:T('🛒 אם מגיעים אחרי 21:00 רוב המטבחים סגורים — Safeway פתוח עד 22:00 וגם קונים בו את המים למחר.','🛒 If you arrive after 21:00 most kitchens are shut — Safeway is open to 22:00 and it’s where you buy tomorrow’s water anyway.'), a:'650 Elm St'}
+        {n:'The Barnyard', m:T('🥩 פריים ריב בשבת בערב, מיני-גולף ומתקנים לילדים, ומרשמלו על המדורה. פותר את כולם בבת אחת. פתוח עד 23:00.','🥩 Saturday-night prime rib, mini golf and a play structure, and s’mores on the fire pit. Solves everyone at once. Open to 23:00.'), a:'643 Haul Rd, Page', nav:'643 Haul Rd, Page, AZ 86040'},
+        {n:'Big John’s Texas BBQ', m:T('🔥 בריסקט וצלעות בתחנת דלק משופצת, מוזיקה חיה כל ערב. <b>אין הזמנת מקום</b> — להגיע ב-17:15 או לחכות 45 דקות בחוץ.','🔥 Brisket and ribs in a converted petrol station, live music nightly. <b>No reservations ever</b> — arrive 17:15 or wait 45 min outside.'), a:'153 S Lake Powell Blvd', nav:'153 S Lake Powell Blvd, Page, AZ 86040'},
+        {n:'Safeway', m:T('🛒 אם מגיעים אחרי 21:00 רוב המטבחים סגורים — Safeway פתוח עד 22:00 וגם קונים בו את המים למחר.','🛒 If you arrive after 21:00 most kitchens are shut — Safeway is open to 22:00 and it’s where you buy tomorrow’s water anyway.'), a:'650 Elm St', nav:'650 Elm St, Page, AZ 86040'}
       ]
     }
   ]
@@ -706,9 +716,9 @@ const DAYS = [
         {who:'tali', text:T('הילדים במים עם הסלע מאחור, בשעה הזהובה, זו התמונה שתרצו למסגר. ולצלם <b>נמוך</b> — כפוף עד גובה המים — ככה הסלע נראה ענק והילדים לא נבלעים בחוף.','The kids in the water with the rock behind them at golden hour is the one you’ll want framed. Shoot <b>low</b> — crouch down to water level — that way the rock looks huge and the kids don’t get swallowed by the beach.')}
       ],
       food:[
-        {n:'Sunset 89', m:T('🥗 הכי קליל ומוקפד בעיר, נוף לכיוון האגם. <b>מקבלים הזמנות — כדאי להזמין.</b>','🥗 The lightest and most refined in town, with a view toward the lake. <b>Takes reservations — book it.</b>'), a:'724 US-89 · 928-608-5562'},
+        {n:'Sunset 89', m:T('🥗 הכי קליל ומוקפד בעיר, נוף לכיוון האגם. <b>מקבלים הזמנות — כדאי להזמין.</b>','🥗 The lightest and most refined in town, with a view toward the lake. <b>Takes reservations — book it.</b>'), a:'724 US-89 · 928-608-5562', nav:'724 US-89, Page, AZ 86040'},
         {n:'Big John’s Texas BBQ', m:T('🔥 מוזיקה חיה 18:30–21:00. להגיע 17:15.','🔥 Live music 18:30–21:00. Arrive 17:15.'), a:'153 S Lake Powell Blvd'},
-        {n:'Dam Bar & Grille', m:T('🥩 סטייקים, והמטבח היחיד בעיר שפתוח עד 23:00 אם השקיעה מתארכת.','🥩 Steaks, and the only kitchen in town open to 23:00 if sunset runs long.'), a:'644 N Navajo Dr'}
+        {n:'Dam Bar & Grille', m:T('🥩 סטייקים, והמטבח היחיד בעיר שפתוח עד 23:00 אם השקיעה מתארכת.','🥩 Steaks, and the only kitchen in town open to 23:00 if sunset runs long.'), a:'644 N Navajo Dr', nav:'644 N Navajo Dr, Page, AZ 86040'}
       ]
     }
   ]
@@ -737,9 +747,9 @@ const DAYS = [
       nav:'dtflag',
       chips:[T('2:15 ש׳ מפייג׳','2h15 from Page')],
       food:[
-        {n:'Tourist Home All Day Cafe', m:T('☕ הבחירה הראשונה — קפה אמיתי ומאפים מהמקום, בבית משופץ משנות ה-20. פתוח 07:00–14:00 כל יום.','☕ First choice — proper espresso and scratch pastries in a restored 1920s house. Open 07:00–14:00 daily.'), a:'52 S San Francisco St'},
-        {n:'Macy’s European Coffeehouse', m:T('☕ מאפייה ובית קפה ותיקים, פתוח מ-06:00 אם יוצאים מוקדם מפייג׳.','☕ A long-standing bakery and coffeehouse, open from 06:00 if you leave Page early.'), a:'14 S Beaver St'},
-        {n:'MartAnne’s Burrito Palace', m:T('🌶️ אם רוצים ארוחה ולא רק קפה — הצ׳ילקילס שלהם מפורסמים. פתוח מ-07:30.','🌶️ If you want a meal and not just coffee — their chilaquiles are famous. Open from 07:30.'), a:'112 E Route 66'}
+        {n:'Tourist Home All Day Cafe', m:T('☕ הבחירה הראשונה — קפה אמיתי ומאפים מהמקום, בבית משופץ משנות ה-20. פתוח 07:00–14:00 כל יום.','☕ First choice — proper espresso and scratch pastries in a restored 1920s house. Open 07:00–14:00 daily.'), a:'52 S San Francisco St', nav:'52 S San Francisco St, Flagstaff, AZ 86001'},
+        {n:'Macy’s European Coffeehouse', m:T('☕ מאפייה ובית קפה ותיקים, פתוח מ-06:00 אם יוצאים מוקדם מפייג׳.','☕ A long-standing bakery and coffeehouse, open from 06:00 if you leave Page early.'), a:'14 S Beaver St', nav:'14 S Beaver St, Flagstaff, AZ 86001'},
+        {n:'MartAnne’s Burrito Palace', m:T('🌶️ אם רוצים ארוחה ולא רק קפה — הצ׳ילקילס שלהם מפורסמים. פתוח מ-07:30.','🌶️ If you want a meal and not just coffee — their chilaquiles are famous. Open from 07:30.'), a:'112 E Route 66', nav:'112 E Route 66, Flagstaff, AZ 86001'}
       ],
       tips:[
         {who:'itamar', text:T('לתדלק בפלגסטאף. אחר כך: קינגמן. שני התדלוקים האלה מכסים את כל הדרך ל-LA.','Fuel in Flagstaff. Then Kingman. Those two fills cover the whole way to LA.')}
@@ -762,9 +772,9 @@ const DAYS = [
         {who:'shai', text:T('ב-Snow Cap המלצרים עובדים על הלקוחות בבדיחות קבועות כבר 70 שנה — ״צ׳יזבורגר עם גבינה״, בקבוק חרדל עם חוט, ידיות שנשארות ביד. הבורגרים בינוניים, המילקשייקים טובים.','At the Snow Cap the staff have been running the same gags for 70 years — the “cheeseburger with cheese”, the fake-string mustard bottle, door handles that come off in your hand. The burgers are ordinary, the malts are good.')}
       ],
       food:[
-        {n:'Westside Lilo’s Cafe', m:T('🍽️ <b>ארוחת הצהריים.</b> המסעדה הטובה ביותר בכל הקטע הזה של הדרך — משפחתית, אוכל בייתי ומנות גדולות. עוגת הגזר שלהם מפורסמת, שווה לקנות שלמה לרכב. פתוח מ-07:00.','🍽️ <b>This is lunch.</b> The best restaurant on this whole stretch — family-run, honest home cooking, big portions. Their carrot cake is famous; buy a whole one for the car. Open from 07:00.'), a:'22855 W Historic Route 66 · 928-422-5456'},
-        {n:'Delgadillo’s Snow Cap', m:T('🍦 חמש דקות משם — <b>קינוח בלבד, לא צהריים.</b> מילקשייק, גלידה, והבדיחות. פתוח 10:00–18:00, סגור בראשון.','🍦 Five minutes away — <b>dessert only, not lunch.</b> Malts, soft-serve, and the gags. Open 10:00–18:00, closed Sunday.'), a:'301 AZ-66'},
-        {n:'Rutherford’s 66 Family Diner', m:T('🥞 אם עוצרים מאוחר יותר בקינגמן: הכי טוב בעיר ופתוח בשני, בניגוד לרוב.','🥞 If you stop later in Kingman: the best in town and open on a Monday, unlike most.'), a:'2011 E Andy Devine Ave, Kingman'}
+        {n:'Westside Lilo’s Cafe', m:T('🍽️ <b>ארוחת הצהריים.</b> המסעדה הטובה ביותר בכל הקטע הזה של הדרך — משפחתית, אוכל בייתי ומנות גדולות. עוגת הגזר שלהם מפורסמת, שווה לקנות שלמה לרכב. פתוח מ-07:00.','🍽️ <b>This is lunch.</b> The best restaurant on this whole stretch — family-run, honest home cooking, big portions. Their carrot cake is famous; buy a whole one for the car. Open from 07:00.'), a:'22855 W Historic Route 66 · 928-422-5456', nav:'22855 W Historic Route 66, Seligman, AZ 86337'},
+        {n:'Delgadillo’s Snow Cap', m:T('🍦 חמש דקות משם — <b>קינוח בלבד, לא צהריים.</b> מילקשייק, גלידה, והבדיחות. פתוח 10:00–18:00, סגור בראשון.','🍦 Five minutes away — <b>dessert only, not lunch.</b> Malts, soft-serve, and the gags. Open 10:00–18:00, closed Sunday.'), a:'301 AZ-66', nav:'301 AZ-66, Seligman, AZ 86337'},
+        {n:'Rutherford’s 66 Family Diner', m:T('🥞 אם עוצרים מאוחר יותר בקינגמן: הכי טוב בעיר ופתוח בשני, בניגוד לרוב.','🥞 If you stop later in Kingman: the best in town and open on a Monday, unlike most.'), a:'2011 E Andy Devine Ave, Kingman', nav:'2011 E Andy Devine Ave, Kingman, AZ 86401'}
       ]
     },
     { slot:'afternoon', time:'~15:00',
@@ -796,10 +806,10 @@ const DAYS = [
         {who:'tali', text:T('<b>Mother’s Beach מול המלון היא תמונת הסיום.</b> לגונה שקטה בלי גלים, כלומר השתקפות — ארבעתכם על החול עם המים החלקים מאחור. ורגע לפני שהאור נגמר זה גם הזמן לתמונה המשפחתית הרשמית של הטיול, כשכולם עדיין שזופים ולפני האריזה.','<b>Mother’s Beach opposite the hotel is the closing shot.</b> A calm, waveless lagoon means reflections — the four of you on the sand with flat water behind. And just before the light goes is the moment for the trip’s official family photo, while everyone is still tanned and before the packing starts.')}
       ],
       food:[
-        {n:'Cast & Plow', m:T('🌅 <b>הבחירה הבטוחה לערב האחרון.</b> אוכל קליפורני מוקפד עם נוף למרינה, 4 דקות מהמלון, וקוד לבוש קז׳ואל — משנה כשיצאתם מהרכב אחרי תשע שעות. ארוחת ערב 17:00–21:30. כדאי להזמין.','🌅 <b>The safe choice for the last night.</b> Proper California cooking with a marina view, 4 minutes from the hotel, and a casual dress code — which matters when you’ve just climbed out of the car after nine hours. Dinner 17:00–21:30. Worth booking.'), a:'Ritz-Carlton, 4375 Admiralty Way'},
-        {n:'Killer Shrimp', m:T('🦐 <b>אם מגיעים מאוחר.</b> על המזח, 7 דקות הליכה מהמלון, פתוח עד 22:00, בלי הזמנה. שולחנות משפחתיים והילדים אוהבים.','🦐 <b>If you arrive late.</b> Dockside, a 7-minute walk from the hotel, open to 22:00, no reservation. Family-style tables and the kids love it.'), a:'4211 Admiralty Way'},
-        {n:'Charcoal Venice', m:T('🥩 <b>אם הסטייק בפלגסטאף לא קרה</b> — מסעדת אש גלויה של שף עם כוכב מישלן, 9 דקות מהמלון. פורטרהאוס שלם על הגריל. סוגרים 21:00, אז להזמין ל-19:30.','🥩 <b>If the Flagstaff steak didn’t happen</b> — a live-fire restaurant from a Michelin-starred chef, 9 minutes away. Whole grilled porterhouse. Closes 21:00, so book for 19:30.'), a:'425 Washington Blvd, Venice'},
-        {n:'The Cheesecake Factory', m:T('🍰 200 מטר מהמלון, תפריט ענק, אפס סיכון עם ילדים עייפים.','🍰 200 m from the hotel, an enormous menu, zero risk with tired kids.'), a:'4142 Via Marina'}
+        {n:'Cast & Plow', m:T('🌅 <b>הבחירה הבטוחה לערב האחרון.</b> אוכל קליפורני מוקפד עם נוף למרינה, 4 דקות מהמלון, וקוד לבוש קז׳ואל — משנה כשיצאתם מהרכב אחרי תשע שעות. ארוחת ערב 17:00–21:30. כדאי להזמין.','🌅 <b>The safe choice for the last night.</b> Proper California cooking with a marina view, 4 minutes from the hotel, and a casual dress code — which matters when you’ve just climbed out of the car after nine hours. Dinner 17:00–21:30. Worth booking.'), a:'Ritz-Carlton, 4375 Admiralty Way', nav:'4375 Admiralty Way, Marina del Rey, CA 90292'},
+        {n:'Killer Shrimp', m:T('🦐 <b>אם מגיעים מאוחר.</b> על המזח, 7 דקות הליכה מהמלון, פתוח עד 22:00, בלי הזמנה. שולחנות משפחתיים והילדים אוהבים.','🦐 <b>If you arrive late.</b> Dockside, a 7-minute walk from the hotel, open to 22:00, no reservation. Family-style tables and the kids love it.'), a:'4211 Admiralty Way', nav:'4211 Admiralty Way, Marina del Rey, CA 90292'},
+        {n:'Charcoal Venice', m:T('🥩 <b>אם הסטייק בפלגסטאף לא קרה</b> — מסעדת אש גלויה של שף עם כוכב מישלן, 9 דקות מהמלון. פורטרהאוס שלם על הגריל. סוגרים 21:00, אז להזמין ל-19:30.','🥩 <b>If the Flagstaff steak didn’t happen</b> — a live-fire restaurant from a Michelin-starred chef, 9 minutes away. Whole grilled porterhouse. Closes 21:00, so book for 19:30.'), a:'425 Washington Blvd, Venice', nav:'425 Washington Blvd, Venice, CA 90292'},
+        {n:'The Cheesecake Factory', m:T('🍰 200 מטר מהמלון, תפריט ענק, אפס סיכון עם ילדים עייפים.','🍰 200 m from the hotel, an enormous menu, zero risk with tired kids.'), a:'4142 Via Marina', nav:'4142 Via Marina, Marina del Rey, CA 90292'}
       ]
     }
   ]
@@ -969,7 +979,18 @@ function shotsHTML(shots){
 
 function foodHTML(food){
   if(!food || !food.length) return '';
-  const f = food.map(x=>`<div class="f"><b>${esc(x.n)}</b><div class="m">${tx(x.m)}</div><div class="a">${esc(x.a)}</div></div>`).join('');
+  const f = food.map(x=>{
+    // Small inline pill — deliberately not the big primary button, so a
+    // restaurant is never mistaken for a scheduled stop.
+    const pill = x.nav
+      ? `<button class="fnav" data-navaddr="${esc(x.nav)}" data-navname="${esc(x.n)}">🧭 ${esc(tx(UI.navShort))}</button>`
+      : '';
+    return `<div class="f">
+      <b>${esc(x.n)}</b>
+      <div class="m">${tx(x.m)}</div>
+      <div class="arow"><span class="a"><bdi>${esc(x.a)}</bdi></span>${pill}</div>
+    </div>`;
+  }).join('');
   return `<div class="eyebrow" style="margin-top:14px">${esc(tx(UI.food))}</div><div class="food">${f}</div>`;
 }
 
@@ -1009,7 +1030,7 @@ function viewHome(){
     <div class="card-pad" style="border-top:1px solid var(--line)">
       <div class="eyebrow">${esc(tx(b.when))}</div>
       <h3>${esc(tx(b.name))}</h3>
-      <p class="muted" style="margin:4px 0 0">${esc(b.addr)}</p>
+      <p class="muted" style="margin:4px 0 0"><bdi>${esc(b.addr)}</bdi></p>
       ${b.note?`<p class="tiny" style="margin:6px 0 0">${esc(tx(b.note))}</p>`:''}
       ${navBtn(b.k)}
     </div>`).join('');
@@ -1424,6 +1445,9 @@ document.addEventListener('click', e=>{
   const go = e.target.closest('[data-goto]');
   if(go){ location.hash = '#' + go.dataset.goto; return; }
 
+  const fb = e.target.closest('[data-navaddr]');
+  if(fb){ showNav(fb.dataset.navname, fb.dataset.navaddr); return; }
+
   const nb = e.target.closest('[data-nav]');
   if(nb){ openNav(nb.dataset.nav); return; }
 
@@ -1438,16 +1462,20 @@ document.addEventListener('click', e=>{
 
 /* navigate sheet */
 const sheet = document.getElementById('navSheet');
-function openNav(key){
-  const n = NAV[key]; if(!n) return;
-  const q = encodeURIComponent(n.addr);
+function showNav(name, addr){
+  const q = encodeURIComponent(addr);
   document.getElementById('navEyebrow').textContent = tx(UI.chooseApp);
-  document.getElementById('navName').textContent = tx(n.name);
-  document.getElementById('navAddr').textContent = n.addr;
+  document.getElementById('navName').textContent = name;
+  document.getElementById('navAddr').textContent = addr;
   document.getElementById('navWaze').href  = 'https://waze.com/ul?q=' + q + '&navigate=yes';
   document.getElementById('navGmaps').href = 'https://www.google.com/maps/dir/?api=1&destination=' + q;
   document.getElementById('navClose').textContent = tx(UI.cancel);
   sheet.hidden = false;
+}
+
+function openNav(key){
+  const n = NAV[key]; if(!n) return;
+  showNav(tx(n.name), n.addr);
 }
 sheet.addEventListener('click', e=>{ if(e.target===sheet || e.target.id==='navClose') sheet.hidden = true; });
 
