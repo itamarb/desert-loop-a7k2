@@ -444,7 +444,7 @@ const DAYS = [
   title:T('הגרנד קניון — מהשפה המערבית למזרחית','Grand Canyon — west rim to east'),
   sub:T('יוצאים מוקדם, חוצים את הפארק ממערב למזרח ויוצאים בשער המזרחי ישר לכיוון פייג׳. אפס חזרה אחורה.','Leave early, cross the park west to east, exit the East Entrance straight toward Page. Zero backtracking.'),
   banner:'canyon',
-  chips:[T('יציאה 06:45','Depart 06:45'), T('1:30 ש׳ לשער','1h30 to the gate'), T('2:15 ש׳ לפייג׳','2h15 on to Page')],
+  chips:[T('יציאה 06:45','Depart 06:45'), T('6 עצירות','6 stops'), T('לצאת מהפארק 16:30','Out of the park 16:30'), T('2:15 ש׳ לפייג׳','2h15 on to Page')],
   items:[
     { slot:'morning', time:'06:45',
       title:T('יציאה מפלגסטאף — כביש US-180','Leave Flagstaff — US-180'),
@@ -484,11 +484,39 @@ const DAYS = [
         {who:'all', warn:true, text:T('<b>סופות רעמים כמעט יומיות בין 11:00 ל-18:00</b> בעונת המונסון. מעקה חשוף על שפת קניון הוא המקום הכי גרוע להיות בו בברק. בשמיעת הרעם הראשון — לרכב.','<b>Near-daily thunderstorms between 11:00 and 18:00</b> in monsoon season. An exposed rim railing is the worst place to be in lightning. At the first thunder, back to the car.')}
       ]
     },
-    { slot:'afternoon', time:'12:45',
+    { slot:'morning', time:'09:45',
+      title:T('Yavapai — מוזיאון הגיאולוגיה','Yavapai Geology Museum'),
+      desc:T('עולים על השאטל הכתום (Kaibab Rim) מהמרכז — הוא היחיד שמגיע ל-Yaki Point ועוצר ב-Yavapai. חלונות מרצפה עד תקרה מעל הקניון, מיזוג, ומודל תבליט תלת-ממדי שסוף סוף גורם לגיאולוגיה להתחבר. אפשר גם ללכת ברגל מ-Mather לאורך ה-Rim Trail (שטוח וסלול) ולחזור בשאטל.','Take the orange Kaibab Rim shuttle from the visitor center — it’s the only route to Yaki Point and it stops at Yavapai. Floor-to-ceiling windows over the canyon, air conditioning, and a 3D relief model that finally makes the geology click. You can also walk there from Mather along the flat, paved Rim Trail and shuttle back.'),
+      chips:[T('שאטל חינם','Free shuttle'), T('45–60 דק׳','45–60 min'), T('ממוזג','Air-conditioned')],
+      tips:[
+        {who:'shai', text:T('המודל התלת-ממדי כאן הוא ההסבר הכי טוב בפארק לאיך נחתך הקניון. שווה 10 דקות.','The 3D model here is the best explanation in the park of how the canyon was cut. Worth 10 minutes.')},
+        {who:'or', text:T('הפסקת מיזוג ראשונה של היום, אחרי שעה בשמש על השפה. תזמון טוב לשתייה ולשירותים.','The first air-conditioned break of the day, after an hour in the sun on the rim. Good timing for a drink and the toilets.')}
+      ]
+    },
+    { slot:'morning', time:'11:00',
+      title:T('הכפר ההיסטורי','The historic village'),
+      desc:T('Bright Angel Lodge ומסביבו הכפר ההיסטורי. <b>Lookout Studio</b> ו-<b>Kolb Studio</b> שניהם בנויים תלויים מעל שפת הקניון — זו החוויה הכי מגניבה כאן ושתיהן חינם. ה-Rim Trail בקטע הזה שטוח וסלול לגמרי. זו גם נקודת הצהריים.','Bright Angel Lodge and the historic village around it. <b>Lookout Studio</b> and <b>Kolb Studio</b> are both built cantilevered out over the rim — the coolest thing here, and both are free. The Rim Trail along this stretch is completely flat and paved. This is also your lunch point.'),
+      chips:[T('~2 שעות','~2 hours'), T('כולל צהריים','Lunch included'), T('שטוח','Flat')],
+      tips:[
+        {who:'itamar', text:T('<b>Arizona Steakhouse</b> על השפה עם חלונות לקניון — צהריים בהזמנה חופשית מ-11:30. החלופה השקטה: פיקניק מהצידנית באחת התצפיות, ואז אין תור בכלל.','<b>Arizona Steakhouse</b> is on the rim with canyon windows — lunch is walk-in from 11:30. The calm alternative: a picnic from the cooler at a viewpoint, and then there’s no queue at all.')},
+        {who:'or', warn:true, text:T('<b>שביל Bright Angel מתחיל כאן.</b> אם רוצים להרגיש איך זה מתחת לשפה — לרדת <b>עד המנהרה הראשונה בלבד</b> (כ-15 דקות למטה, 20 בחזרה) ולחזור. <b>לא</b> לרדת ל-1.5-Mile Resthouse: העלייה בחזרה היא 340 מטר גובה, והשעה כבר חמה מדי בשביל אור.','<b>The Bright Angel Trail starts here.</b> If you want to feel what it’s like below the rim, go down <b>to the first tunnel only</b> (about 15 minutes down, 20 back) and turn around. Do <b>not</b> go to the 1.5-Mile Resthouse: the climb back out is 340 m of ascent, and by then it’s too hot for Or.')},
+        {who:'all', warn:true, text:T('רשות הפארקים אוסרת למעשה על ירידה מתחת לשפה בין <b>10:00 ל-16:00</b> בקיץ. זו לא המלצה — אנשים מפונים משם בכל קיץ.','The park service effectively prohibits hiking below the rim between <b>10:00 and 16:00</b> in summer. That isn’t advice — people are evacuated from there every summer.')}
+      ]
+    },
+    { slot:'afternoon', time:'13:45',
+      title:T('Grandview Point','Grandview Point'),
+      desc:T('העצירה הרצינית הראשונה מזרחה על Desert View Drive, ואחת הטובות בפארק — הקניון נפתח כאן לרוחב ורואים עומק אמיתי. עצירה קצרה נוספת אפשרית ב-Moran Point בהמשך.','The first serious stop heading east on Desert View Drive, and one of the best in the park — the canyon opens out here and you get a real sense of depth. Moran Point further along is a good short second stop.'),
+      chips:[T('20–30 דק׳','20–30 min'), T('20 דק׳ נסיעה','20 min drive')],
+      tips:[
+        {who:'all', warn:true, text:T('<b>Lipan Point סגור עד דצמבר 2026.</b> במקומו: Moran Point או Navajo Point.','<b>Lipan Point is closed until December 2026.</b> Use Moran Point or Navajo Point instead.')},
+        {who:'tali', text:T('מכאן והלאה התצפיות פונות מזרחה ומראות את הקניון בזווית אחרת לגמרי מהשפה המערבית — שווה את העצירות למרות שכבר ראיתם קניון היום.','From here the viewpoints face east and show the canyon at a completely different angle from the western rim — worth the stops even though you’ve already seen canyon today.')}
+      ]
+    },
+    { slot:'afternoon', time:'15:00',
       title:T('Desert View Watchtower','Desert View Watchtower'),
-      desc:T('37 ק״מ מזרחה לאורך שפת הקניון, עם עצירות ב-Grandview ו-Moran Point בדרך. המגדל של מרי קולטר מ-1932; הקומה התחתונה פתוחה חופשי, ולקומות העליונות מחלקים כרטיסים חינם על בסיס מקום פנוי.','37 km east along the rim, with stops at Grandview and Moran Point on the way. Mary Colter’s 1932 tower; the ground floor is free walk-in, the upper floors run on free first-come timed tickets.'),
+      desc:T('הנקודה האחרונה בפארק, ובמקרה גם הכי יפה לסיים בה. המגדל של מרי קולטר מ-1932; הקומה התחתונה פתוחה חופשי, ולקומות העליונות מחלקים <b>כרטיסים חינם על בסיס מקום פנוי</b> — לגשת לקחת מיד בהגעה, לא בסוף. זו גם תחנת האוכל, השירותים, הגלידה והדלק לפני הדרך לפייג׳.','The last point in the park, and by chance the prettiest to finish at. Mary Colter’s 1932 tower; the ground floor is free walk-in, and the upper floors run on <b>free first-come timed tickets</b> — go and take one the moment you arrive, not at the end. This is also your food, toilet, ice-cream and fuel stop before the run to Page.'),
       nav:'desertview',
-      chips:[T('37 ק״מ מהמרכז','37 km from the VC'), T('דלק 24/7','Fuel 24/7'), T('דלי עד 18:00','Deli to 18:00')],
+      chips:[T('~1.5 שעות','~1.5 hours'), T('דלק 24/7','Fuel 24/7'), T('דלי עד 18:00','Deli to 18:00'), T('לצאת עד 16:30','Leave by 16:30')],
       photos:[
         P('Desert_View_Watchtower_Grand_Canyon_09_2017_5521.jpg','Desert_View_Watchtower_Grand_Canyon_09_2017_5521.jpg',T('מגדל התצפית Desert View על שפת הקניון','Desert View Watchtower on the canyon rim')),
         P('Desert_View_Watchtower_Panorama.jpg','Desert_View_Watchtower_Panorama.jpg',T('פנורמה של הקניון מ-Desert View','Panorama of the canyon from Desert View')),
@@ -496,13 +524,13 @@ const DAYS = [
       ],
       video:{id:'PXx1c1TibZk', title:T('Desert View Watchtower — סיור של רשות הפארקים','Desert View Watchtower — an NPS ranger tour')},
       tips:[
-        {who:'all', warn:true, text:T('<b>Lipan Point סגור עד דצמבר 2026</b> לשיפוץ. במקומו לעצור ב-<b>Navajo Point</b> (קילומטר וחצי מזרחה, נוף דומה על הנהר) או ב-Moran Point.','<b>Lipan Point is closed until December 2026</b> for rehabilitation. Stop at <b>Navajo Point</b> instead (1.5 km further east, similar river view) or at Moran Point.')},
+        {who:'all', warn:true, text:T('<b>16:30 זו דדליין אמיתית, לא הצעה.</b> מכאן לפייג׳ זה 2:15 שעות, השקיעה ב-19:15, וכביש 89 הוא שטח מרעה פתוח עם סוסים ופרות על הכביש בחושך. יוצאים ב-16:30 → מגיעים באור.','<b>16:30 is a real deadline, not a suggestion.</b> It’s 2h15 from here to Page, sunset is 19:15, and US-89 is open range with horses and cattle on the road after dark. Leave at 16:30 and you arrive in daylight.')},
         {who:'all', text:T('זו העצירה שעושה הכל בבת אחת: ארוחה, שירותים, גלידה, <b>ותדלוק</b>. אחרי כאן אין הרבה עד קמרון.','This is the stop that does everything at once: food, restrooms, ice cream and <b>fuel</b>. After here there isn’t much until Cameron.')},
         {who:'shai', text:T('המדרגות לקומות העליונות צרות ותלולות והנוף מלמעלה שווה את זה — אבל הפתיחה תלויה בכוח אדם, אז זה בונוס ולא הבטחה.','The stairs to the upper floors are narrow and steep and the view is worth it — but access depends on staffing, so treat it as a bonus, not a promise.')},
         {who:'itamar', text:T('בשעת צהריים בשיא העונה התורים באוכל בכפר הם 30–45 דקות. הדלי כאן ב-Desert View שקט בהרבה, והטאקו הנאוואחו שלו אמיתי.','At midday in peak season the food queues in the Village run 30–45 minutes. The deli here at Desert View is far calmer, and its Navajo taco is the real thing.')}
       ]
     },
-    { slot:'evening', time:'~17:00',
+    { slot:'evening', time:'16:30',
       title:T('דרך קמרון לפייג׳','Via Cameron to Page'),
       desc:T('יוצאים בשער המזרחי, 48 ק״מ לקמרון ואז 125 ק״מ צפונה בכביש 89. עצירה אחרונה טובה: Cameron Trading Post — דלק, שירותים נקיים, וגלריה.','Exit the East Entrance, 48 km to Cameron then 125 km north on US-89. Last good stop: Cameron Trading Post — fuel, clean restrooms and a gallery.'),
       nav:'page',
@@ -622,8 +650,8 @@ const DAYS = [
     { slot:'morning', time:'07:30',
       title:T('יציאה מפייג׳','Leave Page'),
       desc:T('כביש 89 דרומה לקמרון ופלגסטאף, ואז I-40 מערבה כל הדרך. ארוחת בוקר: Rustic Thistle בפייג׳ פותח ב-08:00, או פשוט קפה מ-Safeway ולצאת.','US-89 south to Cameron and Flagstaff, then I-40 west the whole way. Breakfast: Rustic Thistle in Page opens 08:00, or just grab coffee from Safeway and go.'),
-      nav:'page',
-      chips:[T('צ׳ק-אאוט 10:00','Checkout 10:00')],
+      nav:'marriott',
+      chips:[T('צ׳ק-אאוט 10:00','Checkout 10:00'), T('יעד היום','Today’s destination')],
       tips:[
         {who:'all', text:T('<b>למלא דלק בפייג׳ לפני היציאה.</b> בין פייג׳ לקמרון יש 180 ק״מ עם כמעט כלום — Bitter Springs ו-The Gap קטנות ולפעמים במזומן בלבד.','<b>Fill up in Page before leaving.</b> There’s 180 km of almost nothing between Page and Cameron — Bitter Springs and The Gap are tiny and sometimes cash-only.')},
         {who:'all', text:T('לוודא שכל התמונות מהטיול <b>עלו לענן</b> לפני שיוצאים מהוויי-פיי. בדרך אין קליטה.','Make sure every photo from the trip has <b>uploaded to the cloud</b> before you leave wifi. There’s no signal on the road.')}
@@ -708,7 +736,7 @@ const DAYS = [
     { slot:'morning', time:'07:45',
       title:T('יציאה מהמלון','Leave the hotel'),
       desc:T('מרינה דל ריי ל-LAX זה 15 דקות בלי פקקים. יוצאים ב-07:45, ממלאים דלק בדרך (חובה — אחרת Budget מחייבים בתעריף מנופח), ומגיעים למרכז ההשכרה ב-08:15.','Marina del Rey to LAX is 15 minutes without traffic. Leave 07:45, refuel on the way (essential — otherwise Budget charges an inflated rate), and reach the rental centre by 08:15.'),
-      nav:'marriott',
+      nav:'conrac',
       tips:[
         {who:'itamar', text:T('<b>לצלם את מד הדלק ואת מד הקילומטראז׳ ואת הרכב מסביב</b> לפני שמוסרים מפתחות, ולקחת קבלת סגירה. זה שתי דקות שמונעות ויכוח מחו״ל.','<b>Photograph the fuel gauge, the odometer and the car all round</b> before handing over the keys, and take a closing receipt. Two minutes that prevent an argument from abroad.')},
         {who:'all', text:T('<b>לבדוק את כל המגירות והתאים.</b> מטענים, משקפי שמש, מושב ההגבהה של אור, בקבוקים. אחרי שנוסעים בשאטל זה נגמר.','<b>Check every pocket and compartment.</b> Chargers, sunglasses, Or’s booster, water bottles. Once you’re on the shuttle it’s over.')}
