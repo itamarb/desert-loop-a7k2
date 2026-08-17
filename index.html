@@ -164,6 +164,15 @@ main{max-width:var(--maxw);margin:0 auto;padding:14px 14px 60px}
 .tips .who{flex:0 0 auto;font-size:15px;line-height:1.4}
 .tips b{font-weight:750}
 .tips li.warn{background:color-mix(in srgb,var(--rust) 9%,transparent);border-color:color-mix(in srgb,var(--rust) 28%,transparent)}
+.tips.shots li{background:color-mix(in srgb,var(--river) 9%,transparent);border-color:color-mix(in srgb,var(--river) 26%,transparent)}
+
+/* sun table */
+.suntbl{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.suntbl th,.suntbl td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:start}
+.suntbl th{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);font-weight:800}
+.suntbl td.n{font-variant-numeric:tabular-nums;font-weight:700}
+.suntbl tr:last-child td{border-bottom:0}
+.scroller{overflow-x:auto}
 
 /* ---------- food ---------- */
 .food{margin:12px 0 0;display:grid;gap:8px}
@@ -328,6 +337,8 @@ const UI = {
   week:      T('השבוע במבט אחד','The week at a glance'),
   tips:      T('טיפים','Tips'),
   food:      T('אוכל','Food'),
+  photo:     T('📸 צילום','📸 Photo'),
+  shots:     T('צילום','Photography'),
   where:     T('איפה ישנים','Where we sleep'),
   live:      T('מיקום חי','Live position'),
   liveWait:  T('בודק…','Checking…'),
@@ -428,6 +439,10 @@ const DAYS = [
         {who:'tali', text:T('<b>מי הברז בפלגסטאף מצוינים</b> — Rae כותבת את זה במפורש. למלא את כל הבקבוקים מהברז לפני היציאה מחר בבוקר במקום לקנות; את המים בארגזים שומרים למדבר.','<b>The tap water in Flagstaff is excellent</b> — Rae says so explicitly. Fill every bottle from the tap before you leave tomorrow morning rather than buying; save the bottled water for the desert.')},
         {who:'all', text:T('<b>אינסטלציה ישנה — רק נייר טואלט לאסלה.</b> ואין טלוויזיה בדירה בכוונה, יש רק ויי-פיי (הסיסמה על המקרר).','<b>Old plumbing — flush toilet paper only.</b> And there’s no TV by design, just wifi (the password is on the fridge).')}
       ],
+      shots:[
+        {who:'tali', text:T('<b>שלטי הניאון של Route 66 בשעה הכחולה, 19:10–19:40.</b> זו התמונה המשפחתית של פלגסטאף: הניאון של מלון Monte Vista ושלט הרחוב ההיסטורי. בשעה הכחולה הניאון והשמיים באותה בהירות בערך, אז שניהם יוצאים — עשר דקות מוקדם מדי והניאון חלש, עשר מאוחר מדי והשמיים שחורים.','<b>The Route 66 neon at blue hour, 19:10–19:40.</b> This is the Flagstaff family shot: the Hotel Monte Vista neon and the historic street sign. At blue hour the neon and the sky are about the same brightness so both expose — ten minutes early and the neon is weak, ten late and the sky is black.')},
+        {who:'itamar', text:T('בירידה מקינגמן לפלגסטאף בין 17:00 ל-18:30 האור נמוך על המדבר ועננות המונסון בונה מגדלים — זה החלון הכי טוב של היום. אם עוצרים, לעצור ב<b>מפרץ עצירה מסומן</b> ולא בשוליים של I-40.','On the climb from Kingman to Flagstaff between 17:00 and 18:30 the light goes low across the desert and the monsoon cloud builds towers — the best window of the day. If you stop, use a <b>marked pull-out</b>, never the I-40 shoulder.')}
+      ],
       food:[
         {n:'Dark Sky Brewery', m:T('🍕 <b>המלצת המארחת, 3 דקות הליכה</b> (כניסה מרחוב Beaver) — פיצה בתנור עצים ובירה מקומית. הכי הגיוני לערב שבו כולם הרוסים מהטיסה והנהיגה.','🍕 <b>The host’s recommendation, a 3-minute walk</b> (entrance on Beaver Ave) — wood-fired pizza and local beer. The most sensible option for an evening when everyone is wrecked from the flight and the drive.'), a:'Beaver Ave entrance'},
         {n:'Alpine Pizza', m:T('🕹️ פיצה + ארקייד וינטג׳ + חצר. אם רוצים משהו שיעסיק את אור.','🕹️ Pizza, a vintage arcade and a backyard patio. If you want something to occupy Or.'), a:'22 N Leroux St'},
@@ -482,6 +497,11 @@ const DAYS = [
         {who:'tali', text:T('ה-Rim Trail בין Mather ל-Yavapai שטוח וסלול לחלוטין — הליכה יפה בלי שום מאמץ, ואפשר לחזור בשאטל.','The Rim Trail between Mather and Yavapai is completely flat and paved — a lovely walk with no effort, and you can shuttle back.')},
         {who:'heat', text:T('2,100 מטר גובה: האוויר נעים (~28°C) אבל <b>הקרינה אכזרית</b>. כובעים, מסנן 50, משקפי שמש. וממלאים את כל הבקבוקים במרכז המבקרים.','At 2,100 m the air is pleasant (~28°C) but <b>the UV is brutal</b>. Hats, SPF 50, sunglasses. And refill every bottle at the Visitor Center.')},
         {who:'all', warn:true, text:T('<b>סופות רעמים כמעט יומיות בין 11:00 ל-18:00</b> בעונת המונסון. מעקה חשוף על שפת קניון הוא המקום הכי גרוע להיות בו בברק. בשמיעת הרעם הראשון — לרכב.','<b>Near-daily thunderstorms between 11:00 and 18:00</b> in monsoon season. An exposed rim railing is the worst place to be in lightning. At the first thunder, back to the car.')}
+      ],
+      shots:[
+        {who:'tali', text:T('<b>המעקה ב-Mather Point ב-08:45 הוא התמונה המשפחתית של הגרנד קניון.</b> התצפית פונה צפונה והשמש במזרח־דרום־מזרח, כלומר <b>מאחוריכם</b> — הפרצופים מוארים והקניון מואר, בלי צללים על העיניים. תוך שעתיים האור הזה נעלם והכל הופך שטוח ואפרפר, אז זו לא ״נעשה את זה אחר כך״.','<b>The Mather Point railing at 08:45 is the Grand Canyon family shot.</b> The overlook faces north and the sun is in the east-south-east, i.e. <b>behind you</b> — faces lit, canyon lit, no shadows across the eyes. Two hours later that light is gone and everything goes flat and grey, so this isn’t a “we’ll do it later”.')},
+        {who:'itamar', text:T('<b>עדשה ארוכה, לא רחבה.</b> הטעות הקלאסית בגרנד קניון היא לצלם רחב — יוצא מרשים בעין וקטן בתמונה. 3x–5x בטלפון על צוק בודד או על שכבה אחת של מצוקים ייתן דחיסה ועומק. הרחב שמור לרגע שיש עננים דרמטיים למעלה.','<b>Long lens, not wide.</b> The classic Grand Canyon mistake is shooting wide — it looks vast to the eye and tiny in the photo. 3x–5x on your phone, aimed at a single butte or one layer of cliffs, gives compression and depth. Save the ultra-wide for when there’s dramatic cloud overhead.')},
+        {who:'itamar', text:T('<b>עונת המונסון היא בעצם המזל שלכם.</b> אוגוסט הוא החודש עם הצילומים הדרמטיים ביותר בקניון: תאי סערה, קרני אור דרך העננים וקשתות. אם בונה סערה מעבר לקניון אחר הצהריים — זו התמונה של הטיול. רק לצלם אותה <b>מתוך הרכב או מתחת לגג</b>, לא מהמעקה.','<b>Monsoon season is actually your luck.</b> August is the most dramatic month at the canyon: storm cells, light shafts through cloud, rainbows. If a storm builds across the canyon in the afternoon, that’s the picture of the trip. Just take it <b>from the car or under a roof</b>, not from the railing.')}
       ]
     },
     { slot:'morning', time:'09:45',
@@ -528,6 +548,10 @@ const DAYS = [
         {who:'all', text:T('זו העצירה שעושה הכל בבת אחת: ארוחה, שירותים, גלידה, <b>ותדלוק</b>. אחרי כאן אין הרבה עד קמרון.','This is the stop that does everything at once: food, restrooms, ice cream and <b>fuel</b>. After here there isn’t much until Cameron.')},
         {who:'shai', text:T('המדרגות לקומות העליונות צרות ותלולות והנוף מלמעלה שווה את זה — אבל הפתיחה תלויה בכוח אדם, אז זה בונוס ולא הבטחה.','The stairs to the upper floors are narrow and steep and the view is worth it — but access depends on staffing, so treat it as a bonus, not a promise.')},
         {who:'itamar', text:T('בשעת צהריים בשיא העונה התורים באוכל בכפר הם 30–45 דקות. הדלי כאן ב-Desert View שקט בהרבה, והטאקו הנאוואחו שלו אמיתי.','At midday in peak season the food queues in the Village run 30–45 minutes. The deli here at Desert View is far calmer, and its Navajo taco is the real thing.')}
+      ],
+      shots:[
+        {who:'tali', text:T('המגדל נותן משהו שאין בשום תצפית אחרת: <b>מבנה בתמונה</b>. משפחה על רקע קניון ריק נבלעת; משפחה עם מגדל האבן מאחוריה נראית כמו מקום. לעמוד במרחק מהמגדל ולצלם אותו שלם ואתכם קטנים — זו תמונה יותר טובה מקלוז-אפ.','The tower gives you something no other viewpoint does: <b>a structure in the frame</b>. A family against empty canyon disappears; a family with the stone tower behind them looks like somewhere. Stand back, get the whole tower in and yourselves small — it beats a close-up.')},
+        {who:'itamar', text:T('מהקומות העליונות רואים את <b>המדבר הצבוע</b> משתרע מזרחה ואת נהר הקולורדו — נוף אחר לגמרי מהשפה המערבית. הכרטיס לקומות העליונות הוא חינם ולפי מקום פנוי, אז ללכת לקחת אותו <b>ברגע ההגעה</b>.','From the upper floors you see the <b>Painted Desert</b> stretching east and the Colorado River — a completely different view from the western rim. The upper-floor ticket is free and first-come, so go and take one <b>the moment you arrive</b>.')}
       ]
     },
     { slot:'evening', time:'16:30',
@@ -540,6 +564,7 @@ const DAYS = [
         {who:'all', text:T('<b>אורות דלוקים 24 שעות</b> בקטע קמרון–פייג׳ — זה חוק מסומן בשלטים.','<b>Headlights on 24 hours</b> on the Cameron–Page stretch — it’s posted law.')},
         {who:'all', warn:true, text:T('הקטע הזה הוא <b>שטח נאוואחו — יבש לחלוטין.</b> החזקה או הסעה של אלכוהול ברכב אסורה, גם בקבוק סגור בתא המטען. פייג׳ עצמה כן מוכרת אלכוהול.','This stretch is <b>Navajo Nation land — completely dry.</b> Possessing or transporting alcohol in the car is an offence, even an unopened bottle in the boot. Page itself does sell alcohol.')},
         {who:'all', text:T('<b>אין קליטה סלולרית</b> בחלק גדול מהדרך. להוריד מפות אופליין של Cameron→Page לפני היציאה מהפארק. עצירה אחרונה טובה בדרך: Cameron Trading Post, 466 N Highway 89 — דלק, שירותים נקיים וטאקו נאוואחו.','<b>No cell coverage</b> for much of this drive. Download offline maps for Cameron→Page before leaving the park. Last good stop en route: Cameron Trading Post, 466 N Highway 89 — fuel, clean restrooms and a Navajo taco.')},
+        {who:'itamar', text:T('<b>הקטע הזה הוא הפתעת הצילום של היום.</b> כביש 89 בין קמרון לפייג׳ חוצה את שולי <b>המדבר הצבוע</b>, ואתם עוברים בו בדיוק בין 17:00 ל-18:45 — האור הנמוך מוציא את הפסים האדומים־סגולים שבאמצע היום פשוט לא קיימים. יש מפרצי עצירה מסומנים; לא לעצור על השוליים.','<b>This stretch is the day’s photographic surprise.</b> US-89 between Cameron and Page crosses the edge of the <b>Painted Desert</b>, and you’re driving it between 17:00 and 18:45 — low light brings out the red and purple banding that simply doesn’t exist at midday. There are marked pull-outs; don’t stop on the shoulder.')},
         {who:'all', text:T('<b>הגעה ליחידה 12:</b> החניה היא התא האחרון בצד היחידה, ליד החצר האחורית, ומשם שער לדלת האחורית. מנעול חכם — הקוד נפתח בשעת הצ׳ק-אין ונמצא בהודעה של Mark. פרטי הוויי-פיי מתפרסמים 48 שעות לפני.','<b>Arriving at unit 12:</b> parking is the last stall on the side of the unit next to the back yard, and there’s a gate from there to the back door. Smart lock — the code activates at check-in and is in Mark’s message. The wifi details appear 48 hours beforehand.')}
       ],
       food:[
@@ -573,6 +598,11 @@ const DAYS = [
         {who:'money', text:T('<b>הפאס של הפארקים לא תקף כאן</b> — החניון שייך לעיריית פייג׳, 10$ במזומן או בכרטיס. לא לחנות על כביש 89: גוררים.','<b>The parks pass does not work here</b> — the car park belongs to the City of Page, $10 cash or card. Don’t park on US-89: they tow.')},
         {who:'or', warn:true, text:T('<b>רוב שפת הצוק כאן לא מגודרת ויש 300 מטר נפילה.</b> יש קטע אחד עם מעקה — נשארים שם. ובדרך חזרה זו העלייה, אז שומרים לו מים וחטיף לסוף.','<b>Most of the rim here is unfenced with a 300 m drop.</b> There is one railed section — stay on it. And the return leg is the uphill one, so save water and a snack for the end.')},
         {who:'all', text:T('אין מים ואין חנות בשביל — רק שירותים בחניון. ליטר לאדם מינימום, גם להליכה של שעה.','No water and no shop on the trail — only restrooms at the car park. One litre per person minimum, even for a one-hour walk.')}
+      ],
+      shots:[
+        {who:'itamar', warn:true, text:T('<b>שווה לחזור לכאן בערב.</b> ב-06:30 האור רך והחניון ריק — נהדר למשפחה — אבל <b>הגורג׳ עצמו עמוק בצל</b> ובדיוק הפרט שבאתם בשבילו יוצא שחור. התמונה הקלאסית והחמה היא ב<b>שעה הזהובה, 18:34–19:09</b>, כשהשמש נמוכה במערב ומאירה את דופן הפרסה. זה 8 דקות מהדירה — אחרי הבריכה, לחזור.','<b>Worth coming back in the evening.</b> At 06:30 the light is soft and the car park is empty — great for the family shot — but <b>the gorge itself is deep in shadow</b> and the very detail you came for goes black. The classic warm shot is at <b>golden hour, 18:34–19:09</b>, when the low western sun lights the wall of the bend. It’s 8 minutes from the apartment — go back after the pool.')},
+        {who:'itamar', text:T('צריך <b>אולטרה-רחב</b> (0.5x בטלפון) כדי להכניס את כל הפרסה — בעדשה רגילה זה פשוט לא נכנס. ולצלם מ<b>עמידה מאחורי המעקה</b>: כל שנה נהרגים שם אנשים שנסוגו צעד אחורה כדי ״להכניס הכל״.','You need the <b>ultra-wide</b> (0.5x on a phone) to fit the whole bend in — a normal lens simply won’t hold it. And shoot from <b>behind the railing</b>: people die there every year stepping back to “fit it all in”.')},
+        {who:'tali', text:T('התמונה המשפחתית הטובה כאן היא <b>מהצד</b>, עם הפרסה מאחור ולא מתחת — ככה רואים גם אתכם וגם למה באתם. בבוקר השמש במזרח מאחוריכם, אז הפרצופים מוארים.','The good family shot here is <b>from the side</b>, with the bend behind you rather than below you — that way both you and the reason you came are visible. In the morning the eastern sun is behind you, so faces are lit.')}
       ]
     },
     { slot:'morning', time:'~08:45',
@@ -612,6 +642,11 @@ const DAYS = [
         {who:'all', text:T('<b>לחתום על הוויתור מראש</b> — כל ארבעתכם, מהלינק במייל של Peek. ולהגיע מוקדם: הם כותבים שאי-הגעה בזמן לצ׳ק-אין מבטלת את הסיור. 12:30 בחניון זה בטוח.','<b>Sign the waiver in advance</b> — all four of you, from the link in the Peek email. And arrive early: they state that failing to check in on time cancels your tour. 12:30 in the car park is safe.')},
         {who:'money', text:T('המדריכים חיים מטיפים. <b>20–40$ במזומן</b> למשפחה על סיור טוב, ישירות למדריך בסוף. אין כספומט בחניון — למשוך מראש בפייג׳.','Guides live on tips. <b>$20–40 cash</b> from the family for a good tour, straight to the guide at the end. There’s no ATM at the car park — withdraw in Page beforehand.')},
         {who:'all', warn:true, text:T('אם יש אזהרת שיטפון פתאומי, המדריכים מפנים את הקניון <b>גם בשמש מלאה</b> — הגשם שגורם לזה יורד 25 ק״מ משם. ביטול מצידם = החזר מלא או תיאום מחדש. זה לא זהירות יתר: ב-1997 נהרגו שם 11 מטיילים.','If there’s a flash-flood warning the guides evacuate the canyon <b>even in full sun</b> — the rain that causes it falls 25 km away. If they cancel you get a full refund or a reschedule. This isn’t over-caution: 11 hikers died there in 1997.')}
+      ],
+      shots:[
+        {who:'itamar', text:T('<b>המדריכים הם הצלמים כאן.</b> מדריכי הנאוואחו באנטילופ עושים את זה עשרות פעמים ביום — הם ייקחו לכם את הטלפון, יכוונו אותו לתצורה הנכונה ויגידו לכם איפה לעמוד. תנו להם. הם גם יודעים בדיוק מתי הקרן נופלת ואיפה לזרוק חול לתוכה.','<b>The guides are the photographers here.</b> The Navajo guides do this dozens of times a day — they’ll take your phone, aim it at the right formation and tell you where to stand. Let them. They also know exactly when the beam lands and where to throw sand into it.')},
+        {who:'itamar', warn:true, text:T('<b>אין חצובה, אז אין צילום ארוך.</b> להישען על דופן הקניון, לנשום החוצה וללחוץ. במצב לילה של הטלפון להיצמד לקיר לכל אורך החשיפה. ו<b>לנגב את העדשה לפני הכניסה ובאמצע</b> — האוויר שם מלא אבק דק והוא הורס יותר תמונות מכל דבר אחר.','<b>No tripod, so no long exposures.</b> Brace against the canyon wall, breathe out, then press. In phone night mode stay pressed to the wall for the whole exposure. And <b>wipe the lens before you go in and again halfway</b> — the air is full of fine dust and it ruins more shots there than anything else.')},
+        {who:'tali', text:T('פורטרטים בתוך חריץ הם קשים — חושך וניגוד קיצוני. השילוב שעובד: אחד מכם ב<b>כתם האור</b> שנופל מלמעלה והשאר בצל, או צללית בפתח היציאה. המדריך יראה לכם את הנקודות האלה, פשוט לבקש.','Portraits inside a slot are hard — dark and extreme contrast. What works: one of you standing in the <b>pool of light</b> falling from above and the rest in shadow, or a silhouette at the exit. The guide will show you those spots — just ask.')}
       ]
     },
     { slot:'afternoon', time:'~15:30',
@@ -630,6 +665,10 @@ const DAYS = [
         {who:'or', warn:true, text:T('<b>חגורת ציפה חובה עד גיל 12</b> באגם פאוול, וזה נאכף. אין מצילים בשום מקום.','<b>A life jacket is mandatory up to age 12</b> at Lake Powell, and it’s enforced. There are no lifeguards anywhere.')},
         {who:'all', text:T('אפס צל בחוף — שמשייה או אוהל חוף זה לא מותרות. ואם שומעים רעם: יוצאים מהמים ולרכב. מים פתוחים וברק זה השילוב שהורג במונסון.','Zero shade on the beach — an umbrella or pop-up is not a luxury. And at the first thunder: out of the water and into the car. Open water plus lightning is the monsoon killer.')},
         {who:'all', text:T('חלופה בלי חול: אזור הרחצה המסומן ב-Wahweap — הכל אספלט, אבל הליכה ארוכה וחמה עד המים כי האגם נמוך מאוד השנה.','Sand-free alternative: the buoyed swim area at Wahweap — all paved, but a long hot walk to the water because the lake is very low this year.')}
+      ],
+      shots:[
+        {who:'itamar', text:T('<b>שקיעה על המים ב-19:09.</b> לון רוק היא סלע ענק בודד שיוצא מהאגם — הצללית שלו מול שמיים ורודים היא התמונה. אם הולכים על זה, לקחת בחשבון חזרה בחושך של 20 דקות. חלופה קרובה יותר: תצפית Wahweap.','<b>Sunset on the water at 19:09.</b> Lone Rock is a single huge rock rising out of the lake — its silhouette against a pink sky is the shot. If you go for it, factor in a 20-minute drive back in the dark. Closer alternative: the Wahweap overlook.')},
+        {who:'tali', text:T('הילדים במים עם הסלע מאחור, בשעה הזהובה, זו התמונה שתרצו למסגר. ולצלם <b>נמוך</b> — כפוף עד גובה המים — ככה הסלע נראה ענק והילדים לא נבלעים בחוף.','The kids in the water with the rock behind them at golden hour is the one you’ll want framed. Shoot <b>low</b> — crouch down to water level — that way the rock looks huge and the kids don’t get swallowed by the beach.')}
       ],
       food:[
         {n:'Sunset 89', m:T('🥗 הכי קליל ומוקפד בעיר, נוף לכיוון האגם. <b>מקבלים הזמנות — כדאי להזמין.</b>','🥗 The lightest and most refined in town, with a view toward the lake. <b>Takes reservations — book it.</b>'), a:'724 US-89 · 928-608-5562'},
@@ -684,6 +723,7 @@ const DAYS = [
       video:{id:'1L9cee9-WPE', title:T('סיור בסליגמן על Route 66','Exploring Seligman on Historic Route 66')},
       tips:[
         {who:'or', text:T('אם אור מכיר את ״מכוניות״ — רדיאטור ספרינגס בנוי על העיירה הזאת. שווה לספר לפני שנכנסים.','If Or knows <i>Cars</i> — Radiator Springs is built on this town. Worth telling him before you pull in.')},
+        {who:'tali', text:T('<b>סליגמן היא תפאורה, לא נוף</b> — ולכן היא עובדת גם באור הקשה של 11:15. השלטים, המכוניות הוינטג׳ והחזיתות הצבעוניות עושות את העבודה. הכי טוב: כל המשפחה מול משאבת דלק ישנה או שלט Route 66. ומאחורי Snow Cap יש חצר גרוטאות עם מכוניות ישנות — שם התמונות הכי טובות.','<b>Seligman is a set, not a landscape</b> — which is exactly why it works in the harsh 11:15 light. The signs, the vintage cars and the painted storefronts do the work. Best one: all four of you in front of an old petrol pump or a Route 66 shield. And behind the Snow Cap there’s a junkyard of old cars — the best shots are back there.')},
         {who:'shai', text:T('ב-Snow Cap המלצרים עובדים על הלקוחות בבדיחות קבועות כבר 70 שנה — ״צ׳יזבורגר עם גבינה״, בקבוק חרדל עם חוט, ידיות שנשארות ביד. הבורגרים בינוניים, המילקשייקים טובים.','At the Snow Cap the staff have been running the same gags for 70 years — the “cheeseburger with cheese”, the fake-string mustard bottle, door handles that come off in your hand. The burgers are ordinary, the malts are good.')}
       ],
       food:[
@@ -715,6 +755,10 @@ const DAYS = [
         {who:'all', warn:true, text:T('<b>ונציה ביץ׳ — ביום בלבד.</b> הטיילת יפה עד השקיעה ואז מתרוקנת ומשתנה לגמרי. אם רוצים ללכת — הולכים אחר הצהריים וחוזרים למרינה לפני חשכה.','<b>Venice Beach in daylight only.</b> The boardwalk is great until sunset and then empties out and changes character entirely. If you want to go, go in the afternoon and be back at the marina before dark.')},
         {who:'itamar', text:T('החניה במלון היא ולט, בערך 50–60$ ללילה. לליל אחד פשוט לוקחים את זה ולא מתווכחים.','Hotel parking is valet, roughly $50–60 a night. For one night just take it and don’t argue.')},
         {who:'all', text:T('<b>הערב הזה הוא גם ערב האריזה.</b> טיסה סטנד-ביי בבוקר עם ילדים = לא רוצים לארוז ב-06:00.','<b>Tonight is also packing night.</b> A standby flight in the morning with kids means you do not want to be packing at 06:00.')}
+      ],
+      shots:[
+        {who:'itamar', warn:true, text:T('<b>שקיעה ב-19:32, שעה זהובה מ-18:58 — ואתם מגיעים בערך אז.</b> זו השקיעה היחידה מעל האוקיינוס בכל הטיול, אחרי חמישה ימים של מדבר. אם מגיעים בזמן: הטיילת של ונציה או מזח סנטה מוניקה מהחוף. אם מאחרים: התרנים במרינה מול השמיים הוורודים, שתי דקות מהמלון.','<b>Sunset 19:32, golden hour from 18:58 — and you arrive right about then.</b> It’s the only ocean sunset of the entire trip, after five days of desert. If you make it in time: the Venice boardwalk or the Santa Monica pier from the beach. If you’re late: the masts in the marina against a pink sky, two minutes from the hotel.')},
+        {who:'tali', text:T('<b>Mother’s Beach מול המלון היא תמונת הסיום.</b> לגונה שקטה בלי גלים, כלומר השתקפות — ארבעתכם על החול עם המים החלקים מאחור. ורגע לפני שהאור נגמר זה גם הזמן לתמונה המשפחתית הרשמית של הטיול, כשכולם עדיין שזופים ולפני האריזה.','<b>Mother’s Beach opposite the hotel is the closing shot.</b> A calm, waveless lagoon means reflections — the four of you on the sand with flat water behind. And just before the light goes is the moment for the trip’s official family photo, while everyone is still tanned and before the packing starts.')}
       ],
       food:[
         {n:'Cast & Plow', m:T('🌅 <b>הבחירה הבטוחה לערב האחרון.</b> אוכל קליפורני מוקפד עם נוף למרינה, 4 דקות מהמלון, וקוד לבוש קז׳ואל — משנה כשיצאתם מהרכב אחרי תשע שעות. ארוחת ערב 17:00–21:30. כדאי להזמין.','🌅 <b>The safe choice for the last night.</b> Proper California cooking with a marina view, 4 minutes from the hotel, and a casual dress code — which matters when you’ve just climbed out of the car after nine hours. Dinner 17:00–21:30. Worth booking.'), a:'Ritz-Carlton, 4375 Admiralty Way'},
@@ -879,6 +923,15 @@ function tipsHTML(tips){
   return `<div class="eyebrow" style="margin-top:14px">${esc(tx(UI.tips))}</div><ul class="tips">${li}</ul>`;
 }
 
+function shotsHTML(shots){
+  if(!shots || !shots.length) return '';
+  const li = shots.map(s=>{
+    const p = PEOPLE[s.who] || PEOPLE.all;
+    return `<li><span class="who">${p.emoji}</span><span><b>${esc(tx(p.name))}:</b> ${tx(s.text)}</span></li>`;
+  }).join('');
+  return `<div class="eyebrow" style="margin-top:14px">📸 ${esc(tx(UI.shots))}</div><ul class="tips shots">${li}</ul>`;
+}
+
 function foodHTML(food){
   if(!food || !food.length) return '';
   const f = food.map(x=>`<div class="f"><b>${esc(x.n)}</b><div class="m">${tx(x.m)}</div><div class="a">${esc(x.a)}</div></div>`).join('');
@@ -1005,6 +1058,7 @@ function viewDay(d){
       ${videoHTML(it.video)}
       <div class="card-pad" style="padding-top:0">
         ${tipsHTML(it.tips)}
+        ${shotsHTML(it.shots)}
         ${foodHTML(it.food)}
       </div>
     </div>`;
@@ -1147,6 +1201,107 @@ function viewCar(){
   </div>`;
 }
 
+const SUN = [
+  {p:T('פלגסטאף · שישי','Flagstaff · Fri'),        r:'05:50', ge:'06:25', gs:'18:36', s:'19:10'},
+  {p:T('גרנד קניון · שבת','Grand Canyon · Sat'),   r:'05:52', ge:'06:26', gs:'18:37', s:'19:12'},
+  {p:T('פייג׳ · ראשון','Page · Sun'),              r:'05:49', ge:'06:24', gs:'18:34', s:'19:09'},
+  {p:T('מרינה דל ריי · שני','Marina del Rey · Mon'),r:'06:21', ge:'06:55', gs:'18:58', s:'19:32'}
+];
+
+function viewPhoto(){
+  const L = LANG==='h';
+  const rows = SUN.map(x=>`<tr><td>${esc(tx(x.p))}</td><td class="n">${x.r}</td><td class="n">${x.ge}</td><td class="n">${x.gs}</td><td class="n">${x.s}</td></tr>`).join('');
+
+  const big = [
+    {d:'#day-2', when:L?'שבת 08:45':'Sat 08:45', t:L?'Mather Point':'Mather Point',
+     b:L?'<b>התמונה המשפחתית של הגרנד קניון.</b> התצפית פונה צפונה, השמש מאחוריכם — פרצופים מוארים וקניון מואר. תוך שעתיים האור נעלם והכל הופך שטוח.'
+        :'<b>The Grand Canyon family shot.</b> The overlook faces north with the sun behind you — faces lit, canyon lit. Two hours later that light is gone and everything goes flat.'},
+    {d:'#day-2', when:L?'שבת 17:00–18:45':'Sat 17:00–18:45', t:L?'המדבר הצבוע, כביש 89':'The Painted Desert, US-89',
+     b:L?'<b>ההפתעה של הטיול.</b> אתם נוסעים בקטע הזה בדיוק בשעה הנכונה. האור הנמוך מוציא פסים אדומים־סגולים שבצהריים לא קיימים. מפרצי עצירה מסומנים בלבד.'
+        :'<b>The surprise of the trip.</b> You drive this stretch at exactly the right hour. Low light brings out red and purple banding that doesn’t exist at midday. Marked pull-outs only.'},
+    {d:'#day-3', when:L?'ראשון 18:34–19:09':'Sun 18:34–19:09', t:L?'Horseshoe Bend — בחזרה בערב':'Horseshoe Bend — go back in the evening',
+     b:L?'<b>זו ההמלצה הכי משתלמת כאן.</b> בבוקר הגורג׳ בצל עמוק. בשעה הזהובה השמש הנמוכה מאירה את דופן הפרסה — וזו התמונה שכולם מכירים. 8 דקות מהדירה, אחרי הבריכה.'
+        :'<b>The highest-value suggestion here.</b> In the morning the gorge is in deep shadow. At golden hour the low sun lights the wall of the bend — and that’s the picture everyone knows. 8 minutes from the apartment, after the pool.'},
+    {d:'#day-3', when:L?'ראשון 13:00':'Sun 13:00', t:L?'Upper Antelope — קרני האור':'Upper Antelope — the light beams',
+     b:L?'הסלוט שלכם יושב בקצה חלון הקרניים (11:00–13:30). אין חצובה, אז נשענים על הקיר. <b>והמדריכים יצלמו בשבילכם</b> — תנו להם את הטלפון.'
+        :'Your slot sits at the tail of the beam window (11:00–13:30). No tripods, so brace against the wall. <b>And the guides will shoot for you</b> — hand them the phone.'},
+    {d:'#day-4', when:L?'שני 18:58–19:32':'Mon 18:58–19:32', t:L?'שקיעה על האוקיינוס':'Sunset over the ocean',
+     b:L?'השקיעה היחידה מעל מים בכל הטיול, אחרי חמישה ימים של מדבר — ואתם מגיעים בדיוק אז. Mother’s Beach מול המלון היא לגונה שקטה, כלומר השתקפות.'
+        :'The only sunset over water in the whole trip, after five days of desert — and you arrive right then. Mother’s Beach opposite the hotel is a calm lagoon, which means reflections.'}
+  ].map(x=>`
+    <button class="wrow" data-goto="${x.d.slice(1)}">
+      <span class="t">
+        <b>${esc(x.t)}</b>
+        <span style="white-space:normal;color:var(--river);font-weight:700">${esc(x.when)}</span>
+      </span>
+      <span class="go">${LANG==='h'?'‹':'›'}</span>
+    </button>
+    <div class="card-pad" style="padding-top:0;padding-bottom:12px"><p class="muted" style="margin:0">${x.b}</p></div>`).join('');
+
+  return `
+  <div class="card">
+    ${banner('canyon')}
+    <div class="card-pad">
+      <div class="eyebrow">${L?'צילום':'Photography'}</div>
+      <h2>${L?'איפה לעמוד, ומתי':'Where to stand, and when'}</h2>
+      <p class="muted" style="margin:6px 0 0">${L
+        ? 'הנוף לא משתנה — האור כן. כל השעות כאן מחושבות למיקום ולתאריך המדויקים שלכם.'
+        : 'The view doesn’t change — the light does. Every time here is calculated for your exact locations and dates.'}</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-pad">
+      <div class="eyebrow">${L?'זריחה, שעה זהובה ושקיעה':'Sunrise, golden hour and sunset'}</div>
+      <div class="scroller">
+      <table class="suntbl">
+        <tr><th>${L?'מקום':'Place'}</th><th>${L?'זריחה':'Sunrise'}</th><th>${L?'זהובה עד':'Golden till'}</th><th>${L?'זהובה מ-':'Golden from'}</th><th>${L?'שקיעה':'Sunset'}</th></tr>
+        ${rows}
+      </table>
+      </div>
+      <p class="tiny" style="margin-top:10px">${L
+        ? 'קליפורניה ואריזונה על אותו שעון באוגוסט — הזמנים כאן הם השעון שעל היד שלכם, בלי המרות.'
+        : 'California and Arizona share a clock in August — these are the times on your own watch, no conversion.'}</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-pad" style="padding-bottom:4px">
+      <div class="eyebrow">${L?'חמש התמונות שכדאי לתכנן':'The five shots worth planning for'}</div>
+    </div>
+    ${big}
+  </div>
+
+  <div class="card">
+    <div class="card-pad">
+      <div class="eyebrow">${L?'תמונות משפחתיות':'Family photos'}</div>
+      <h3>👩 ${L?'המדריך של טלי':'Tali’s playbook'}</h3>
+      <ul class="tips shots">
+        <li><span class="who">🕐</span><span>${L?'<b>שעה זהובה או צל פתוח — לא שמש ישירה בצהריים.</b> שמש גבוהה עושה עיניים מצומצמות וצללים שחורים מתחת לעיניים. אם חייבים לצלם ב-13:00, לחפש צל אחיד (מתחת לעץ, בצד המוצל של בניין) או לשים את השמש <b>מאחורי</b> המשפחה ולתת לטלפון לאזן.':'<b>Golden hour or open shade — never direct midday sun.</b> A high sun means squinting and black shadows under the eyes. If you must shoot at 13:00, find even shade (under a tree, the shaded side of a building) or put the sun <b>behind</b> the family and let the phone balance it.'}</span></li>
+        <li><span class="who">👕</span><span>${L?'<b>כחול, לבן וג׳ינס בולטים מול סלע אדום.</b> כתום, אדום וחום נבלעים ברקע של אריזונה. אם רוצים תמונה משפחתית אחת שתיתלה על הקיר — לתאם צבעים בבוקר של שבת, לא בערב האחרון.':'<b>Blue, white and denim stand out against red rock.</b> Orange, red and brown disappear into Arizona’s background. If you want one family photo that ends up on a wall, coordinate colours on Saturday morning, not on the last evening.'}</span></li>
+        <li><span class="who">📐</span><span>${L?'<b>לצלם מהצד, לא מלמעלה.</b> ההרגל הוא לעמוד עם הגב לנוף ולצלם את המשפחה — ואז הנוף לא בתמונה. לעמוד בזווית, עם הפרסה או הקניון <b>מאחורי הכתף</b>, וככה שניהם נכנסים.':'<b>Shoot from the side, not from above.</b> The instinct is to stand with your back to the view and photograph the family — and then the view isn’t in the frame. Stand at an angle with the bend or the canyon <b>over the shoulder</b>, and both fit.'}</span></li>
+        <li><span class="who">🧒</span><span>${L?'<b>לרדת לגובה של אור.</b> תמונות של ילדים מגובה מבוגר מגמדות אותם. כפיפה עד גובה העיניים שלו משנה את התמונה לגמרי — במיוחד בחוף.':'<b>Get down to Or’s height.</b> Photos of children taken from adult height shrink them. Crouching to his eye level changes the picture completely — especially on the beach.'}</span></li>
+        <li><span class="who">🙋</span><span>${L?'<b>לבקש מאנשים.</b> בכל תצפית יש עשרות תיירים שישמחו. הטריק: להכין את הפריים, לתת את הטלפון מוכן ולהגיד ״just press״ — ככה מקבלים את התמונה שרציתם ולא את שלהם.':'<b>Ask people.</b> Every viewpoint has dozens of tourists who’ll happily help. The trick: frame it first, hand over the phone already set, and say “just press” — that way you get your photo, not theirs.'}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-pad">
+      <div class="eyebrow">${L?'נוף':'Landscape'}</div>
+      <h3>👨 ${L?'המדריך של איתמר':'Itamar’s playbook'}</h3>
+      <ul class="tips shots">
+        <li><span class="who">🔭</span><span>${L?'<b>בקניון — ארוך, לא רחב.</b> הטעות הכי נפוצה. רחב הופך נוף עצום לתמונה קטנה ואפורה. 3x–5x על צוק בודד נותן דחיסה ועומק. הרחב שמור לענן דרמטי.':'<b>At the canyon — long, not wide.</b> The most common mistake. Wide turns an immense view into a small grey photo. 3x–5x on a single butte gives compression and depth. Save the wide for dramatic cloud.'}</span></li>
+        <li><span class="who">⛈️</span><span>${L?'<b>המונסון הוא מזל, לא מכשול.</b> אוגוסט הוא החודש הדרמטי ביותר בקניון — תאי סערה, קרני אור וקשתות. תאורה כזו לא קיימת ביוני. רק לצלם מהרכב או מתחת לגג, לא מהמעקה.':'<b>The monsoon is luck, not an obstacle.</b> August is the most dramatic month at the canyon — storm cells, light shafts, rainbows. That light doesn’t exist in June. Just shoot from the car or under a roof, not from the railing.'}</span></li>
+        <li><span class="who">🧹</span><span>${L?'<b>לנגב את העדשה.</b> אבק מדברי דק על העדשה הוא הגורם מספר אחת לתמונות עכורות בטיול הזה, ואף אחד לא שם לב עד הערב. מטלית בכיס, ניגוב לפני כל אתר.':'<b>Wipe the lens.</b> Fine desert dust on the lens is the number-one cause of murky photos on this trip, and nobody notices until the evening. Cloth in the pocket, wipe at every site.'}</span></li>
+        <li><span class="who">🚫</span><span>${L?'<b>חצובה אסורה באנטילופ</b> (וגם מקל סלפי, וגם כל תיק). בכל שאר האתרים מותרת. רחפן אסור <b>בכל שטח נאוואחו ובכל הפארקים הלאומיים</b> — לא להביא בכלל.':'<b>Tripods are banned at Antelope</b> (as are selfie sticks and any bag). Everywhere else they’re fine. Drones are banned across <b>all Navajo land and all national parks</b> — don’t even bring one.'}</span></li>
+        <li><span class="who">🔋</span><span>${L?'<b>חום מרוקן סוללות.</b> ב-40°C הטלפון מתחמם ומאט, ולפעמים מסרב לצלם עד שיתקרר. לא להשאיר על הדשבורד, ולקחת פאוור-בנק לימים בפייג׳.':'<b>Heat drains batteries.</b> At 40°C the phone gets hot and throttles, and sometimes refuses to shoot until it cools. Don’t leave it on the dashboard, and carry a power bank on the Page days.'}</span></li>
+        <li><span class="who">☁️</span><span>${L?'<b>לגבות כל ערב.</b> יש קטעים ארוכים בלי קליטה, אז הגיבוי קורה רק בוויי-פיי של הדירה. חמישה ימים של תמונות על טלפון אחד בלי גיבוי זה הימור מיותר.':'<b>Back up every evening.</b> There are long stretches with no signal, so backup only happens on the apartment wifi. Five days of photos on one unbacked-up phone is a needless gamble.'}</span></li>
+      </ul>
+    </div>
+  </div>`;
+}
+
 function viewBackup(){
   const blocks = BACKUP.blocks.map(b=>`
     <div class="card"><div class="card-pad">
@@ -1171,6 +1326,7 @@ function tabsList(){
     {id:'flights',label:UI.flights},
     {id:'car',    label:UI.car},
     ...DAYS.map(d=>({id:d.id, label:d.tab})),
+    {id:'photo',  label:UI.photo},
     {id:'backup', label:UI.backup}
   ];
 }
@@ -1192,6 +1348,7 @@ function render(){
   if(known==='home')        v.innerHTML = viewHome();
   else if(known==='flights')v.innerHTML = viewFlights(), initFlights();
   else if(known==='car')    v.innerHTML = viewCar();
+  else if(known==='photo')  v.innerHTML = viewPhoto();
   else if(known==='backup') v.innerHTML = viewBackup();
   else                      v.innerHTML = viewDay(DAYS.find(d=>d.id===known));
   document.getElementById('foot').textContent = LANG==='h'
