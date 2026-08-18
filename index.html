@@ -193,6 +193,22 @@ details.item[open] > summary{padding-bottom:4px}
   display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden
 }
 details.item[open] .peek{display:none}
+/* weather */
+.wx{display:grid;gap:7px}
+.wxrow{
+  display:flex;align-items:center;gap:8px;font-size:13.5px;
+  padding:8px 10px;border-radius:11px;background:var(--sand2);border:1px solid var(--line)
+}
+.wxi{font-size:17px;flex:0 0 auto;line-height:1}
+.wxp{font-weight:700;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wxt{font-weight:800;flex:0 0 auto;white-space:nowrap}
+.wxt i{font-style:normal;font-weight:600;color:var(--ink3)}
+.wxr{flex:0 0 auto;color:var(--ink2);font-weight:700;white-space:nowrap;font-size:12.5px}
+.wxr.wet{color:var(--rust)}
+.wxc{flex:0 0 auto;font-size:11.5px;color:var(--ink3);white-space:nowrap}
+.wxc.hot{color:var(--rust);font-weight:800}
+@media (max-width:400px){ .wxc{display:none} }
+
 .dayctl{display:flex;gap:8px;padding:0 2px 12px}
 .dayctl button{
   flex:1;padding:9px 12px;border-radius:12px;border:1px solid var(--line);
@@ -514,8 +530,8 @@ const DAYS = [
     },
     { slot:'morning', time:'08:20',
       title:T('שער הכניסה הדרומי','South Entrance Station'),
-      desc:T('מגיעים לפני 09:00 — זה ההחלטה הכי משמעותית של היום. אחרי 09:30 בשבת באוגוסט התור לשער יכול להגיע לשעתיים, והחניונים מתמלאים ב-10:00.','Arrive before 09:00 — this is the highest-leverage decision of the day. After 09:30 on an August Saturday the entrance queue can reach two hours, and the car parks fill by 10:00.'),
-      chips:[T('כרטיסי אשראי בלבד','Cards only, no cash')],
+      desc:T('מגיעים לפני 09:00 — זה ההחלטה הכי משמעותית של היום. אחרי 09:30 בשבת באוגוסט התור לשער יכול להגיע לשעתיים, והחניונים מתמלאים ב-10:00.<br><br><b>אין כאן כפתור ניווט בכוונה:</b> השער הוא מחסום על הכביש היחיד שנכנס לפארק, 7 ק״מ לפני מרכז המבקרים. הניווט ל-Mather Point כבר מעביר אתכם דרכו — כפתור נפרד רק היה מסיים לכם את הניווט 7 ק״מ מוקדם מדי.','Arrive before 09:00 — this is the highest-leverage decision of the day. After 09:30 on an August Saturday the entrance queue can reach two hours, and the car parks fill by 10:00.<br><br><b>There’s deliberately no navigate button here:</b> the station is a barrier across the only road into the park, 7 km before the Visitor Center. Navigating to Mather Point already takes you through it — a separate button would just end your navigation 7 km early.'),
+      chips:[T('כרטיסי אשראי בלבד','Cards only, no cash'), T('7 ק״מ לפני המרכז','7 km before the VC')],
       tips:[
         {who:'money', warn:true, text:T('<b>קונים כאן את ה-Non-Resident Annual Pass ב-250$.</b> בלעדיו: 35$ לרכב + <b>100$ לכל מבוגר לא-אמריקאי מגיל 16</b> = 235$ רק לגרנד קניון, ועוד 30$ ב-Glen Canyon מחר. הפאס מכסה את הכל וגם את אור ואת שי (מתחת ל-16, פטורים ממילא). דרכון של איתמר ביד.','<b>Buy the $250 Non-Resident Annual Pass here.</b> Without it: $35 per vehicle + <b>$100 per non-US adult aged 16+</b> = $235 for the Grand Canyon alone, plus $30 at Glen Canyon tomorrow. The pass covers everything. Or and Shai are under 16 and exempt either way. Have Itamar’s passport ready.')}
       ]
@@ -1143,6 +1159,7 @@ function viewDay(d){
         ${chipsHTML(d.chips)}
       </div>
     </div>
+    ${wxCardHTML(d.id)}
     <div class="dayctl">
       <button id="toggleAll">${openAll ? esc(tx(UI.collapseAll)) : esc(tx(UI.expandAll))}</button>
     </div>
@@ -1271,6 +1288,119 @@ function viewCar(){
         <li><span class="who">🕗</span><span>${L?'<b>אופציה:</b> אם מחזירים כבר בשני בערב — מרינה דל ריי ל-LAX זה 15 דקות במונית בבוקר, וזה עובד. אבל אז אין רכב לערב האחרון.':'<b>Option:</b> if you return it Monday evening instead — Marina del Rey to LAX is a 15-minute taxi in the morning, and that works. But then you have no car for the last evening.'}</span></li>
       </ul>
       <div class="alert teal" style="margin-top:14px">${esc(tx(UI.locked))}</div>
+    </div>
+  </div>`;
+}
+
+/* ---------- weather ----------
+   One batched Open-Meteo request covers every spot (keyless, CORS-open).
+   Cached in localStorage so the cards still work with no signal in the canyons.
+   `norm` is the August climate normal, used when there's no cache and no network. */
+const SPOTS = {
+  flagstaff:{lat:35.1981, lon:-111.6513, name:T('פלגסטאף','Flagstaff'),          norm:[28,12]},
+  canyon:   {lat:36.0589, lon:-112.1092, name:T('גרנד קניון','Grand Canyon'),    norm:[28,12]},
+  page:     {lat:36.9147, lon:-111.4558, name:T('פייג׳','Page'),                 norm:[36,23]},
+  barstow:  {lat:34.8958, lon:-117.0173, name:T('ברסטו / מוהאבי','Barstow / Mojave'), norm:[39,23]},
+  seligman: {lat:35.3258, lon:-112.8746, name:T('סליגמן','Seligman'),            norm:[32,16]},
+  mdr:      {lat:33.9822, lon:-118.4602, name:T('מרינה דל ריי','Marina del Rey'),norm:[24,18]}
+};
+const SPOT_KEYS = Object.keys(SPOTS);
+const DAY_DATE  = {'day-1':'2026-08-21','day-2':'2026-08-22','day-3':'2026-08-23','day-4':'2026-08-24','day-5':'2026-08-25'};
+const DAY_SPOTS = {
+  'day-1':['barstow','flagstaff'],
+  'day-2':['canyon','page'],
+  'day-3':['page'],
+  'day-4':['seligman','mdr'],
+  'day-5':['mdr']
+};
+
+// WMO weather codes → icon + label
+function wxCode(c){
+  if(c===0)                return {i:'☀️', t:T('בהיר','Clear')};
+  if(c===1||c===2)         return {i:'🌤️', t:T('בהיר חלקית','Partly cloudy')};
+  if(c===3)                return {i:'☁️', t:T('מעונן','Overcast')};
+  if(c===45||c===48)       return {i:'🌫️', t:T('ערפל','Fog')};
+  if(c>=51&&c<=57)         return {i:'🌦️', t:T('טפטוף','Drizzle')};
+  if(c>=61&&c<=67)         return {i:'🌧️', t:T('גשם','Rain')};
+  if(c>=71&&c<=77)         return {i:'🌨️', t:T('שלג','Snow')};
+  if(c>=80&&c<=82)         return {i:'🌦️', t:T('ממטרים','Showers')};
+  if(c>=95)                return {i:'⛈️', t:T('סופת רעמים','Thunderstorms')};
+  return {i:'🌡️', t:T('—','—')};
+}
+
+const WX_KEY = 'wx-v1';
+let WX = null;
+try{ WX = JSON.parse(localStorage.getItem(WX_KEY) || 'null'); }catch(e){ WX = null; }
+
+async function fetchWeather(){
+  const lats = SPOT_KEYS.map(k=>SPOTS[k].lat).join(',');
+  const lons = SPOT_KEYS.map(k=>SPOTS[k].lon).join(',');
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude='+lats+'&longitude='+lons
+    + '&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code'
+    + '&timezone=America%2FPhoenix&start_date=2026-08-21&end_date=2026-08-25';
+  const r = await fetch(url, {cache:'no-store'});
+  if(!r.ok) throw new Error('wx ' + r.status);
+  let j = await r.json();
+  if(!Array.isArray(j)) j = [j];          // single-location responses aren't wrapped
+  const out = {};
+  SPOT_KEYS.forEach((k,idx)=>{
+    const d = j[idx] && j[idx].daily;
+    if(!d) return;
+    out[k] = {};
+    d.time.forEach((date,i)=>{
+      out[k][date] = {mx:d.temperature_2m_max[i], mn:d.temperature_2m_min[i],
+                      pp:d.precipitation_probability_max[i], c:d.weather_code[i]};
+    });
+  });
+  WX = {at: Date.now(), data: out};
+  try{ localStorage.setItem(WX_KEY, JSON.stringify(WX)); }catch(e){}
+  return WX;
+}
+
+function wxRows(dayId){
+  const date = DAY_DATE[dayId];
+  const keys = DAY_SPOTS[dayId] || [];
+  return keys.map(k=>{
+    const sp = SPOTS[k];
+    const live = WX && WX.data && WX.data[k] && WX.data[k][date];
+    if(live && live.mx != null){
+      const w = wxCode(live.c);
+      const hot = live.mx >= 35, wet = live.pp >= 40;
+      return `<div class="wxrow">
+        <span class="wxi">${w.i}</span>
+        <span class="wxp">${esc(tx(sp.name))}</span>
+        <span class="wxt num"><bdi>${Math.round(live.mx)}° <i>/ ${Math.round(live.mn)}°</i></bdi></span>
+        <span class="wxr num ${wet?'wet':''}">☔ ${live.pp==null?'—':live.pp+'%'}</span>
+        <span class="wxc ${hot?'hot':''}">${esc(tx(w.t))}</span>
+      </div>`;
+    }
+    return `<div class="wxrow">
+      <span class="wxi">🌡️</span>
+      <span class="wxp">${esc(tx(sp.name))}</span>
+      <span class="wxt num"><bdi>${sp.norm[0]}° <i>/ ${sp.norm[1]}°</i></bdi></span>
+      <span class="wxr">—</span>
+      <span class="wxc">${LANG==='h'?'ממוצע אוגוסט':'August average'}</span>
+    </div>`;
+  }).join('');
+}
+
+function wxCardHTML(dayId){
+  if(!DAY_SPOTS[dayId]) return '';
+  const date = DAY_DATE[dayId];
+  const keys = DAY_SPOTS[dayId];
+  const anyWet = keys.some(k=>{
+    const d = WX && WX.data && WX.data[k] && WX.data[k][date];
+    return d && d.pp >= 40;
+  });
+  const stale = WX ? '' : (LANG==='h' ? 'ממוצעים רב-שנתיים — לא הצלחנו לטעון תחזית' : 'Climate averages — forecast could not be loaded');
+  return `<div class="card" id="wxCard">
+    <div class="card-pad">
+      <div class="eyebrow">${LANG==='h'?'מזג אוויר':'Weather'}</div>
+      <div class="wx">${wxRows(dayId)}</div>
+      ${anyWet ? `<p class="tiny" style="margin-top:10px;color:var(--rust)">${LANG==='h'
+        ? '⛈️ סיכוי גבוה לסופות — בעונת המונסון הן מגיעות כמעט תמיד בין 11:00 ל-18:00. תכננו את מה שבחוץ לבוקר.'
+        : '⛈️ High storm chance — in monsoon season they almost always arrive between 11:00 and 18:00. Do the outdoor things in the morning.'}</p>` : ''}
+      <p class="tiny" style="margin-top:8px">${stale || (LANG==='h'?'עודכן: ':'Updated: ') + (WX ? new Date(WX.at).toLocaleString(LANG==='h'?'he-IL':'en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}) : '')}</p>
     </div>
   </div>`;
 }
@@ -1424,7 +1554,7 @@ function render(){
   else if(known==='car')    v.innerHTML = viewCar();
   else if(known==='photo')  v.innerHTML = viewPhoto();
   else if(known==='backup') v.innerHTML = viewBackup();
-  else                      v.innerHTML = viewDay(DAYS.find(d=>d.id===known));
+  else                    { v.innerHTML = viewDay(DAYS.find(d=>d.id===known)); ensureWeather(known); }
   document.getElementById('foot').textContent = LANG==='h'
     ? 'נבנה במיוחד לטיול הזה · ' + (new Date().getFullYear())
     : 'Built for this trip · ' + (new Date().getFullYear());
@@ -1515,6 +1645,24 @@ document.getElementById('themeBtn').addEventListener('click', ()=>{
   localStorage.setItem('theme', THEME);
   applyTheme();
 });
+
+/* Refresh the forecast at most every 3 hours; failures fall back to the
+   cached values, and then to the August normals. Never blocks rendering. */
+let wxPending = false;
+async function ensureWeather(dayId){
+  const fresh = WX && (Date.now() - WX.at) < 3*3600*1000;
+  if(fresh || wxPending) return;
+  wxPending = true;
+  try{
+    await fetchWeather();
+    const cur = (location.hash||'#home').slice(1);
+    if(cur === dayId){
+      const el = document.getElementById('wxCard');
+      if(el) el.outerHTML = wxCardHTML(dayId);
+    }
+  }catch(e){ /* offline or blocked — cached/normals already shown */ }
+  finally{ wxPending = false; }
+}
 
 /* ============================================================
    LIVE FLIGHT POSITION
