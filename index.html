@@ -413,7 +413,9 @@ const NAV = {
   flagstaff: {name:T('הדירה בפלגסטאף','Flagstaff apartment'), addr:'314 W Cherry Ave, Flagstaff, AZ 86001'},
   page:      {name:T('הדירה בפייג׳','Page apartment'), addr:'1200 Glen Canyon Dr, Page, AZ 86040'},
   marriott:  {name:T('Marriott Marina del Rey','Marriott Marina del Rey'), addr:'4100 Admiralty Way, Marina del Rey, CA 90292'},
-  conrac:    {name:T('Budget — מרכז ההשכרה של LAX','Budget — LAX Rental Car Center'), addr:'5251 W 98th St, Los Angeles, CA 90045'},
+  conrac:    {name:T('Hertz — מרכז ההשכרה של LAX','Hertz — LAX Rental Car Center'), addr:'5251 W 98th St, Los Angeles, CA 90045'},
+  hertzlas:  {name:T('Hertz — החזרת הרכב, לאס וגאס','Hertz — car return, Las Vegas'), addr:'7135 Gilespie St, Las Vegas, NV 89119'},
+  kanab:     {name:T('קנאב, יוטה','Kanab, Utah'), addr:'Kanab, UT 84741'},
   barstow:   {name:T('In-N-Out Barstow','In-N-Out Barstow'), addr:'2821 Lenwood Rd, Barstow, CA 92311'},
   gcvc:      {name:T('Grand Canyon Visitor Center','Grand Canyon Visitor Center'), addr:'36.05936,-112.10763'},
   yavapai:   {name:T('Yavapai — מוזיאון הגיאולוגיה','Yavapai Geology Museum'), addr:'36.06606,-112.11763'},
@@ -453,13 +455,13 @@ const DAYS = [
       ]
     },
     { slot:'morning', time:'~09:30',
-      title:T('איסוף הרכב — Budget','Car pickup — Budget'),
-      desc:T('מרכז ההשכרה המאוחד החדש של LAX. ההזמנה שלנו רשומה ל-08:30 — זה כמעט בטוח לא יקרה, וזה בסדר: Budget פתוח 24/7 והתשלום מראש, אז איחור לא מבטל כלום.','LAX’s new consolidated rental centre. Our booking says 08:30 — that almost certainly won’t happen, and it’s fine: Budget is open 24/7 and it’s prepaid, so arriving late doesn’t void anything.'),
+      title:T('איסוף הרכב — Hertz','Car pickup — Hertz'),
+      desc:T('מרכז ההשכרה המאוחד של LAX, דלפק Hertz בסוויטה 573. ההזמנה רשומה ל-08:30 — זה כמעט בטוח לא יקרה, וזה בסדר. אבל שימו לב: בשובר של Hertz יש <b>דמי אי-הופעה של 130$</b>, אז אם אתם מאחרים משמעותית שווה להתקשר 310-568-5100 ולעדכן.','LAX’s consolidated rental centre, Hertz desk in suite 573. The booking says 08:30 — that almost certainly won’t happen, and that’s fine. But note: the Hertz voucher carries a <b>$130 no-show fee</b>, so if you’re running very late it’s worth calling 310-568-5100 to tell them.'),
       nav:'conrac',
-      chips:[T('שאטל 15–20 דק׳','Shuttle 15–20 min'), T('פתוח 24/7','Open 24/7')],
+      chips:[T('שאטל 15–20 דק׳','Shuttle 15–20 min'), T('Hertz סוויטה 573','Hertz suite 573'), T('☎ 310-568-5100','☎ 310-568-5100')],
       tips:[
-        {who:'or', warn:true, text:T('<b>מושב הגבהה לאור — חובה חוקית</b> בקליפורניה ובאריזונה עד גיל 8, ו<b>חייב לשבת מאחור</b>. בקשו אחד מ-Budget בדלפק (~15$ ליום) — זה הפתרון המיידי. אם מעדיפים לקנות, יש Walmart ליד היציאה מברסטו.','<b>Booster seat for Or is legally required</b> in both California and Arizona until age 8, and he <b>must sit in the back</b>. Ask Budget at the counter (~$15/day) — that’s the immediate fix. If you’d rather buy one, there’s a Walmart at the Barstow exit.')},
-        {who:'itamar', text:T('לפני שיוצאים מהחניון: לצלם את הרכב מכל הצדדים, לוודא שיש גלגל חילוף, ולשאול <b>״יש בזה שדר FasTrak?״</b> — נתיבי האגרה בלוס אנג׳לס מצולמים ומחויבים דרך חברת ההשכרה עם קנס.','Before leaving the stall: photograph the car from all sides, check for a spare, and ask <b>“does this have a FasTrak transponder?”</b> — LA’s toll lanes are camera-only and get billed back through the rental company with a fee.')},
+        {who:'or', warn:true, text:T('<b>מושב הגבהה לאור — חובה חוקית</b> בקליפורניה, אריזונה, יוטה ונבדה — כל המדינות שתעברו בהן. <b>חייב לשבת מאחור</b>. לבקש מ-Hertz בדלפק. אם מעדיפים לקנות, יש Walmart ביציאה בברסטו.','<b>Booster seat for Or is legally required</b> in California, Arizona, Utah and Nevada — every state you’ll drive through. He <b>must sit in the back</b>. Ask Hertz at the counter. If you’d rather buy one, there’s a Walmart at the Barstow exit.')},
+        {who:'itamar', text:T('לפני שיוצאים מהחניון: לצלם את הרכב מכל הצדדים ולוודא שיש גלגל חילוף. <b>אגרות הכביש כלולות בשובר (PlatePass)</b>, אז נתיבי האגרה בלוס אנג׳לס כבר לא סיפור — אבל אין סיבה להיכנס אליהם בכוונה.','Before leaving the stall: photograph the car from all sides and check there’s a spare. <b>Toll fees are included on the voucher (PlatePass)</b>, so LA’s toll lanes are no longer a problem — but there’s still no reason to enter them deliberately.')},
         {who:'drive', text:T('נתיבי ה-ExpressLanes בכביש I-10/I-110 הם <b>הנתיבים השמאליים ביותר</b>, מופרדים בקו לבן כפול. פשוט לא נכנסים אליהם.','The I-10/I-110 ExpressLanes are the <b>leftmost lanes</b>, separated by a double white line. Simply don’t enter them.')}
       ]
     },
@@ -775,74 +777,85 @@ const DAYS = [
 },
 {
   id:'day-4', n:4, date:'24.08', dow:T('שני','Mon'),
-  tab:T('4 · חזרה ל-LA','4 · Back to LA'),
-  title:T('פייג׳ → לוס אנג׳לס','Page → Los Angeles'),
-  sub:T('היום הארוך ביותר: ~915 ק״מ, 8:30–9 שעות נהיגה נטו. יוצאים מוקדם, אוכלים בפלגסטאף, ולא מנסים להוסיף כלום.','The longest day: ~915 km, 8h30–9h of pure driving. Leave early, eat in Flagstaff, and don’t try to add anything.'),
+  tab:T('4 · לאס וגאס','4 · Las Vegas'),
+  title:T('פייג׳ → לאס וגאס, וטיסה ל-LA','Page → Las Vegas, then fly to LA'),
+  sub:T('הרכב חוזר בלאס וגאס ב-14:00 — זו הדדליין שמכתיבה את כל היום. ~450 ק״מ, בערך 5 שעות נהיגה.','The car goes back in Las Vegas at 14:00 — that deadline drives the whole day. ~450 km, about 5 hours of driving.'),
   banner:'highway',
-  chips:[T('~915 ק״מ','~915 km'), T('8:30–9 ש׳','8h30–9h'), T('אין אגרות','No tolls')],
+  chips:[T('~450 ק״מ','~450 km'), T('החזרה 14:00','Return 14:00'), T('3 מדינות','3 states'), T('מלכודת שעון','Clock trap')],
   items:[
     { slot:'morning', time:'07:30',
-      title:T('יציאה מפייג׳','Leave Page'),
-      desc:T('כביש 89 דרומה לקמרון ופלגסטאף, ואז I-40 מערבה כל הדרך. ארוחת בוקר: Rustic Thistle בפייג׳ פותח ב-08:00, או פשוט קפה מ-Safeway ולצאת.','US-89 south to Cameron and Flagstaff, then I-40 west the whole way. Breakfast: Rustic Thistle in Page opens 08:00, or just grab coffee from Safeway and go.'),
-      nav:'marriott',
-      chips:[T('צ׳ק-אאוט 10:00','Checkout 10:00'), T('יעד היום','Today’s destination')],
+      title:T('יציאה מפייג׳ — מוקדם','Leave Page — early'),
+      desc:T('הצ׳ק-אאוט הוא ב-10:00 אבל אתם יוצאים הרבה לפני. הנסיעה ללאס וגאס היא ~5 שעות נטו, וההחזרה נעולה ב-14:00 — יציאה ב-07:30 משאירה כשעה וחצי מרווח לעצירות, תדלוק ולתור בהחזרה. יציאה ב-09:00 כבר מלחיצה.','Checkout is 10:00 but you leave well before. Las Vegas is ~5 hours of driving and the return is locked at 14:00 — leaving at 07:30 leaves about ninety minutes of slack for stops, fuel and the return queue. Leaving at 09:00 is already tight.'),
+      nav:'hertzlas',
+      navNote:T('ℹ️ היעד של היום הוא <b>מרכז ההשכרה של Hertz בלאס וגאס</b>, לא שדה התעופה עצמו — הוא נמצא 5 ק״מ דרומית לטרמינלים.','ℹ️ Today’s destination is the <b>Hertz Rent-A-Car Center in Las Vegas</b>, not the airport itself — it sits 5 km south of the terminals.'),
+      chips:[T('צ׳ק-אאוט 10:00','Checkout 10:00'), T('לתדלק בפייג׳','Fuel up in Page')],
       tips:[
-        {who:'all', text:T('<b>למלא דלק בפייג׳ לפני היציאה.</b> בין פייג׳ לקמרון יש 180 ק״מ עם כמעט כלום — Bitter Springs ו-The Gap קטנות ולפעמים במזומן בלבד.','<b>Fill up in Page before leaving.</b> There’s 180 km of almost nothing between Page and Cameron — Bitter Springs and The Gap are tiny and sometimes cash-only.')},
-        {who:'all', text:T('לוודא שכל התמונות מהטיול <b>עלו לענן</b> לפני שיוצאים מהוויי-פיי. בדרך אין קליטה.','Make sure every photo from the trip has <b>uploaded to the cloud</b> before you leave wifi. There’s no signal on the road.')}
+        {who:'all', warn:true, text:T('<b>למלא דלק בפייג׳ לפני היציאה.</b> בין פייג׳ לקנאב יש 120 ק״מ עם כמעט כלום, והתחנות הקטנות בדרך לפעמים במזומן בלבד.','<b>Fill up in Page before leaving.</b> There’s 120 km of almost nothing between Page and Kanab, and the small stations on the way are sometimes cash-only.')},
+        {who:'all', text:T('לוודא שכל התמונות עלו לענן בוויי-פיי של הדירה לפני היציאה — בדרך יש קטעים ארוכים בלי קליטה.','Make sure every photo has uploaded to the cloud on the apartment wifi before you leave — there are long stretches with no signal on this route.')},
+        {who:'all', text:T('<b>מעבר לכביש 89 צפונה</b>, דרך Big Water וקנאב. זה מסלול אחר לגמרי מהדרך שתכננו קודם — לא עוברים יותר בפלגסטאף, בסליגמן או בקינגמן.','<b>North on US-89</b>, through Big Water and Kanab. This is a completely different route from the one previously planned — you no longer pass Flagstaff, Seligman or Kingman.')}
       ]
     },
-    { slot:'morning', time:'~09:45',
-      title:T('פלגסטאף — ארוחת בוקר אמיתית','Flagstaff — a proper breakfast'),
-      desc:T('נקודת האמצע הראשונה, ובמקרה גם המקום עם האוכל הכי טוב בכל הדרך. אחריה מתחילה מדבר ארוך.','The first natural midpoint, and by chance the best food anywhere on the route. After it the long desert begins.'),
-      nav:'dtflag',
-      chips:[T('2:15 ש׳ מפייג׳','2h15 from Page')],
-      food:[
-        {n:'Tourist Home All Day Cafe', m:T('☕ הבחירה הראשונה — קפה אמיתי ומאפים מהמקום, בבית משופץ משנות ה-20. פתוח 07:00–14:00 כל יום.','☕ First choice — proper espresso and scratch pastries in a restored 1920s house. Open 07:00–14:00 daily.'), a:'52 S San Francisco St', nav:'52 S San Francisco St, Flagstaff, AZ 86001'},
-        {n:'Macy’s European Coffeehouse', m:T('☕ מאפייה ובית קפה ותיקים, פתוח מ-06:00 אם יוצאים מוקדם מפייג׳.','☕ A long-standing bakery and coffeehouse, open from 06:00 if you leave Page early.'), a:'14 S Beaver St', nav:'14 S Beaver St, Flagstaff, AZ 86001'},
-        {n:'MartAnne’s Burrito Palace', m:T('🌶️ אם רוצים ארוחה ולא רק קפה — הצ׳ילקילס שלהם מפורסמים. פתוח מ-07:30.','🌶️ If you want a meal and not just coffee — their chilaquiles are famous. Open from 07:30.'), a:'112 E Route 66', nav:'112 E Route 66, Flagstaff, AZ 86001'}
-      ],
-      tips:[
-        {who:'itamar', text:T('לתדלק בפלגסטאף. אחר כך: קינגמן. שני התדלוקים האלה מכסים את כל הדרך ל-LA.','Fuel in Flagstaff. Then Kingman. Those two fills cover the whole way to LA.')}
-      ]
-    },
-    { slot:'afternoon', time:'~11:15',
-      title:T('סליגמן — Route 66','Seligman — Route 66'),
-      desc:T('עצירה של 20 דקות בעיירה שהמציאה מחדש את Route 66 (וגם השראה ל״מכוניות״ של פיקסאר). שלטים, מכוניות וינטג׳, וגלידה ב-Delgadillo’s Snow Cap.','A 20-minute stop in the town that reinvented Route 66 (and inspired Pixar’s <i>Cars</i>). Signs, vintage cars, and ice cream at Delgadillo’s Snow Cap.'),
-      nav:'seligman',
-      navNote:T('ℹ️ <b>עצרתם כאן כבר ביום שישי</b> — סליגמן יושבת על I-40 ואתם עוברים בה לשני הכיוונים. אם ראיתם מספיק, אפשר לדלג ולהרוויח חצי שעה ביום הארוך ביותר בטיול. ואם התוכנית להחזיר את הרכב בלאס וגאס יוצאת לפועל — הקטע הזה של הדרך נעלם בכלל.','ℹ️ <b>You already stopped here on Friday</b> — Seligman sits on I-40 and you pass through it in both directions. If you’ve seen enough, skip it and buy back half an hour on the longest day of the trip. And if the Las Vegas car-return plan happens, this stretch of road disappears entirely.'),
-      chips:[T('נעצרתם כאן בשישי','Already stopped Friday'), T('אפשר לדלג','Skippable')],
+    { slot:'morning', time:'~09:00',
+      title:T('קנאב, יוטה — והמלכודת של השעון','Kanab, Utah — and the clock trap'),
+      desc:T('עיירה קטנה ונעימה על הגבול, נקודת העצירה הטבעית לקפה, שירותים ותדלוק. וכאן קורה הדבר שהכי חשוב לשים לב אליו היום.','A pleasant little town on the border, and the natural stop for coffee, toilets and fuel. And this is where the single most important thing today happens.'),
+      nav:'kanab',
+      chips:[T('~1:15 ש׳ מפייג׳','~1h15 from Page'), T('יוטה','Utah')],
       photos:[
-        P('Seligman%2C_Arizona_on_Route_66_%2848443618706%29.jpg','Seligman,_Arizona_on_Route_66_(48443618706).jpg',T('חנות מזכרות צבעונית על Route 66 בסליגמן','A brightly painted Route 66 souvenir shop in Seligman')),
-        P('Seligman_Delgadillo%E2%80%99s_Snow_Cap_Historical_petrol_pumps.jpg','Seligman_Delgadillo%E2%80%99s_Snow_Cap_Historical_petrol_pumps.jpg',T('משאבת דלק וינטג׳ ליד שלט Route 66','A vintage petrol pump beside a Route 66 sign')),
-        P('SeligmanArizona.JPG','SeligmanArizona.JPG',T('שלט הכניסה לסליגמן, מקום הולדתו של Route 66','The Welcome to Seligman sign, birthplace of Route 66'))
+        P('Kanab%2C_Utah_%28101365726%29.jpg','Kanab,_Utah_(101365726).jpg',T('נוף העיירה קנאב שביוטה','The town of Kanab, Utah')),
+        P('Kanab_%7E_Utah_%2845404760151%29.jpg','Kanab_~_Utah_(45404760151).jpg',T('מצוקי אבן חול אדומים סביב קנאב','Red sandstone cliffs around Kanab'))
       ],
-      video:{id:'1L9cee9-WPE', title:T('סיור בסליגמן על Route 66','Exploring Seligman on Historic Route 66')},
       tips:[
-        {who:'or', text:T('אם אור מכיר את ״מכוניות״ — רדיאטור ספרינגס בנוי על העיירה הזאת. שווה לספר לפני שנכנסים.','If Or knows <i>Cars</i> — Radiator Springs is built on this town. Worth telling him before you pull in.')},
-        {who:'tali', text:T('<b>סליגמן היא תפאורה, לא נוף</b> — ולכן היא עובדת גם באור הקשה של 11:15. השלטים, המכוניות הוינטג׳ והחזיתות הצבעוניות עושות את העבודה. הכי טוב: כל המשפחה מול משאבת דלק ישנה או שלט Route 66. ומאחורי Snow Cap יש חצר גרוטאות עם מכוניות ישנות — שם התמונות הכי טובות.','<b>Seligman is a set, not a landscape</b> — which is exactly why it works in the harsh 11:15 light. The signs, the vintage cars and the painted storefronts do the work. Best one: all four of you in front of an old petrol pump or a Route 66 shield. And behind the Snow Cap there’s a junkyard of old cars — the best shots are back there.')},
-        {who:'shai', text:T('ב-Snow Cap המלצרים עובדים על הלקוחות בבדיחות קבועות כבר 70 שנה — ״צ׳יזבורגר עם גבינה״, בקבוק חרדל עם חוט, ידיות שנשארות ביד. הבורגרים בינוניים, המילקשייקים טובים.','At the Snow Cap the staff have been running the same gags for 70 years — the “cheeseburger with cheese”, the fake-string mustard bottle, door handles that come off in your hand. The burgers are ordinary, the malts are good.')}
-      ],
-      food:[
-        {n:'Westside Lilo’s Cafe', m:T('🍽️ <b>ארוחת הצהריים.</b> המסעדה הטובה ביותר בכל הקטע הזה של הדרך — משפחתית, אוכל בייתי ומנות גדולות. עוגת הגזר שלהם מפורסמת, שווה לקנות שלמה לרכב. פתוח מ-07:00.','🍽️ <b>This is lunch.</b> The best restaurant on this whole stretch — family-run, honest home cooking, big portions. Their carrot cake is famous; buy a whole one for the car. Open from 07:00.'), a:'22855 W Historic Route 66 · 928-422-5456', nav:'22855 W Historic Route 66, Seligman, AZ 86337'},
-        {n:'Delgadillo’s Snow Cap', m:T('🍦 חמש דקות משם — <b>קינוח בלבד, לא צהריים.</b> מילקשייק, גלידה, והבדיחות. פתוח 10:00–18:00, סגור בראשון.','🍦 Five minutes away — <b>dessert only, not lunch.</b> Malts, soft-serve, and the gags. Open 10:00–18:00, closed Sunday.'), a:'301 AZ-66', nav:'301 AZ-66, Seligman, AZ 86337'},
-        {n:'Rutherford’s 66 Family Diner', m:T('🥞 אם עוצרים מאוחר יותר בקינגמן: הכי טוב בעיר ופתוח בשני, בניגוד לרוב.','🥞 If you stop later in Kingman: the best in town and open on a Monday, unlike most.'), a:'2011 E Andy Devine Ave, Kingman', nav:'2011 E Andy Devine Ave, Kingman, AZ 86401'}
+        {who:'all', warn:true, text:T('<b>🕐 השעון יקפוץ שעה קדימה — וזה לא אמיתי מבחינתכם.</b> אריזונה לא עוברת לשעון קיץ, יוטה כן. ברגע שתחצו את הגבול הטלפון יראה 10:00 במקום 09:00. אבל <b>לאס וגאס נמצאת בשעון פסיפיק — שהוא בדיוק אותו שעון כמו פייג׳</b>. כלומר: השעה קופצת קדימה ביוטה וחוזרת אחורה בנבדה.','<b>🕐 Your clock will jump an hour forward — and it isn’t real for you.</b> Arizona doesn’t do daylight saving, Utah does. The moment you cross the border your phone will read 10:00 instead of 09:00. But <b>Las Vegas is on Pacific time, which is exactly the same clock as Page</b>. So: the hour jumps forward in Utah and comes back in Nevada.')},
+        {who:'all', warn:true, text:T('<b>ההחזרה ב-14:00 היא בשעון לאס וגאס = שעון פייג׳.</b> אל תתכננו לפי מה שהטלפון מראה ביוטה. הכי בטוח: לנעול טלפון אחד על שעון פיניקס למשך כל היום ולעבוד לפיו.','<b>The 14:00 return is Las Vegas time = Page time.</b> Don’t plan by what the phone shows in Utah. Safest: lock one phone to Phoenix time for the whole day and work from that.')},
+        {who:'tali', text:T('קנאב היא נקודת הקפה הטובה האחרונה עד לאס וגאס. יש בה כמה בתי קפה קטנים על הרחוב הראשי, ושירותים נקיים.','Kanab is the last good coffee stop before Las Vegas. It has a few small cafés on the main street and clean toilets.')},
+        {who:'shai', text:T('מכאן צפונה זו הכניסה המזרחית לציון. אין לכם זמן היום בגלל ההחזרה ב-14:00 — אבל שווה להסתכל על המצוקים בדרך, זה כבר נוף אחר לגמרי מאריזונה.','From here north is Zion’s east entrance. You don’t have time today because of the 14:00 return — but look at the cliffs on the way, it’s already a completely different landscape from Arizona.')}
       ]
     },
-    { slot:'afternoon', time:'~15:00',
-      title:T('קינגמן → נידלס → ברסטו','Kingman → Needles → Barstow'),
-      desc:T('הקטע הקשה. נידלס היא אחת הנקודות החמות ביותר בארה״ב — 45–48°C זה נורמלי באוגוסט. בין לודלו לנידלס יש 185 ק״מ כמעט בלי כלום.','The hard stretch. Needles is one of the hottest inhabited places in the US — 45–48°C is normal in August. Between Ludlow and Needles there’s 185 km of almost nothing.'),
-      chips:[T('45°C+','45°C+'), T('קליטה חלשה','Weak signal')],
+    { slot:'afternoon', time:'~11:30',
+      title:T('מצר הווירג׳ין — הקטע היפה של I-15','The Virgin River Gorge — the good part of I-15'),
+      desc:T('אחרי סנט ג׳ורג׳ הכביש נכנס לקניון צר של אבן חול אדומה וחוצה אותו לאורך הנהר. זה 20 ק״מ של הכביש הבין-מדינתי היפה ביותר בארה״ב, ובמקרה הוא בדיוק על המסלול שלכם.','After St George the interstate drops into a narrow red sandstone canyon and follows the river through it. It’s 20 km of the most beautiful interstate in America, and it happens to be exactly on your route.'),
+      chips:[T('בלי סטייה','No detour'), T('~20 ק״מ','~20 km')],
+      photos:[
+        P('Virgin_River_Gorge%2C_Arizona.jpg','Virgin_River_Gorge,_Arizona.jpg',T('מצר הווירג׳ין באריזונה','The Virgin River Gorge, Arizona')),
+        P('I-15_Arizona_Virgin_River_Gorge.jpg','I-15_Arizona_Virgin_River_Gorge.jpg',T('כביש I-15 עובר במצר הווירג׳ין','I-15 running through the Virgin River Gorge')),
+        P('I-15_at_the_west_entrance_of_the_Virgin_River_Gorge.jpg','I-15_at_the_west_entrance_of_the_Virgin_River_Gorge.jpg',T('הכניסה המערבית למצר הווירג׳ין','The west entrance of the Virgin River Gorge'))
+      ],
       tips:[
-        {who:'drive', warn:true, text:T('<b>מעל 137 קמ״ש באריזונה זו עבירה פלילית</b>, לא דו״ח. במהירות מותרת של 120 זה קרוב מדי. תקרה: 128 קמ״ש.','<b>Over 85 mph in Arizona is a criminal offence</b>, not a ticket. With a 75 mph limit that’s uncomfortably close. Ceiling: 80 mph.')},
-        {who:'all', text:T('אם נכנסים לסופת אבק (haboob) על I-40: <b>לרדת לגמרי מהכביש, לכבות את כל האורות כולל מצוקה, ולהוריד רגל מהבלם.</b> אורות דולקים גורמים לרכב מאחור לנסוע לתוככם.','If you hit a dust storm on I-40: <b>pull completely off the road, turn off all lights including hazards, and take your foot off the brake.</b> Lit tail-lights make the car behind steer into you.')}
+        {who:'itamar', text:T('אין כאן הרבה מפרצי עצירה והכביש מהיר — עדיף לצלם מהחלון בנסיעה מאשר לנסות לעצור. יש אזור מנוחה בקצה הצפוני של המצר.','There aren’t many pull-outs and the road is fast — better to shoot through the window than to try to stop. There’s a rest area at the north end of the gorge.')},
+        {who:'all', text:T('<b>שימו לב: כאן חוצים חזרה לפינה של אריזונה ואז לנבדה.</b> הקטע הזה של I-15 עובר 45 ק״מ בתוך אריזונה בין יוטה לנבדה — ושם השעון חוזר אחורה.','<b>Note: here you cross back into a corner of Arizona and then into Nevada.</b> This stretch of I-15 runs 45 km through Arizona between Utah and Nevada — and that’s where the clock comes back.')}
       ]
     },
-    { slot:'evening', time:'~19:00',
+    { slot:'afternoon', time:'13:00',
+      title:T('החזרת הרכב — Hertz לאס וגאס','Car return — Hertz Las Vegas'),
+      desc:T('מרכז ההשכרה המרוכז של לאס וגאס, ברחוב Gilespie, כ-5 ק״מ דרומית לטרמינלים. מגיעים ב-13:00 כדי שההחזרה ב-14:00 תהיה רגועה. משם שאטל חינם לטרמינל, כל 5–15 דקות, נסיעה של 7 דקות.','Las Vegas’s consolidated rental centre on Gilespie Street, about 5 km south of the terminals. Arrive 13:00 so the 14:00 return is relaxed. From there a free shuttle to the terminal, every 5–15 minutes, a 7-minute ride.'),
+      nav:'hertzlas',
+      chips:[T('7135 Gilespie St','7135 Gilespie St'), T('החזרה 14:00','Return 14:00'), T('שאטל 7 דק׳','7 min shuttle')],
+      photos:[
+        P('Las_Vegas_Strip_from_Resorts_World_February_2023_HDR_1.jpg','Las_Vegas_Strip_from_Resorts_World_February_2023_HDR_1.jpg',T('קו הרקיע של רצועת לאס וגאס','The Las Vegas Strip skyline'))
+      ],
+      tips:[
+        {who:'all', warn:true, text:T('<b>לתדלק לפני ההחזרה.</b> יש תחנות דלק על Las Vegas Blvd ועל Gilespie ממש לפני מרכז ההשכרה. תעריף הדלק של Hertz כפול ומשהו.','<b>Refuel before you hand it back.</b> There are petrol stations on Las Vegas Blvd and on Gilespie right before the rental centre. Hertz’s own fuel rate is more than double.')},
+        {who:'itamar', text:T('לצלם מד דלק, מד קילומטראז׳ ואת הרכב מסביב, ולקחת <b>קבלת סגירה</b> לפני שעוזבים את הדלפק. אתם טסים משם — אין דרך לחזור ולברר.','Photograph the fuel gauge, the odometer and the car all round, and get a <b>closing receipt</b> before leaving the desk. You’re flying out — there’s no coming back to sort it out.')},
+        {who:'all', warn:true, text:T('<b>לרוקן את הרכב לגמרי.</b> מטענים, משקפי שמש, מושב ההגבהה של אור, בקבוקים, הצידנית. אחרי השאטל זה נגמר, ואתם במדינה אחרת מהמלון.','<b>Empty the car completely.</b> Chargers, sunglasses, Or’s booster, bottles, the cooler. After the shuttle it’s over, and you’re in a different state from your hotel.')},
+        {who:'shai', text:T('אם יש זמן עד הטיסה: הרצועה של לאס וגאס היא 10 דקות במונית ממרכז ההשכרה, ואפשר להשאיר מזוודות בשדה. אבל רק אם הטיסה מאוחרת מספיק — עם ארבעה אנשים ומזוודות זה לא מבצע קטן.','If there’s time before the flight: the Las Vegas Strip is 10 minutes by taxi from the rental centre, and you can leave bags at the airport. But only if the flight is late enough — with four people and luggage it isn’t a small operation.')}
+      ]
+    },
+    { slot:'afternoon', time:T('לפי הטיסה','Per your flight'),
+      title:T('טיסה פנימית — לאס וגאס ל-LA','The domestic hop — Las Vegas to LA'),
+      desc:T('LAS ל-LAX היא טיסה של כשעה, וטסות אותה הרבה חברות בתדירות גבוהה. <b>הטיסה הזו עדיין לא הוזמנה</b> — ברגע שתזמינו, שלחו לי את הפרטים ואוסיף אותה לכאן כמו שצריך.','LAS to LAX is about an hour, flown frequently by several airlines. <b>This flight isn’t booked yet</b> — once it is, send me the details and I’ll add it here properly.'),
+      chips:[T('~1 שעה','~1 hour'), T('טרם הוזמנה','Not booked yet')],
+      tips:[
+        {who:'all', warn:true, text:T('<b>המוקדם הריאלי הוא 16:00–16:30.</b> החזרה ב-14:00, שאטל 7 דקות, ואז ביטחון וזמן במסוף. אל תזמינו משהו ב-15:00.','<b>The realistic earliest is 16:00–16:30.</b> Return at 14:00, a 7-minute shuttle, then security and terminal time. Don’t book anything at 15:00.')},
+        {who:'all', text:T('טיסה פנימית בארה״ב = צ׳ק-אין למזוודות נסגר בדרך כלל 45 דקות לפני ההמראה. עם 8 מזוודות (2 לאדם) שווה להגיע מוקדם ולבדוק את מדיניות המזוודות של החברה — בחברות הזולות כל מזוודה עולה בנפרד.','A US domestic flight usually closes bag drop 45 minutes before departure. With 8 bags (2 each) it’s worth arriving early and checking the airline’s baggage policy — on the budget carriers every bag is charged separately.')},
+        {who:'all', text:T('<b>יתרון גדול:</b> אתם טסים ביום שני, והטיסה הביתה היא ביום שלישי ב-13:30. יש לכם לילה שלם של מרווח — אז גם אם הטיסה הפנימית מתעכבת, זה לא מסכן את LY6.','<b>Big advantage:</b> you fly Monday and the flight home is Tuesday at 13:30. You have a full night of buffer — so even if the domestic hop is delayed, it doesn’t threaten LY6.')}
+      ]
+    },
+    { slot:'evening', time:T('~19:00','~19:00'),
       title:T('Marina del Rey','Marina del Rey'),
-      desc:T('מגיעים למרינה. מול המלון ממש יש את Mother’s Beach — לגונה שקטה בלי גלים עם מצילים ומתקני משחק, בדיוק מה שצריך אחרי תשע שעות ברכב.','Arrive at the marina. Directly opposite the hotel is Mother’s Beach — a calm, waveless lagoon with lifeguards and a playground, exactly right after nine hours in a car.'),
+      desc:T('מ-LAX למרינה זה 15 דקות במונית או ב-Uber — בלי רכב, בלי חניה, בלי ולט. מול המלון ממש יש את Mother’s Beach, לגונה שקטה בלי גלים עם מצילים ומתקני משחק.','From LAX to the marina is 15 minutes by taxi or Uber — no car, no parking, no valet. Directly opposite the hotel is Mother’s Beach, a calm waveless lagoon with lifeguards and a playground.'),
       nav:'marriott',
       nav2:'motherbeach',
-      navNote:T('ℹ️ <b>Mother’s Beach</b> נמצא ממש מול המלון — לגונה שקטה בלי גלים עם מצילים ומתקני משחק. אם נוסעים לוונציה ביץ׳ (רק באור יום), החניון הרשמי הקרוב הוא 3100 Washington Blvd.','ℹ️ <b>Mother’s Beach</b> is directly opposite the hotel — a calm, waveless lagoon with lifeguards and a playground. If you drive to Venice Beach (daylight only), the nearest official car park is 3100 Washington Blvd.'),
+      navNote:T('ℹ️ אין לכם רכב מכאן והלאה. <b>Mother’s Beach</b> נמצא ממש מול המלון ברגל. אם רוצים לוונציה ביץ׳ (רק באור יום) — זה 10 דקות במונית.','ℹ️ You have no car from here on. <b>Mother’s Beach</b> is directly opposite the hotel on foot. If you want Venice Beach (daylight only), that’s 10 minutes by taxi.'),
       photos:[
         P('Marina_del_Rey.jpg','Marina_del_Rey.jpg',T('יאכטות במרינה של מרינה דל ריי','Yachts moored in Marina del Rey harbour')),
         P('Venice_Beach_Boardwalk_Los_Angeles_2019.jpg','Venice_Beach_Boardwalk_Los_Angeles_2019.jpg',T('הטיילת של ונציה ביץ׳','The Venice Beach boardwalk')),
@@ -850,18 +863,18 @@ const DAYS = [
       ],
       video:{id:'31GMJ6TK49E', title:T('ונציה ביץ׳ ומרינה דל ריי','Venice Beach and Marina del Rey')},
       tips:[
-        {who:'all', warn:true, text:T('<b>ונציה ביץ׳ — ביום בלבד.</b> הטיילת יפה עד השקיעה ואז מתרוקנת ומשתנה לגמרי. אם רוצים ללכת — הולכים אחר הצהריים וחוזרים למרינה לפני חשכה.','<b>Venice Beach in daylight only.</b> The boardwalk is great until sunset and then empties out and changes character entirely. If you want to go, go in the afternoon and be back at the marina before dark.')},
-        {who:'itamar', text:T('החניה במלון היא ולט, בערך 50–60$ ללילה. לליל אחד פשוט לוקחים את זה ולא מתווכחים.','Hotel parking is valet, roughly $50–60 a night. For one night just take it and don’t argue.')},
-        {who:'all', text:T('<b>הערב הזה הוא גם ערב האריזה.</b> טיסה סטנד-ביי בבוקר עם ילדים = לא רוצים לארוז ב-06:00.','<b>Tonight is also packing night.</b> A standby flight in the morning with kids means you do not want to be packing at 06:00.')}
+        {who:'all', warn:true, text:T('<b>ונציה ביץ׳ — ביום בלבד.</b> הטיילת יפה עד השקיעה ואז מתרוקנת ומשתנה לגמרי. לחזור למרינה לפני חשכה.','<b>Venice Beach in daylight only.</b> The boardwalk is great until sunset and then empties out and changes character entirely. Be back at the marina before dark.')},
+        {who:'itamar', text:T('<b>חיסכון קטן ונחמד:</b> בלי רכב אין ולט של 50–60$ ללילה במלון. וגם אין החזרת רכב בבוקר — רק מונית של 15 דקות.','<b>A small, welcome saving:</b> with no car there’s no $50–60 a night valet at the hotel. And no car return in the morning either — just a 15-minute taxi.')},
+        {who:'all', text:T('<b>הערב הזה הוא ערב האריזה.</b> טיסה סטנד-ביי בבוקר עם ילדים = לא רוצים לארוז ב-06:00.','<b>Tonight is packing night.</b> A standby flight in the morning with kids means you do not want to be packing at 06:00.')}
       ],
       shots:[
-        {who:'itamar', warn:true, text:T('<b>שקיעה ב-19:32, שעה זהובה מ-18:58 — ואתם מגיעים בערך אז.</b> זו השקיעה היחידה מעל האוקיינוס בכל הטיול, אחרי חמישה ימים של מדבר. אם מגיעים בזמן: הטיילת של ונציה או מזח סנטה מוניקה מהחוף. אם מאחרים: התרנים במרינה מול השמיים הוורודים, שתי דקות מהמלון.','<b>Sunset 19:32, golden hour from 18:58 — and you arrive right about then.</b> It’s the only ocean sunset of the entire trip, after five days of desert. If you make it in time: the Venice boardwalk or the Santa Monica pier from the beach. If you’re late: the masts in the marina against a pink sky, two minutes from the hotel.')},
-        {who:'tali', text:T('<b>Mother’s Beach מול המלון היא תמונת הסיום.</b> לגונה שקטה בלי גלים, כלומר השתקפות — ארבעתכם על החול עם המים החלקים מאחור. ורגע לפני שהאור נגמר זה גם הזמן לתמונה המשפחתית הרשמית של הטיול, כשכולם עדיין שזופים ולפני האריזה.','<b>Mother’s Beach opposite the hotel is the closing shot.</b> A calm, waveless lagoon means reflections — the four of you on the sand with flat water behind. And just before the light goes is the moment for the trip’s official family photo, while everyone is still tanned and before the packing starts.')}
+        {who:'itamar', text:T('<b>שקיעה ב-19:32, שעה זהובה מ-18:58.</b> זו השקיעה היחידה מעל האוקיינוס בכל הטיול. אם הטיסה מ-לאס וגאס נוחתת בזמן, אתם מגיעים בדיוק אז. אם לא — התרנים במרינה מול השמיים הוורודים, שתי דקות מהמלון.','<b>Sunset 19:32, golden hour from 18:58.</b> It’s the only ocean sunset of the whole trip. If the flight from Las Vegas lands on time you arrive right then. If not — the masts in the marina against a pink sky, two minutes from the hotel.')},
+        {who:'tali', text:T('<b>Mother’s Beach מול המלון היא תמונת הסיום.</b> לגונה שקטה בלי גלים, כלומר השתקפות — ארבעתכם על החול עם המים החלקים מאחור, רגע לפני שהאור נגמר.','<b>Mother’s Beach opposite the hotel is the closing shot.</b> A calm, waveless lagoon means reflections — the four of you on the sand with flat water behind, just before the light goes.')}
       ],
       food:[
-        {n:'Cast & Plow', m:T('🌅 <b>הבחירה הבטוחה לערב האחרון.</b> אוכל קליפורני מוקפד עם נוף למרינה, 4 דקות מהמלון, וקוד לבוש קז׳ואל — משנה כשיצאתם מהרכב אחרי תשע שעות. ארוחת ערב 17:00–21:30. כדאי להזמין.','🌅 <b>The safe choice for the last night.</b> Proper California cooking with a marina view, 4 minutes from the hotel, and a casual dress code — which matters when you’ve just climbed out of the car after nine hours. Dinner 17:00–21:30. Worth booking.'), a:'Ritz-Carlton, 4375 Admiralty Way', nav:'4375 Admiralty Way, Marina del Rey, CA 90292'},
-        {n:'Killer Shrimp', m:T('🦐 <b>אם מגיעים מאוחר.</b> על המזח, 7 דקות הליכה מהמלון, פתוח עד 22:00, בלי הזמנה. שולחנות משפחתיים והילדים אוהבים.','🦐 <b>If you arrive late.</b> Dockside, a 7-minute walk from the hotel, open to 22:00, no reservation. Family-style tables and the kids love it.'), a:'4211 Admiralty Way', nav:'4211 Admiralty Way, Marina del Rey, CA 90292'},
-        {n:'Charcoal Venice', m:T('🥩 <b>אם הסטייק בפלגסטאף לא קרה</b> — מסעדת אש גלויה של שף עם כוכב מישלן, 9 דקות מהמלון. פורטרהאוס שלם על הגריל. סוגרים 21:00, אז להזמין ל-19:30.','🥩 <b>If the Flagstaff steak didn’t happen</b> — a live-fire restaurant from a Michelin-starred chef, 9 minutes away. Whole grilled porterhouse. Closes 21:00, so book for 19:30.'), a:'425 Washington Blvd, Venice', nav:'425 Washington Blvd, Venice, CA 90292'},
+        {n:'Cast & Plow', m:T('🌅 אוכל קליפורני מוקפד עם נוף למרינה, 4 דקות מהמלון, קוד לבוש קז׳ואל. ארוחת ערב 17:00–21:30. כדאי להזמין.','🌅 Proper California cooking with a marina view, 4 minutes from the hotel, casual dress code. Dinner 17:00–21:30. Worth booking.'), a:'Ritz-Carlton, 4375 Admiralty Way', nav:'4375 Admiralty Way, Marina del Rey, CA 90292'},
+        {n:'Killer Shrimp', m:T('🦐 אם הטיסה מאחרת: על המזח, 7 דקות הליכה, פתוח עד 22:00, בלי הזמנה.','🦐 If the flight runs late: dockside, a 7-minute walk, open to 22:00, no reservation.'), a:'4211 Admiralty Way', nav:'4211 Admiralty Way, Marina del Rey, CA 90292'},
+        {n:'Charcoal Venice', m:T('🥩 אם הסטייק בפלגסטאף לא קרה — מסעדת אש גלויה של שף עם כוכב מישלן. סוגרים 21:00.','🥩 If the Flagstaff steak didn’t happen — a live-fire restaurant from a Michelin-starred chef. Closes 21:00.'), a:'425 Washington Blvd, Venice', nav:'425 Washington Blvd, Venice, CA 90292'},
         {n:'The Cheesecake Factory', m:T('🍰 200 מטר מהמלון, תפריט ענק, אפס סיכון עם ילדים עייפים.','🍰 200 m from the hotel, an enormous menu, zero risk with tired kids.'), a:'4142 Via Marina', nav:'4142 Via Marina, Marina del Rey, CA 90292'}
       ]
     }
@@ -870,27 +883,28 @@ const DAYS = [
 {
   id:'day-5', n:5, date:'25.08', dow:T('שלישי','Tue'),
   tab:T('5 · הביתה','5 · Home'),
-  title:T('החזרת הרכב וטיסה הביתה','Car return and the flight home'),
-  sub:T('LY6 ממריאה ב-13:30. הרכב מוזמן להחזרה ב-08:30 — וזה בדיוק הזמן הנכון.','LY6 departs 13:30. The car is booked back at 08:30 — which is exactly right.'),
+  title:T('הטיסה הביתה','The flight home'),
+  sub:T('LY6 ממריאה ב-13:30. אין רכב להחזיר — רק מונית של 15 דקות מהמלון. הבוקר הכי רגוע בטיול.','LY6 departs 13:30. There’s no car to return — just a 15-minute taxi from the hotel. The calmest morning of the trip.'),
   banner:'plane',
-  chips:[T('החזרה 08:30','Return 08:30'), T('המראה 13:30','Departs 13:30'), T('סטנד-ביי','Standby')],
+  chips:[T('המראה 13:30','Departs 13:30'), T('בלי רכב','No car'), T('סטנד-ביי','Standby')],
   items:[
-    { slot:'morning', time:'07:45',
-      title:T('יציאה מהמלון','Leave the hotel'),
-      desc:T('מרינה דל ריי ל-LAX זה 15 דקות בלי פקקים. יוצאים ב-07:45, ממלאים דלק בדרך (חובה — אחרת Budget מחייבים בתעריף מנופח), ומגיעים למרכז ההשכרה ב-08:15.','Marina del Rey to LAX is 15 minutes without traffic. Leave 07:45, refuel on the way (essential — otherwise Budget charges an inflated rate), and reach the rental centre by 08:15.'),
-      nav:'conrac',
+    { slot:'morning', time:'09:00',
+      title:T('מונית מהמלון ל-LAX','Taxi from the hotel to LAX'),
+      desc:T('מרינה דל ריי ל-LAX זה 15 דקות בלי פקקים, ובשעה הזו אין. מונית או Uber מהלובי. בלי החזרת רכב, בלי תדלוק, בלי שאטל של חברת ההשכרה — הבוקר הזה נעשה הרבה יותר פשוט מאז שהרכב חוזר בלאס וגאס.','Marina del Rey to LAX is 15 minutes without traffic, and at this hour there isn’t any. Taxi or Uber from the lobby. No car return, no refuelling, no rental shuttle — this morning got much simpler once the car went back in Las Vegas.'),
+      nav:'marriott',
+      chips:[T('15 דק׳','15 min'), T('טרמינל B','Terminal B')],
       tips:[
-        {who:'itamar', text:T('<b>לצלם את מד הדלק ואת מד הקילומטראז׳ ואת הרכב מסביב</b> לפני שמוסרים מפתחות, ולקחת קבלת סגירה. זה שתי דקות שמונעות ויכוח מחו״ל.','<b>Photograph the fuel gauge, the odometer and the car all round</b> before handing over the keys, and take a closing receipt. Two minutes that prevent an argument from abroad.')},
-        {who:'all', text:T('<b>לבדוק את כל המגירות והתאים.</b> מטענים, משקפי שמש, מושב ההגבהה של אור, בקבוקים. אחרי שנוסעים בשאטל זה נגמר.','<b>Check every pocket and compartment.</b> Chargers, sunglasses, Or’s booster, water bottles. Once you’re on the shuttle it’s over.')}
+        {who:'all', warn:true, text:T('<b>אתם על כרטיסי סטנד-ביי.</b> להיות מהראשונים בדלפק זה לא ״נחמד״ — זה מה שקובע אם ארבעתכם עולים. הדלפק של אל על בטרמינל בראדלי נפתח בדרך כלל כ-4 שעות לפני ההמראה. יציאה ב-09:00 שמה אתכם שם בסביבות 09:30.','<b>You’re on standby tickets.</b> Being first at the desk isn’t “nice to have” — it decides whether all four of you board. The El Al desk at Tom Bradley usually opens about 4 hours before departure. Leaving at 09:00 puts you there around 09:30.')},
+        {who:'all', text:T('להזמין את המונית בערב הקודם או להשתמש ב-Uber/Lyft — במרינה דל ריי יש זמינות טובה בבוקר. עם 4 אנשים ו-8 מזוודות כדאי לבקש רכב גדול (UberXL).','Book the taxi the night before, or use Uber/Lyft — availability in Marina del Rey is good in the morning. With 4 people and 8 bags, ask for a large vehicle (UberXL).')},
+        {who:'shai', text:T('אחרי הביקורת יש הרבה זמן. טרמינל בראדלי הוא הטרמינל הכי טוב ב-LAX לאוכל ולחנויות — יש על מה לבזבז את הדולרים האחרונים.','After security there’s plenty of time. Tom Bradley is the best terminal at LAX for food and shops — somewhere to spend the last dollars.')}
       ]
     },
-    { slot:'morning', time:'08:30',
-      title:T('החזרת הרכב — Budget','Car return — Budget'),
-      desc:T('מרכז ההשכרה המאוחד, ואז שאטל חזרה לטרמינל B. השאטל לוקח 15–20 דקות ויוצא כל 10–15. אתם בטרמינל בסביבות 09:15 — כמעט ארבע שעות לפני ההמראה, וזה בדיוק מה שרוצים בסטנד-ביי.','The consolidated rental centre, then a shuttle back to Terminal B. The shuttle takes 15–20 min and runs every 10–15. You’re in the terminal around 09:15 — nearly four hours before departure, which is exactly what you want on standby.'),
-      nav:'conrac',
+    { slot:'afternoon', time:'13:30',
+      title:T('LY6 — לוס אנג׳לס לתל אביב','LY6 — Los Angeles to Tel Aviv'),
+      desc:T('13 שעות ו-50 דקות, נחיתה בנתב״ג ביום רביעי ב-13:20. סוף.','13 hours and 50 minutes, landing at Ben Gurion on Wednesday at 13:20. Done.'),
+      chips:[T('13:50 שעות','13h 50m'), T('נחיתה רביעי 13:20','Lands Wed 13:20')],
       tips:[
-        {who:'all', warn:true, text:T('<b>אתם על כרטיסי סטנד-ביי.</b> להיות מהראשונים בדלפק זה לא ״נחמד״ — זה מה שקובע אם ארבעתכם עולים. אם המכסה עמוסה, הדלפק יידע להציע חלופות רק אם אתם שם מוקדם.','<b>You’re on standby tickets.</b> Being first at the counter isn’t “nice to have” — it’s what decides whether all four of you board. If the load is heavy, the desk can only offer alternatives if you’re there early.')},
-        {who:'shai', text:T('אחרי הביקורת יש זמן. טרמינל בראדלי הוא הטרמינל הכי טוב ב-LAX לאוכל ולחנויות — יש שם על מה לבזבז את הדולרים האחרונים.','After security there’s time. Tom Bradley is the best terminal at LAX for food and shops — somewhere to spend the last dollars.')}
+        {who:'all', text:T('הכרטיסים לעלייה למטוס נמצאים בלשונית ✈️ טיסות — כל אחד הוסיף אותם לטלפון שלו.','Your boarding passes are in the ✈️ Flights tab — each of you added them to your own phone.')}
       ]
     }
   ]
@@ -1116,6 +1130,13 @@ function viewHome(){
   </div>
 
   <div class="alert red">
+    <b>🚗 ${LANG==='h'?'שני דברים פתוחים בשינוי הרכב':'Two loose ends from the car change'}</b>
+    ${LANG==='h'
+      ? '<b>1. הטיסה מלאס וגאס ל-LA עדיין לא הוזמנה.</b> הרכב חוזר ב-14:00 ביום שני, והמוקדם הריאלי להמראה הוא 16:00–16:30. שלחו לי את הפרטים כשתזמינו.<br><br><b>2. לוודא שההזמנה הישנה של Budget בוטלה.</b> היא הייתה משולמת מראש — אם היא עדיין פתוחה, תחויבו עליה בנוסף.'
+      : '<b>1. The Las Vegas → LA flight isn’t booked yet.</b> The car goes back at 14:00 Monday, and the realistic earliest departure is 16:00–16:30. Send me the details once you book.<br><br><b>2. Make sure the old Budget reservation is cancelled.</b> It was prepaid — if it’s still open you’ll be charged for it on top.'}
+  </div>
+
+  <div class="alert red">
     <b>✍️ ${LANG==='h'?'לחתום על הוויתור של אנטילופ — לפני הנסיעה':'Sign the Antelope waiver — before you travel'}</b>
     ${LANG==='h'
       ? 'הסיור מוזמן ל<b>ראשון 23.8, 13:00 שעון אריזונה</b>. <b>כל ארבעת המשתתפים חייבים לחתום על טופס ויתור לפני הכניסה לקניון</b> — הקישור נמצא במייל האישור של Peek. לעשות את זה עכשיו מהבית, לא בחניון בשמש. ובלי ביטול בתוך 72 שעות אין החזר.'
@@ -1265,65 +1286,72 @@ function viewCar(){
   <div class="card">
     ${banner('road')}
     <div class="card-pad">
-      <div class="eyebrow">Budget · ${L?'ג׳יפון בינוני':'Midsize SUV'}</div>
-      <h2>Toyota RAV4 ${L?'או דומה':'or similar'}</h2>
+      <div class="eyebrow">Hertz · ${L?'ג׳יפון בינוני':'Midsize SUV'}</div>
+      <h2>Toyota RAV4 Hybrid ${L?'או דומה':'or similar'}</h2>
       <p class="muted" style="margin:6px 0 0">${L
-        ? '5 מושבים, 3 מזוודות, אוטומט, מזגן. איסוף והחזרה במרכז ההשכרה המאוחד של LAX.'
-        : '5 seats, 3 bags, automatic, A/C. Pickup and return at LAX’s consolidated rental centre.'}</p>
-      ${chipsHTML([T('שולם מראש','Prepaid'),T('ביטוח: RentalCover','Cover: RentalCover'),T('נהג יחיד: איתמר','Single driver: Itamar')])}
+        ? 'קבוצה B8, אוטומט, מזגן. איסוף ב-LAX, <b>החזרה בלאס וגאס</b> — נסיעה בכיוון אחד.'
+        : 'Group B8, automatic, A/C. Picked up at LAX, <b>returned in Las Vegas</b> — a one-way rental.'}</p>
+      ${chipsHTML([T('4 ימים','4 days'),T('ק״מ ללא הגבלה','Unlimited mileage'),T('כיוון אחד','One-way'),T('~$270','~$270')])}
     </div>
+  </div>
+
+  <div class="alert amber">
+    <b>🛡️ ${L?'הביטוח כלול — כנראה שאין צורך ב-RentalCover':'Cover is included — RentalCover is probably redundant now'}</b>
+    ${L
+      ? 'השובר של Hertz מפרט <b>LDW (ביטוח נזק) ו-LIS (ביטוח צד שלישי מורחב)</b> ככלולים במחיר, וגם אגרות כביש (PlatePass), נהגים נוספים וק״מ ללא הגבלה. הפוליסה של RentalCover ב-111₪ נקנתה עבור ההזמנה הישנה של Budget ו<b>ייתכן שהיא מיותרת עכשיו</b>.<br><br><b>לפני שמבטלים:</b> לוודא מול Hertz מה ההשתתפות העצמית ב-LDW. אם היא אפס — אפשר לבטל את RentalCover ולחסוך. אם יש השתתפות עצמית — RentalCover עדיין שווה משהו.'
+      : 'The Hertz voucher lists <b>LDW (damage waiver) and LIS (extended liability)</b> as included in the price, along with toll fees (PlatePass), additional drivers and unlimited mileage. The ₪111 RentalCover policy was bought for the old Budget booking and <b>may now be redundant</b>.<br><br><b>Before cancelling:</b> confirm with Hertz what the LDW excess is. If it’s zero, you can cancel RentalCover and save the money. If there is an excess, RentalCover still buys you something.'}
   </div>
 
   <div class="card">
     <div class="card-pad">
       <div class="slot"><span class="dot" style="background:var(--morning)"></span><span class="lbl">${L?'איסוף':'Pickup'}</span><span class="tm num">21.08 · 08:30</span></div>
-      <h3>${L?'מרכז ההשכרה של LAX':'LAX Rental Car Center'}</h3>
-      <p class="muted" style="margin:6px 0 0">5251 W 98th St, Los Angeles, CA 90045 · ${L?'פתוח 24/7':'Open 24/7'}</p>
+      <h3>Hertz — ${L?'מרכז ההשכרה של LAX':'LAX Rental Car Center'}</h3>
+      <p class="muted" style="margin:6px 0 0"><bdi>5251 W 98th St #573, Los Angeles, CA 90045</bdi> · ☎ 310-568-5100</p>
       ${navBtn('conrac')}
+      <p class="tiny" style="margin:7px 2px 0">${L
+        ? 'ℹ️ אותו בניין שהיה מתוכנן קודם — מרכז ההשכרה המאוחד של LAX. רק הדלפק שונה: Hertz, סוויטה 573.'
+        : 'ℹ️ The same building as before — LAX’s consolidated rental centre. Only the desk changes: Hertz, suite 573.'}</p>
       <div class="eyebrow" style="margin-top:14px">${L?'צ׳ק-ליסט לדלפק':'Counter checklist'}</div>
       <ul class="tips">
-        <li><span class="who">🪪</span><span>${L?'<b>רישיון ישראלי + רישיון בינלאומי + דרכון</b> — שלושתם. רישיון בעברית בלי תרגום בינלאומי הוא הסיבה מס׳ 1 לסירוב בדלפק.':'<b>Israeli licence + International Driving Permit + passport</b> — all three. A Hebrew-only licence with no IDP is the number-one reason counters refuse.'}</span></li>
-        <li><span class="who">💳</span><span>${L?'<b>כרטיס האשראי של הנהג הראשי</b>, על שמו, לפיקדון. לא כרטיס של מישהו אחר.':'<b>The main driver’s credit card</b>, in his name, for the deposit. Not somebody else’s card.'}</span></li>
-        <li class="warn"><span class="who">🧒</span><span>${L?'<b>מושב הגבהה לאור.</b> חובה חוקית בקליפורניה ובאריזונה, וחייב לשבת מאחור. לבקש מ-Budget בדלפק — לא הזמנתם מראש.':'<b>Booster seat for Or.</b> Legally required in both California and Arizona, and he must sit in the back. Ask Budget at the counter — you didn’t reserve one.'}</span></li>
-        <li class="warn"><span class="who">🛡️</span><span>${L?'<b>הביטוח שלכם הוא RentalCover — לא של Budget.</b> זה משנה הכל בדלפק: Budget עדיין ינסו למכור לכם CDW משלהם, ואפשר לסרב. אבל בתמורה — אם יש נזק, <b>אתם משלמים ל-Budget קודם ותובעים החזר מ-RentalCover אחר כך</b>, וגם תחסם מסגרת גדולה יותר בכרטיס. תשמרו כל מסמך, טופס וצילום.':'<b>Your cover is RentalCover, not Budget’s.</b> That changes the counter completely: Budget will still try to sell you their own CDW, and you can decline. But in exchange — if there’s damage, <b>you pay Budget first and claim it back from RentalCover afterwards</b>, and they’ll hold a larger amount on the card. Keep every document, form and photo.'}</span></li>
-        <li><span class="who">📝</span><span>${L?'<b>לרשום נזק קיים על כל טופס שחותמים עליו.</b> זו הדרישה המפורשת של RentalCover, וזה מה שמכריע תביעה. וגם: RentalCover מכסה נהגים נוספים בחינם — אם בסוף טלי כן תנהג, לוודא ששמה רשום בהסכם של Budget.':'<b>Write down existing damage on any form you sign.</b> That’s RentalCover’s explicit requirement and it’s what decides a claim. Also: RentalCover covers additional drivers free — so if Tali does end up driving, make sure her name is on the Budget agreement.'}</span></li>
-        <li><span class="who">📸</span><span>${L?'<b>לצלם את הרכב מכל הצדדים</b> לפני שיוצאים מהחניון, כולל שריטות קיימות והמצב של הצמיגים.':'<b>Photograph the car from every side</b> before leaving the stall, including existing scratches and the state of the tyres.'}</span></li>
-        <li><span class="who">🛣️</span><span>${L?'לשאול <b>״האם יש בזה שדר FasTrak?״</b> — נתיבי האגרה ב-LA מצולמים בלבד ומגיעים אליכם עם קנס חודשים אחרי.':'Ask <b>“does this have a FasTrak transponder?”</b> — LA’s toll lanes are camera-only and reach you with a penalty months later.'}</span></li>
+        <li class="warn"><span class="who">🪪</span><span>${L?'<b>רישיון ישראלי + רישיון בינלאומי + דרכון.</b> Hertz דורשים במפורש רישיון בינלאומי כשהרישיון המקורי אינו באנגלית — אצלם זו דרישה, לא המלצה. בלי זה עלולים לסרב למסור את הרכב.':'<b>Israeli licence + International Driving Permit + passport.</b> Hertz explicitly require an IDP when the licence isn’t in English — for them it’s a requirement, not a suggestion. Without it they can refuse to release the car.'}</span></li>
+        <li><span class="who">💳</span><span>${L?'<b>כרטיס האשראי של הנהג הראשי</b>, על שמו. Hertz יחסמו מסגרת לפיקדון.':'<b>The main driver’s credit card</b>, in his name. Hertz will place a hold for the deposit.'}</span></li>
+        <li><span class="who">👩</span><span>${L?'<b>נהגים נוספים כלולים במחיר</b> — אז אם טלי רוצה לנהוג, כדאי לרשום אותה עכשיו. זה חינם, וזה מחלק נסיעה של 5 שעות ביום שני. היא צריכה רישיון + רישיון בינלאומי.':'<b>Additional drivers are included</b> — so if Tali wants to drive, register her now. It’s free, and it splits Monday’s 5-hour drive. She needs her licence plus an IDP.'}</span></li>
+        <li class="warn"><span class="who">🧒</span><span>${L?'<b>מושב הגבהה לאור.</b> חובה חוקית בקליפורניה, אריזונה, יוטה ונבדה — כל ארבע המדינות שתעברו בהן. חייב לשבת מאחור. לבקש מ-Hertz בדלפק.':'<b>Booster seat for Or.</b> Legally required in California, Arizona, Utah and Nevada — all four states you’ll drive through. He must sit in the back. Ask Hertz at the counter.'}</span></li>
+        <li><span class="who">🛣️</span><span>${L?'<b>אגרות כביש כלולות (PlatePass).</b> זה מוריד את הדאגה מנתיבי האגרה בלוס אנג׳לס — אבל עדיין לא צריך להיכנס אליהם בכוונה.':'<b>Toll fees are included (PlatePass).</b> That removes the worry about LA’s toll lanes — though there’s still no reason to enter them deliberately.'}</span></li>
+        <li><span class="who">📸</span><span>${L?'<b>לצלם את הרכב מכל הצדדים</b> לפני שיוצאים מהחניון, כולל שריטות קיימות ומצב הצמיגים.':'<b>Photograph the car from every side</b> before leaving the stall, including existing scratches and the state of the tyres.'}</span></li>
       </ul>
     </div>
   </div>
 
   <div class="card">
     <div class="card-pad">
-      <div class="eyebrow">${L?'נהיגה באריזונה ובקליפורניה':'Driving in Arizona and California'}</div>
+      <div class="slot"><span class="dot" style="background:var(--evening)"></span><span class="lbl">${L?'החזרה':'Return'}</span><span class="tm num">24.08 · 14:00</span></div>
+      <h3>Hertz — ${L?'לאס וגאס, Harry Reid':'Las Vegas, Harry Reid'}</h3>
+      <p class="muted" style="margin:6px 0 0"><bdi>7135 Gilespie St, Las Vegas, NV 89119</bdi> · ☎ 702-262-7700</p>
+      ${navBtn('hertzlas')}
+      <p class="tiny" style="margin:7px 2px 0">${L
+        ? 'ℹ️ מרכז ההשכרה נמצא <b>5 ק״מ דרומית לטרמינלים</b>, לא בשדה עצמו. שאטל חינם 24/7 לטרמינל, כל 5–15 דקות, נסיעה של 7 דקות.'
+        : 'ℹ️ The rental centre is <b>5 km south of the terminals</b>, not at the airport itself. Free 24/7 shuttle to the terminal, every 5–15 minutes, a 7-minute ride.'}</p>
+      <ul class="tips">
+        <li class="warn"><span class="who">⏰</span><span>${L?'<b>14:00 היא דדליין אמיתית.</b> מפייג׳ זה ~5 שעות נהיגה. יציאה ב-07:30 נותנת מרווח; יציאה ב-09:00 כבר מלחיצה. איחור בהחזרה בכיוון אחד עלול לגרור חיוב יום נוסף.':'<b>14:00 is a real deadline.</b> It’s ~5 hours of driving from Page. Leaving at 07:30 gives you slack; leaving at 09:00 is already tight. A late return on a one-way can trigger an extra-day charge.'}</span></li>
+        <li class="warn"><span class="who">🕐</span><span>${L?'<b>14:00 בשעון לאס וגאס — שהוא אותו שעון כמו פייג׳.</b> באמצע הדרך עוברים ביוטה, ששם השעה קופצת שעה קדימה. אל תתכננו לפי מה שהטלפון מראה בקנאב.':'<b>14:00 is Las Vegas time — the same clock as Page.</b> Midway you cross Utah, where the clock jumps an hour forward. Don’t plan by what your phone shows in Kanab.'}</span></li>
+        <li><span class="who">⛽</span><span>${L?'<b>לתדלק לפני ההחזרה.</b> יש תחנות על Las Vegas Blvd ועל Gilespie ממש לפני מרכז ההשכרה.':'<b>Refuel before the return.</b> There are stations on Las Vegas Blvd and on Gilespie right before the rental centre.'}</span></li>
+        <li><span class="who">📸</span><span>${L?'לצלם מד דלק, מד ק״מ והרכב מסביב, ולקחת <b>קבלת סגירה</b>. אתם טסים משם — אין חזרה לברר.':'Photograph the fuel gauge, the odometer and the car all round, and take a <b>closing receipt</b>. You’re flying out — there’s no coming back to sort it out.'}</span></li>
+        <li><span class="who">🧳</span><span>${L?'<b>לרוקן את הרכב לגמרי</b> — מטענים, משקפיים, מושב ההגבהה, בקבוקים, צידנית.':'<b>Empty the car completely</b> — chargers, sunglasses, the booster, bottles, cooler.'}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-pad">
+      <div class="eyebrow">${L?'נהיגה — ארבע מדינות':'Driving — four states'}</div>
       <ul class="tips">
         <li class="warn"><span class="who">🦌</span><span>${L?'<b>אייל סביב פלגסטאף בזריחה ובשקיעה.</b> 300 ק״ג שנכנסים דרך השמשה. <b>בולמים, לא סוטים.</b> ואם אחד חצה — עוד באים.':'<b>Elk around Flagstaff at dawn and dusk.</b> 300 kg coming through the windscreen. <b>Brake, don’t swerve.</b> And if one crossed, more are coming.'}</span></li>
         <li class="warn"><span class="who">🐎</span><span>${L?'<b>בקר וסוסים חופשיים</b> על כביש 89 בשטח נאוואחו. סוס כהה בלילה נמצא מעל אלומת הפנסים. לא לנסוע שם בחושך.':'<b>Free-range cattle and horses</b> on US-89 across Navajo land. A dark horse at night sits above your headlight beam. Don’t drive it after dark.'}</span></li>
-        <li class="warn"><span class="who">🚌</span><span>${L?'<b>אוטובוס צהוב עם אורות מהבהבים = כולם עוצרים</b>, גם מהכיוון הנגדי. קנס מ-250$ ועד 1,000$. זה החוק שהכי קל להיכשל בו.':'<b>A yellow school bus with red flashing lights = everyone stops</b>, including oncoming traffic. Fines from $250 to $1,000. It’s the easiest law to fail.'}</span></li>
-        <li><span class="who">⛽</span><span>${L?'<b>משאבות דורשות ZIP אמריקאי</b> — לשלם בקופה: ״Pump 6, I’ll pay inside״. לא לנסות ZIP-ים חוזרים, זה מקפיא את הכרטיס. להימנע מ-ARCO ומתחנות בלי אדם.':'<b>Pumps demand a US ZIP</b> — pay inside: “Pump 6, I’ll pay inside.” Don’t retry ZIPs, it freezes the card. Avoid ARCO and unattended stations.'}</span></li>
-        <li><span class="who">🚦</span><span>${L?'<b>פנייה ימינה באדום מותרת</b> אחרי עצירה מלאה — אלא אם יש שלט NO TURN ON RED או חץ אדום. עצירה מלאה זה באמת מלאה.':'<b>Right turn on red is allowed</b> after a complete stop — unless there’s a NO TURN ON RED sign or a red arrow. A complete stop means completely.'}</span></li>
-        <li><span class="who">🚔</span><span>${L?'<b>מעל 137 קמ״ש באריזונה זו עבירה פלילית</b>, לא דו״ח. תקרה מעשית: 128.':'<b>Over 85 mph in Arizona is a criminal offence</b>, not a ticket. Practical ceiling: 80 mph.'}</span></li>
-        <li><span class="who">🍷</span><span>${L?'<b>שטח נאוואחו יבש לחלוטין.</b> אסור להחזיק או להסיע אלכוהול ברכב, גם בקבוק סגור. פייג׳ עצמה — מותר.':'<b>Navajo Nation land is completely dry.</b> No possessing or transporting alcohol in the car, not even sealed. Page itself is fine.'}</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-pad">
-      <div class="slot"><span class="dot" style="background:var(--evening)"></span><span class="lbl">${L?'החזרה':'Return'}</span><span class="tm num">25.08 · 08:30</span></div>
-      <div class="alert amber" style="margin:0 0 12px">${L
-        ? '<b>🛡️ אם יש נזק — לפני שעוזבים</b>לצלם הכל, לקחת עותק של דוח הנזק מ-Budget, ולפתוח תביעה מול RentalCover. בלי הדוח שלהם אין תביעה.'
-        : '<b>🛡️ If there’s damage — before you leave</b>Photograph everything, get a copy of Budget’s damage report, and open a claim with RentalCover. Without their report there is no claim.'}</div>
-      <h3>${L?'חזרה ל-LAX':'Back to LAX'}</h3>
-      <p class="muted" style="margin:6px 0 0">${L
-        ? 'אותו מקום שבו אספתם. יציאה מהמלון ב-07:45, תדלוק בדרך, החזרה ב-08:30, שאטל 15–20 דקות, ואתם בטרמינל B סביב 09:15 — כמעט ארבע שעות לפני LY6.'
-        : 'The same place you collected from. Leave the hotel 07:45, refuel on the way, return at 08:30, shuttle 15–20 min, and you’re at Terminal B around 09:15 — nearly four hours before LY6.'}</p>
-      ${navBtn('conrac')}
-      <ul class="tips">
-        <li><span class="who">⛽</span><span>${L?'<b>לתדלק לפני ההחזרה.</b> תעריף הדלק של חברת ההשכרה כפול ממחיר תחנה.':'<b>Refuel before returning.</b> The rental company’s fuel rate is double a station’s.'}</span></li>
-        <li><span class="who">📸</span><span>${L?'לצלם מד דלק, מד ק״מ והרכב מסביב, ולקחת <b>קבלת סגירה</b>.':'Photograph the fuel gauge, the odometer and the car all round, and take a <b>closing receipt</b>.'}</span></li>
-        <li><span class="who">🧳</span><span>${L?'לבדוק את כל התאים: מטענים, משקפיים, מושב ההגבהה, בקבוקים.':'Check every compartment: chargers, sunglasses, the booster, water bottles.'}</span></li>
-        <li><span class="who">🕗</span><span>${L?'<b>אופציה:</b> אם מחזירים כבר בשני בערב — מרינה דל ריי ל-LAX זה 15 דקות במונית בבוקר, וזה עובד. אבל אז אין רכב לערב האחרון.':'<b>Option:</b> if you return it Monday evening instead — Marina del Rey to LAX is a 15-minute taxi in the morning, and that works. But then you have no car for the last evening.'}</span></li>
+        <li class="warn"><span class="who">🚌</span><span>${L?'<b>אוטובוס צהוב עם אורות מהבהבים = כולם עוצרים</b>, גם מהכיוון הנגדי. קנס מ-250$ ועד 1,000$.':'<b>A yellow school bus with red flashing lights = everyone stops</b>, including oncoming traffic. Fines from $250 to $1,000.'}</span></li>
+        <li><span class="who">⛽</span><span>${L?'<b>משאבות דורשות ZIP אמריקאי</b> — לשלם בקופה: ״Pump 6, I’ll pay inside״. לא לנסות ZIP-ים חוזרים, זה מקפיא את הכרטיס.':'<b>Pumps demand a US ZIP</b> — pay inside: “Pump 6, I’ll pay inside.” Don’t retry ZIPs, it freezes the card.'}</span></li>
+        <li><span class="who">🚔</span><span>${L?'<b>מעל 137 קמ״ש באריזונה זו עבירה פלילית</b>, לא דו״ח. ובנבדה ובקליפורניה אוכפים בכבדות את I-15. תקרה מעשית: 128.':'<b>Over 85 mph in Arizona is a criminal offence</b>, not a ticket. And I-15 is heavily patrolled in Nevada and California. Practical ceiling: 80 mph.'}</span></li>
+        <li><span class="who">🍷</span><span>${L?'<b>שטח נאוואחו יבש לחלוטין</b> — אסור להחזיק או להסיע אלכוהול, גם בקבוק סגור. פייג׳ עצמה מותרת.':'<b>Navajo Nation land is completely dry</b> — no possessing or transporting alcohol, not even sealed. Page itself is fine.'}</span></li>
       </ul>
       <div class="alert teal" style="margin-top:14px">${esc(tx(UI.locked))}</div>
     </div>
@@ -1339,7 +1367,7 @@ const SPOTS = {
   canyon:   {lat:36.0589, lon:-112.1092, name:T('גרנד קניון','Grand Canyon'),    norm:[28,12]},
   page:     {lat:36.9147, lon:-111.4558, name:T('פייג׳','Page'),                 norm:[36,23]},
   barstow:  {lat:34.8958, lon:-117.0173, name:T('ברסטו / מוהאבי','Barstow / Mojave'), norm:[39,23]},
-  seligman: {lat:35.3258, lon:-112.8746, name:T('סליגמן','Seligman'),            norm:[32,16]},
+  vegas:    {lat:36.0840, lon:-115.1372, name:T('לאס וגאס','Las Vegas'),          norm:[40,27]},
   mdr:      {lat:33.9822, lon:-118.4602, name:T('מרינה דל ריי','Marina del Rey'),norm:[24,18]}
 };
 const SPOT_KEYS = Object.keys(SPOTS);
@@ -1348,7 +1376,7 @@ const DAY_SPOTS = {
   'day-1':['barstow','flagstaff'],
   'day-2':['canyon','page'],
   'day-3':['page'],
-  'day-4':['seligman','mdr'],
+  'day-4':['vegas','mdr'],
   'day-5':['mdr']
 };
 
