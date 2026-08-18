@@ -450,7 +450,7 @@ const DAYS = [
       title:T('נחיתה — LAX טרמינל B','Landing — LAX Terminal B'),
       desc:T('LY5 נוחתת ב-06:00 בטרמינל בראדלי. ביקורת דרכונים בשעת שיא לוקחת 45–90 דקות ועוד 20–45 על המזוודות. תכננו לצאת מהטרמינל בסביבות 07:30–08:30.','LY5 lands 06:00 at Tom Bradley. Passport control at peak runs 45–90 min, bags another 20–45. Plan on clearing the terminal around 07:30–08:30.'),
       tips:[
-        {who:'all', text:T('<b>רכבת הנוסעים של LAX עדיין לא פועלת</b> (הפתיחה נדחתה לאוקטובר 2026) — היציאה למרכז ההשכרה היא <b>שאטל</b> מקומת ההגעות, מתחת לשלט הסגול Rental Car Shuttles. עולים על הראשון שמגיע, לא משנה איזו חברה — כולם נוסעים לאותו בניין.','<b>The LAX people mover is not running yet</b> (pushed to Oct 2026) — the rental centre is reached by <b>shuttle bus</b> from the Arrivals level, under the purple “Rental Car Shuttles” sign. Take the first one that shows up, any brand — they all go to the same building.')},
+        {who:'all', warn:true, text:T('<b>רכבת הנוסעים של LAX עדיין לא פועלת</b> — היציאה למרכז ההשכרה היא <b>שאטל</b> מקומת ההגעות, מתחת לשלט הסגול ״Rental Car Shuttles״. ⚠️ ייתכן שאין תחנה ממש מול בראדלי — אז הולכים ימינה עד טרמינל 4. <b>המדריך המלא שלב-אחר-שלב נמצא בלשונית 🚗 רכב.</b>','<b>The LAX people mover still isn’t running</b> — the rental centre is reached by <b>shuttle bus</b> from the Arrivals level, under the purple “Rental Car Shuttles” sign. ⚠️ There may be no stop directly outside Bradley — in that case walk right to Terminal 4. <b>The full step-by-step is in the 🚗 Car tab.</b>')},
         {who:'itamar', text:T('להחזיק ביד: רישיון ישראלי + <b>רישיון בינלאומי</b> + דרכון. חברות ההשכרה נוקשות יותר מהחוק כשהרישיון לא באותיות לטיניות.','Have in hand: Israeli licence + <b>International Driving Permit</b> + passport. Rental companies are stricter than the law when the licence isn’t in Latin script.')}
       ]
     },
@@ -1130,10 +1130,10 @@ function viewHome(){
   </div>
 
   <div class="alert red">
-    <b>🚗 ${LANG==='h'?'שני דברים פתוחים בשינוי הרכב':'Two loose ends from the car change'}</b>
+    <b>✈️ ${LANG==='h'?'הטיסה מלאס וגאס ל-LA עדיין לא הוזמנה':'The Las Vegas → LA flight isn’t booked yet'}</b>
     ${LANG==='h'
-      ? '<b>1. הטיסה מלאס וגאס ל-LA עדיין לא הוזמנה.</b> הרכב חוזר ב-14:00 ביום שני, והמוקדם הריאלי להמראה הוא 16:00–16:30. שלחו לי את הפרטים כשתזמינו.<br><br><b>2. לוודא שההזמנה הישנה של Budget בוטלה.</b> היא הייתה משולמת מראש — אם היא עדיין פתוחה, תחויבו עליה בנוסף.'
-      : '<b>1. The Las Vegas → LA flight isn’t booked yet.</b> The car goes back at 14:00 Monday, and the realistic earliest departure is 16:00–16:30. Send me the details once you book.<br><br><b>2. Make sure the old Budget reservation is cancelled.</b> It was prepaid — if it’s still open you’ll be charged for it on top.'}
+      ? 'הרכב חוזר ב-<b>14:00 ביום שני</b> בלאס וגאס, והמוקדם הריאלי להמראה הוא <b>16:00–16:30</b> — החזרה, שאטל של 7 דקות, ואז ביטחון. אל תזמינו משהו ב-15:00. שלחו לי את הפרטים כשתזמינו ואוסיף אותם ליום שני.'
+      : 'The car goes back at <b>14:00 on Monday</b> in Las Vegas, and the realistic earliest departure is <b>16:00–16:30</b> — the return, a 7-minute shuttle, then security. Don’t book anything at 15:00. Send me the details once you book and I’ll add them to Monday.'}
   </div>
 
   <div class="alert red">
@@ -1296,10 +1296,35 @@ function viewCar(){
   </div>
 
   <div class="alert amber">
-    <b>🛡️ ${L?'הביטוח כלול — כנראה שאין צורך ב-RentalCover':'Cover is included — RentalCover is probably redundant now'}</b>
+    <b>🛡️ ${L?'הביטוח היחיד שלכם עכשיו הוא של Hertz':'Your only cover now is Hertz’s'}</b>
     ${L
-      ? 'השובר של Hertz מפרט <b>LDW (ביטוח נזק) ו-LIS (ביטוח צד שלישי מורחב)</b> ככלולים במחיר, וגם אגרות כביש (PlatePass), נהגים נוספים וק״מ ללא הגבלה. הפוליסה של RentalCover ב-111₪ נקנתה עבור ההזמנה הישנה של Budget ו<b>ייתכן שהיא מיותרת עכשיו</b>.<br><br><b>לפני שמבטלים:</b> לוודא מול Hertz מה ההשתתפות העצמית ב-LDW. אם היא אפס — אפשר לבטל את RentalCover ולחסוך. אם יש השתתפות עצמית — RentalCover עדיין שווה משהו.'
-      : 'The Hertz voucher lists <b>LDW (damage waiver) and LIS (extended liability)</b> as included in the price, along with toll fees (PlatePass), additional drivers and unlimited mileage. The ₪111 RentalCover policy was bought for the old Budget booking and <b>may now be redundant</b>.<br><br><b>Before cancelling:</b> confirm with Hertz what the LDW excess is. If it’s zero, you can cancel RentalCover and save the money. If there is an excess, RentalCover still buys you something.'}
+      ? 'RentalCover בוטלה וההזמנה של Budget בוטלה — נשאר מה שכלול בשובר של Hertz: <b>LDW (ביטוח נזק) ו-LIS (ביטוח צד שלישי מורחב)</b>, וגם אגרות כביש (PlatePass), נהגים נוספים וק״מ ללא הגבלה.<br><br><b>מה שכן כדאי לברר בדלפק:</b> מה <b>ההשתתפות העצמית</b> ב-LDW. זה הסכום שתשלמו מכיסכם אם יש נזק, וכרגע אין ביטוח משלים מאחוריו. אם המספר גבוה ולא נוח לכם איתו — שם המקום להוסיף כיסוי, לא אחר כך.'
+      : 'RentalCover is cancelled and the Budget booking is cancelled — what remains is what the Hertz voucher includes: <b>LDW (damage waiver) and LIS (extended liability)</b>, plus toll fees (PlatePass), additional drivers and unlimited mileage.<br><br><b>Worth asking at the counter:</b> what the <b>LDW excess</b> is. That’s what you’d pay out of pocket if there’s damage, and there is no longer a top-up policy sitting behind it. If the number is high and you’re not comfortable, the counter is where you’d add cover — not afterwards.'}
+  </div>
+
+  <div class="card">
+    <div class="card-pad">
+      <div class="eyebrow">${L?'מהמטוס לרכב':'From the plane to the car'}</div>
+      <h3>${L?'שבעה שלבים, 45–70 דקות':'Seven steps, 45–70 minutes'}</h3>
+      <p class="muted" style="margin:6px 0 0">${L
+        ? 'רכבת הנוסעים של LAX (SkyLink) <b>עדיין לא נפתחה</b> — היא נדחתה שוב ואין תאריך רשמי. לכן זה שאטל.'
+        : 'The LAX people mover (SkyLink) <b>still isn’t open</b> — it has been delayed again with no confirmed date. So it’s a shuttle.'}</p>
+      <ul class="tips">
+        <li><span class="who">1️⃣</span><span>${L?'יורדים מהמטוס בטרמינל B (בראדלי), עוברים ביקורת דרכונים ואוספים מזוודות. <b>תכננו 90–180 דקות</b> מהנחיתה עד שאתם בחוץ.':'Off the plane at Terminal B (Bradley), through passport control, collect the bags. <b>Plan 90–180 minutes</b> from landing to being outside.'}</span></li>
+        <li><span class="who">2️⃣</span><span>${L?'יוצאים מאולם המזוודות אל <b>קומת ההגעות (התחתונה)</b> — לא קומת היציאות.':'Leave baggage claim for the <b>Arrivals level (lower)</b> — not Departures.'}</span></li>
+        <li class="warn"><span class="who">3️⃣</span><span>${L?'מחפשים את השלט ה<b>סגול</b> ״Rental Car Shuttles״ על אי התנועה שבמרכז הכביש. <b>ייתכן שאין תחנה כזו ממש מול בראדלי</b> — במקרה כזה פונים ימינה והולכים על המדרכה כשהיא מתעקלת שמאלה עד <b>טרמינל 4</b>, 3–5 דקות, וחוצים לאי שם.':'Look for the <b>purple</b> “Rental Car Shuttles” sign on the centre traffic island. <b>There may not be a stop directly outside Bradley</b> — if so, turn right and follow the pavement as it curves left to <b>Terminal 4</b>, 3–5 minutes, and cross to the island there.'}</span></li>
+        <li><span class="who">4️⃣</span><span>${L?'<b>עולים על השאטל הראשון שמגיע, לא משנה איזו חברה כתובה עליו.</b> מאז שמרכז ההשכרה המאוחד נפתח, כולם נוסעים לאותו בניין.':'<b>Get on the first shuttle that arrives, whatever brand is on it.</b> Since the consolidated centre opened, they all go to the same building.'}</span></li>
+        <li><span class="who">5️⃣</span><span>${L?'נסיעה של <b>15–20 דקות</b>. השאטלים יוצאים כל 10–15 דקות, 24 שעות ביממה.':'A <b>15–20 minute</b> ride. Shuttles run every 10–15 minutes, 24 hours a day.'}</span></li>
+        <li><span class="who">6️⃣</span><span>${L?'במרכז ההשכרה: ללכת לפי השילוט אל <b>Hertz, סוויטה 573</b>. שם הדלפק, הניירת והמפתחות.':'At the rental centre: follow the signs to <b>Hertz, suite 573</b>. That’s the counter, the paperwork and the keys.'}</span></li>
+        <li><span class="who">7️⃣</span><span>${L?'משם לחניון לאסוף את הרכב עצמו, לצלם אותו מסביב, ולצאת.':'Then to the garage to collect the car itself, photograph it all round, and go.'}</span></li>
+      </ul>
+      <div class="alert amber" style="margin-top:14px">${L
+        ? '<b>💡 קיצור דרך אם נמאס לכם</b>מונית או Uber מהטרמינל ל-5251 W 98th St זה 5–10 דקות ועולה מעט. אחרי טיסה של 15 שעות, עם ארבעה אנשים ושמונה מזוודות, ואם התור לשאטל ארוך — זה כסף טוב. שווה לשקול בלי להרגיש רע.'
+        : '<b>💡 A shortcut if you’ve had enough</b>A taxi or Uber from the terminal to 5251 W 98th St is 5–10 minutes and costs little. After a 15-hour flight, with four people and eight bags, and a long shuttle queue — that’s money well spent. Worth considering without feeling bad about it.'}</div>
+      <p class="tiny" style="margin-top:10px">${L
+        ? '⚠️ מקורות שונים חלוקים בשאלה אם יש תחנת שאטל ממש מול טרמינל בראדלי, ואתר שדה התעופה חסם בדיקה אוטומטית. השלבים למעלה עובדים בשני המקרים. אם עד אז SkyLink כבר נפתחה — היא משורטטת בשילוט ומגיעה מבראדלי למרכז ההשכרה מהר יותר.'
+        : '⚠️ Sources disagree on whether there is a shuttle stop directly outside the Bradley terminal, and the airport’s own site blocked an automated check. The steps above work either way. If SkyLink has opened by then, it will be signposted and gets you from Bradley to the rental centre faster.'}</p>
+    </div>
   </div>
 
   <div class="card">
