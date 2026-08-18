@@ -442,7 +442,7 @@ const DAYS = [
   title:T('נחיתה ב-LA והדרך לפלגסטאף','Landing in LA, driving to Flagstaff'),
   sub:T('יום נהיגה ארוך. המטרה היחידה: להגיע שלמים, לאכול, לישון.','One long driving day. The only goal: arrive in one piece, eat, sleep.'),
   banner:'road',
-  chips:[T('~775 ק״מ','~775 km'), T('7:15 ש׳ נהיגה נטו','7h15 pure driving'), T('ללא שינוי שעון','No time change')],
+  chips:[T('~775 ק״מ','~775 km'), T('7:15 ש׳ נהיגה נטו','7h15 pure driving'), T('עצירה בסליגמן','Seligman stop'), T('ללא שינוי שעון','No time change')],
   items:[
     { slot:'morning', time:'06:00',
       title:T('נחיתה — LAX טרמינל B','Landing — LAX Terminal B'),
@@ -474,7 +474,33 @@ const DAYS = [
         {who:'heat', text:T('בין ברסטו לנידלס הטמפרטורה מגיעה ל-45°C+. לא לכבות מזגן כדי ״לחסוך דלק״, ולוודא לחץ אוויר בצמיגים לפני הקטע הזה — פיצוץ צמיג הוא הסיכון האמיתי, לא המנוע.','Between Barstow and Needles it hits 45°C+. Don’t turn the A/C off to “save fuel”, and check tyre pressure before this leg — a blowout is the real risk here, not the engine.')}
       ]
     },
-    { slot:'evening', time:'~18:00',
+    { slot:'afternoon', time:'~16:30',
+      title:T('סליגמן — Route 66','Seligman — Route 66'),
+      desc:T('העיירה שהמציאה מחדש את Route 66, וההשראה לרדיאטור ספרינגס ב״מכוניות״. שלטים, מכוניות וינטג׳ וחזיתות צבעוניות. <b>עצירה של 20–30 דקות, בלי סטייה כמעט</b> — סליגמן יושבת ישר על I-40 (יציאות 121/123), אז זה לולאה קצרה מהכביש וחזרה.','The town that reinvented Route 66, and the inspiration for Radiator Springs in <i>Cars</i>. Signs, vintage cars and painted storefronts. <b>A 20–30 minute stop with almost no detour</b> — Seligman sits right on I-40 (exits 121/123), so it’s a short loop off the highway and back.'),
+      nav:'seligman',
+      chips:[T('20–30 דק׳','20–30 min'), T('ללא סטייה','No detour'), T('1:20 ש׳ לפלגסטאף','1h20 to Flagstaff')],
+      photos:[
+        P('Seligman%2C_Arizona_on_Route_66_%2848443618706%29.jpg','Seligman,_Arizona_on_Route_66_(48443618706).jpg',T('חנות מזכרות צבעונית על Route 66 בסליגמן','A brightly painted Route 66 souvenir shop in Seligman')),
+        P('Seligman_Delgadillo%E2%80%99s_Snow_Cap_Historical_petrol_pumps.jpg','Seligman_Delgadillo%E2%80%99s_Snow_Cap_Historical_petrol_pumps.jpg',T('משאבת דלק וינטג׳ ליד שלט Route 66','A vintage petrol pump beside a Route 66 sign')),
+        P('SeligmanArizona.JPG','SeligmanArizona.JPG',T('שלט הכניסה לסליגמן, מקום הולדתו של Route 66','The Welcome to Seligman sign, birthplace of Route 66'))
+      ],
+      video:{id:'1L9cee9-WPE', title:T('סיור בסליגמן על Route 66','Exploring Seligman on Historic Route 66')},
+      tips:[
+        {who:'all', warn:true, text:T('<b>Delgadillo’s Snow Cap סוגר ב-18:00.</b> בשעה הזאת אתם אמורים להגיע בסביבות 16:30 — בסדר גמור, אבל אם התעכבתם ב-LA או בברסטו, תבדקו את השעה לפני שאתם מתלהבים. (וסגור בימי ראשון.)','<b>Delgadillo’s Snow Cap closes at 18:00.</b> You should arrive around 16:30, which is fine — but if LA or Barstow ran late, check the clock before getting anyone’s hopes up. (Also closed Sundays.)')},
+        {who:'or', text:T('אם אור מכיר את ״מכוניות״ — רדיאטור ספרינגס בנוי על העיירה הזאת. שווה לספר לו את זה <b>לפני</b> שנכנסים, זה משנה לגמרי את העצירה.','If Or knows <i>Cars</i> — Radiator Springs is built on this town. Worth telling him <b>before</b> you pull in; it completely changes the stop.')},
+        {who:'shai', text:T('ב-Snow Cap המלצרים עובדים על הלקוחות באותן בדיחות כבר 70 שנה — ״צ׳יזבורגר עם גבינה״, בקבוק חרדל עם חוט, ידיות דלת שנשארות ביד. הבורגרים בינוניים, המילקשייקים טובים.','At the Snow Cap the staff have been running the same gags for 70 years — the “cheeseburger with cheese”, the fake-string mustard bottle, door handles that come off in your hand. The burgers are ordinary, the malts are good.')},
+        {who:'all', text:T('זו גם עצירת השירותים והדלק האחרונה שכדאי לעשות לפני פלגסטאף. משם עוד 145 ק״מ, בערך שעה ועשרים.','This is also the last sensible fuel and toilet stop before Flagstaff. From here it’s another 145 km, about an hour and twenty.')}
+      ],
+      shots:[
+        {who:'tali', text:T('<b>סליגמן היא תפאורה, לא נוף</b> — ולכן היא עובדת בכל אור. השלטים, המכוניות והחזיתות עושות את העבודה. הכי טוב: כל המשפחה מול משאבת דלק ישנה או שלט Route 66. ומאחורי Snow Cap יש חצר גרוטאות עם מכוניות עתיקות — שם התמונות הכי טובות.','<b>Seligman is a set, not a landscape</b> — which is why it works in any light. The signs, the cars and the storefronts do the work. Best one: all four of you in front of an old petrol pump or a Route 66 shield. And behind the Snow Cap there’s a junkyard of old cars — the best shots are back there.')},
+        {who:'itamar', text:T('ב-16:30 באוגוסט השמש כבר נמוכה מספיק כדי לתת צבע חם על השלטים והצבעים, בלי הניגוד האכזרי של הצהריים. זה למעשה תזמון טוב יותר ממה שהיה בדרך חזרה.','At 16:30 in August the sun is already low enough to give warm colour on the signs and paintwork, without the brutal contrast of midday. This is actually better timing than the return leg would have been.')}
+      ],
+      food:[
+        {n:'Delgadillo’s Snow Cap', m:T('🍦 <b>קינוח בלבד, לא ארוחה.</b> מילקשייק, גלידה רכה והבדיחות. 10:00–18:00, סגור בראשון.','🍦 <b>Dessert only, not a meal.</b> Malts, soft-serve and the gags. 10:00–18:00, closed Sunday.'), a:'301 AZ-66', nav:'301 AZ-66, Seligman, AZ 86337'},
+        {n:'Westside Lilo’s Cafe', m:T('🥧 אם צריך משהו אמיתי — המסעדה הטובה בקטע הזה של הדרך, ועוגת הגזר שלהם מפורסמת. שווה לקנות שלמה לרכב.','🥧 If you need something real — the best restaurant on this stretch, and their carrot cake is famous. Worth buying a whole one for the car.'), a:'22855 W Historic Route 66', nav:'22855 W Historic Route 66, Seligman, AZ 86337'}
+      ]
+    },
+    { slot:'evening', time:'~18:45',
       title:T('הגעה לפלגסטאף','Arrive Flagstaff'),
       desc:T('דירה 4, בתוך מרכז העיר ההיסטורי, כ-8 דקות הליכה מ-Heritage Square. צ׳ק-אין מ-16:00 — אתם מגיעים ממילא אחרי. חונים ליד הבית הירוק הגדול, נכנסים מהשער האחורי הגבוה מימין לבית והולכים לדירה הארוכה שמול העיניים. פלגסטאף יושבת ב-2,100 מטר — הלילות קרירים (~12°C), אז תוציאו סווטשירטים.','Apartment #4, inside the historic downtown grid, about an 8-minute walk from Heritage Square. Check-in from 16:00 — you’ll arrive after that anyway. Park next to the big green house, come in through the tall back gate to the right of the house and head for the long apartment in view. Flagstaff sits at 2,100 m — nights are cool (~12°C), so dig out sweatshirts.'),
       nav:'flagstaff',
@@ -783,7 +809,8 @@ const DAYS = [
       title:T('סליגמן — Route 66','Seligman — Route 66'),
       desc:T('עצירה של 20 דקות בעיירה שהמציאה מחדש את Route 66 (וגם השראה ל״מכוניות״ של פיקסאר). שלטים, מכוניות וינטג׳, וגלידה ב-Delgadillo’s Snow Cap.','A 20-minute stop in the town that reinvented Route 66 (and inspired Pixar’s <i>Cars</i>). Signs, vintage cars, and ice cream at Delgadillo’s Snow Cap.'),
       nav:'seligman',
-      chips:[T('20 דק׳','20 min'), T('ללא סטייה','No detour')],
+      navNote:T('ℹ️ <b>עצרתם כאן כבר ביום שישי</b> — סליגמן יושבת על I-40 ואתם עוברים בה לשני הכיוונים. אם ראיתם מספיק, אפשר לדלג ולהרוויח חצי שעה ביום הארוך ביותר בטיול. ואם התוכנית להחזיר את הרכב בלאס וגאס יוצאת לפועל — הקטע הזה של הדרך נעלם בכלל.','ℹ️ <b>You already stopped here on Friday</b> — Seligman sits on I-40 and you pass through it in both directions. If you’ve seen enough, skip it and buy back half an hour on the longest day of the trip. And if the Las Vegas car-return plan happens, this stretch of road disappears entirely.'),
+      chips:[T('נעצרתם כאן בשישי','Already stopped Friday'), T('אפשר לדלג','Skippable')],
       photos:[
         P('Seligman%2C_Arizona_on_Route_66_%2848443618706%29.jpg','Seligman,_Arizona_on_Route_66_(48443618706).jpg',T('חנות מזכרות צבעונית על Route 66 בסליגמן','A brightly painted Route 66 souvenir shop in Seligman')),
         P('Seligman_Delgadillo%E2%80%99s_Snow_Cap_Historical_petrol_pumps.jpg','Seligman_Delgadillo%E2%80%99s_Snow_Cap_Historical_petrol_pumps.jpg',T('משאבת דלק וינטג׳ ליד שלט Route 66','A vintage petrol pump beside a Route 66 sign')),
