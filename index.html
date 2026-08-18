@@ -640,33 +640,11 @@ const DAYS = [
   id:'day-3', n:3, date:'23.08', dow:T('ראשון','Sun'),
   tab:T('3 · אנטילופ','3 · Antelope'),
   title:T('אנטילופ קניון, הפרסה ואגם פאוול','Antelope Canyon, the Bend and Lake Powell'),
-  sub:T('הסיור באנטילופ ב-13:00 מעגן את היום. הבוקר שייך לפרסה ולסכר, אחרי הסיור — מים.','The 13:00 Antelope tour anchors the day. The morning belongs to the Bend and the dam; after the tour, water.'),
+  sub:T('בוקר רגוע, הסיור באנטילופ ב-13:00, מים אחר הצהריים, והפרסה בשעה הזהובה. אין השכמה מוקדמת.','A slow morning, the Antelope tour at 13:00, water in the afternoon, and the Bend at golden hour. No early alarm.'),
   banner:'slot',
-  chips:[T('40°C','40°C'), T('4 ליטר לאדם','4 L per person'), T('אנטילופ 13:00','Antelope 13:00')],
+  chips:[T('בלי השכמה מוקדמת','No early start'), T('אנטילופ 13:00','Antelope 13:00'), T('פרסה 18:00','The Bend 18:00'), T('4 ליטר לאדם','4 L per person')],
   items:[
-    { slot:'morning', time:'06:30',
-      title:T('Horseshoe Bend','Horseshoe Bend'),
-      desc:T('2.4 ק״מ הלוך-חזור על שביל מהודק, עם עלייה קטנה בדרך חזרה. מגיעים עם פתיחת השער בזריחה: קריר, החניון ריק, והילדים רעננים.','2.4 km round trip on a hardened path, with a small climb on the way back. Arrive at sunrise opening: cool, empty car park, kids fresh.'),
-      nav:'horseshoe',
-      chips:[T('10$ לרכב','$10 per car'), T('45–75 דק׳','45–75 min'), T('אין צל בתצפית','No shade at the overlook')],
-      photos:[
-        P('Horseshoe_Bend_Arizona_dllu.jpg','Horseshoe_Bend_Arizona_dllu.jpg',T('נהר הקולורדו מקיף את סלע החול בפרסה','The Colorado River curving around the sandstone butte')),
-        P('USA_10187_Horseshoe_Bend_Luca_Galuzzi_2007.jpg','USA_10187_Horseshoe_Bend_Luca_Galuzzi_2007.jpg',T('Horseshoe Bend מנקודת התצפית','Horseshoe Bend from the clifftop overlook')),
-        P('Horseshoe_Bend_in_the_Colorado_River_-_Page%2C_Arizona%2C_USA.jpg','Horseshoe_Bend_in_the_Colorado_River_-_Page,_Arizona,_USA.jpg',T('עננים דרמטיים מעל הפרסה','Dramatic clouds over Horseshoe Bend'))
-      ],
-      video:{id:'6UA1iEy_j04', title:T('מדריך להליכה ל-Horseshoe Bend','Horseshoe Bend hike guide')},
-      tips:[
-        {who:'money', text:T('<b>הפאס של הפארקים לא תקף כאן</b> — החניון שייך לעיריית פייג׳, 10$ במזומן או בכרטיס. לא לחנות על כביש 89: גוררים.','<b>The parks pass does not work here</b> — the car park belongs to the City of Page, $10 cash or card. Don’t park on US-89: they tow.')},
-        {who:'or', warn:true, text:T('<b>רוב שפת הצוק כאן לא מגודרת ויש 300 מטר נפילה.</b> יש קטע אחד עם מעקה — נשארים שם. ובדרך חזרה זו העלייה, אז שומרים לו מים וחטיף לסוף.','<b>Most of the rim here is unfenced with a 300 m drop.</b> There is one railed section — stay on it. And the return leg is the uphill one, so save water and a snack for the end.')},
-        {who:'all', text:T('אין מים ואין חנות בשביל — רק שירותים בחניון. ליטר לאדם מינימום, גם להליכה של שעה.','No water and no shop on the trail — only restrooms at the car park. One litre per person minimum, even for a one-hour walk.')}
-      ],
-      shots:[
-        {who:'itamar', warn:true, text:T('<b>שווה לחזור לכאן בערב.</b> ב-06:30 האור רך והחניון ריק — נהדר למשפחה — אבל <b>הגורג׳ עצמו עמוק בצל</b> ובדיוק הפרט שבאתם בשבילו יוצא שחור. התמונה הקלאסית והחמה היא ב<b>שעה הזהובה, 18:34–19:09</b>, כשהשמש נמוכה במערב ומאירה את דופן הפרסה. זה 8 דקות מהדירה — אחרי הבריכה, לחזור.','<b>Worth coming back in the evening.</b> At 06:30 the light is soft and the car park is empty — great for the family shot — but <b>the gorge itself is deep in shadow</b> and the very detail you came for goes black. The classic warm shot is at <b>golden hour, 18:34–19:09</b>, when the low western sun lights the wall of the bend. It’s 8 minutes from the apartment — go back after the pool.')},
-        {who:'itamar', text:T('צריך <b>אולטרה-רחב</b> (0.5x בטלפון) כדי להכניס את כל הפרסה — בעדשה רגילה זה פשוט לא נכנס. ולצלם מ<b>עמידה מאחורי המעקה</b>: כל שנה נהרגים שם אנשים שנסוגו צעד אחורה כדי ״להכניס הכל״.','You need the <b>ultra-wide</b> (0.5x on a phone) to fit the whole bend in — a normal lens simply won’t hold it. And shoot from <b>behind the railing</b>: people die there every year stepping back to “fit it all in”.')},
-        {who:'tali', text:T('התמונה המשפחתית הטובה כאן היא <b>מהצד</b>, עם הפרסה מאחור ולא מתחת — ככה רואים גם אתכם וגם למה באתם. בבוקר השמש במזרח מאחוריכם, אז הפרצופים מוארים.','The good family shot here is <b>from the side</b>, with the bend behind you rather than below you — that way both you and the reason you came are visible. In the morning the eastern sun is behind you, so faces are lit.')}
-      ]
-    },
-    { slot:'morning', time:'~08:45',
+    { slot:'morning', time:'~09:15',
       title:T('הסכר ומרכז המבקרים','The dam & visitor center'),
       desc:T('שתי נקודות שונות במרחק 2.5 ק״מ זו מזו. התצפית (Glen Canyon Dam Overlook) היא הצילום — 290 מטר של מדרגות אבן במורד הסלע, חינם. מרכז המבקרים Carl Hayden הוא הבניין הממוזג עם החלונות הענקיים מעל הסכר.','Two different places 2.5 km apart. The Overlook is the photograph — 290 m of stone steps cut down the rock, free. The Carl Hayden Visitor Center is the air-conditioned building with huge windows over the dam.'),
       nav:'damview',
@@ -732,13 +710,39 @@ const DAYS = [
         {who:'all', text:T('חלופה בלי חול: אזור הרחצה המסומן ב-Wahweap — הכל אספלט, אבל הליכה ארוכה וחמה עד המים כי האגם נמוך מאוד השנה.','Sand-free alternative: the buoyed swim area at Wahweap — all paved, but a long hot walk to the water because the lake is very low this year.')}
       ],
       shots:[
-        {who:'itamar', text:T('<b>שקיעה על המים ב-19:09.</b> לון רוק היא סלע ענק בודד שיוצא מהאגם — הצללית שלו מול שמיים ורודים היא התמונה. אם הולכים על זה, לקחת בחשבון חזרה בחושך של 20 דקות. חלופה קרובה יותר: תצפית Wahweap.','<b>Sunset on the water at 19:09.</b> Lone Rock is a single huge rock rising out of the lake — its silhouette against a pink sky is the shot. If you go for it, factor in a 20-minute drive back in the dark. Closer alternative: the Wahweap overlook.')},
-        {who:'tali', text:T('הילדים במים עם הסלע מאחור, בשעה הזהובה, זו התמונה שתרצו למסגר. ולצלם <b>נמוך</b> — כפוף עד גובה המים — ככה הסלע נראה ענק והילדים לא נבלעים בחוף.','The kids in the water with the rock behind them at golden hour is the one you’ll want framed. Shoot <b>low</b> — crouch down to water level — that way the rock looks huge and the kids don’t get swallowed by the beach.')}
+        {who:'itamar', text:T('<b>שימו לב לשעון: השקיעה שמורה לפרסה.</b> לון רוק בשקיעה זה יפה, אבל אי אפשר לעשות את שתיהן — הפרסה מנצחת. כאן מצלמים באור אחר הצהריים: מים טורקיז, סלע אדום, ניגוד חזק. לצאת מהחוף ב-17:30.','<b>Watch the clock: sunset belongs to the Bend.</b> Lone Rock at sunset is lovely, but you cannot do both — the Bend wins. Shoot here in afternoon light instead: turquoise water, red rock, strong contrast. Leave the beach by 17:30.')},
+        {who:'tali', text:T('הילדים במים עם הסלע מאחור זו התמונה שתרצו למסגר. לצלם <b>נמוך</b> — כפוף עד גובה המים — ככה הסלע נראה ענק והילדים לא נבלעים בחוף.','The kids in the water with the rock behind them is the one you will want framed. Shoot <b>low</b> — crouch to water level — that way the rock looks huge and the kids do not get swallowed by the beach.')}
       ],
       food:[
-        {n:'Sunset 89', m:T('🥗 הכי קליל ומוקפד בעיר, נוף לכיוון האגם. <b>מקבלים הזמנות — כדאי להזמין.</b>','🥗 The lightest and most refined in town, with a view toward the lake. <b>Takes reservations — book it.</b>'), a:'724 US-89 · 928-608-5562', nav:'724 US-89, Page, AZ 86040'},
-        {n:'Big John’s Texas BBQ', m:T('🔥 מוזיקה חיה 18:30–21:00. להגיע 17:15.','🔥 Live music 18:30–21:00. Arrive 17:15.'), a:'153 S Lake Powell Blvd'},
-        {n:'Dam Bar & Grille', m:T('🥩 סטייקים, והמטבח היחיד בעיר שפתוח עד 23:00 אם השקיעה מתארכת.','🥩 Steaks, and the only kitchen in town open to 23:00 if sunset runs long.'), a:'644 N Navajo Dr', nav:'644 N Navajo Dr, Page, AZ 86040'}
+        {n:'Dam Bar & Grille', m:T('🥩 <b>הבחירה הבטוחה הערב.</b> אחרי הפרסה תחזרו לעיר בערך ב-19:45, וזה <b>המטבח היחיד שפתוח עד 23:00</b>. שאר העיר סוגרת מטבח ב-21:00, והצפיפות היא 18:00–19:45 — בדיוק כשאתם על הצוק.','🥩 <b>The safe choice tonight.</b> After the Bend you will be back in town around 19:45, and this is <b>the only kitchen open until 23:00</b>. The rest of town shuts its kitchen at 21:00, and the crush is 18:00–19:45 — exactly when you are on the cliff.'), a:'644 N Navajo Dr', nav:'644 N Navajo Dr, Page, AZ 86040'},
+        {n:'Sunset 89', m:T('🥗 הכי קליל ומוקפד בעיר, נוף לכיוון האגם. סוגר ב-21:00 — עובד רק אם מזמינים שולחן ל-20:00 ומגיעים בזמן.','🥗 The lightest and most refined in town, with a view toward the lake. Closes 21:00 — only works if you book a table for 20:00 and actually make it.'), a:'724 US-89 · 928-608-5562', nav:'724 US-89, Page, AZ 86040'},
+        {n:'Big John’s Texas BBQ', m:T('🔥 מוזיקה חיה 18:30–21:00, בלי הזמנות. <b>לא מסתדר עם הפרסה ב-18:00</b> — אם רוצים אותו, לאכול מוקדם ב-17:15 ולוותר על החוף.','🔥 Live music 18:30–21:00, no reservations. <b>Does not fit with the Bend at 18:00</b> — if you want it, eat early at 17:15 and skip the beach.'), a:'153 S Lake Powell Blvd', nav:'153 S Lake Powell Blvd, Page, AZ 86040'},
+        {n:'Safeway', m:T('🛒 גיבוי אם הכל כבר סגור: פתוח עד 22:00, עם דלפק מוכן.','🛒 Backup if everything has closed: open to 22:00, with a deli counter.'), a:'650 Elm St', nav:'650 Elm St, Page, AZ 86040'}
+      ]
+    }
+,
+    { slot:'evening', time:'18:00',
+      title:T('Horseshoe Bend — בשעה הזהובה','Horseshoe Bend — at golden hour'),
+      desc:T('2.4 ק״מ הלוך-חזור על שביל מהודק, עם עלייה קטנה בדרך חזרה. <b>זה הזמן הנכון לבוא.</b> השמש הנמוכה במערב מאירה את דופן הפרסה — בבוקר הגורג׳ עמוק בצל ובדיוק מה שבאתם בשבילו יוצא שחור. ומבחינת חום זה כמעט אותו דבר: 30.6° ב-18:00 מול 27.5° ב-06:00.','2.4 km round trip on a hardened path, with a small climb on the way back. <b>This is the right time to come.</b> The low western sun lights the wall of the bend — in the morning the gorge is in deep shadow and the very thing you came for goes black. And heat-wise it’s nearly a wash: 30.6° at 18:00 against 27.5° at 06:00.'),
+      nav:'horseshoe',
+      chips:[T('10$ לרכב','$10 per car'), T('45–75 דק׳','45–75 min'), T('שקיעה 19:06','Sunset 19:06'), T('אין צל בתצפית','No shade at the overlook')],
+      photos:[
+        P('Horseshoe_Bend_Arizona_dllu.jpg','Horseshoe_Bend_Arizona_dllu.jpg',T('נהר הקולורדו מקיף את סלע החול בפרסה','The Colorado River curving around the sandstone butte')),
+        P('USA_10187_Horseshoe_Bend_Luca_Galuzzi_2007.jpg','USA_10187_Horseshoe_Bend_Luca_Galuzzi_2007.jpg',T('Horseshoe Bend מנקודת התצפית','Horseshoe Bend from the clifftop overlook')),
+        P('Horseshoe_Bend_in_the_Colorado_River_-_Page%2C_Arizona%2C_USA.jpg','Horseshoe_Bend_in_the_Colorado_River_-_Page,_Arizona,_USA.jpg',T('עננים דרמטיים מעל הפרסה','Dramatic clouds over Horseshoe Bend'))
+      ],
+      video:{id:'6UA1iEy_j04', title:T('מדריך להליכה ל-Horseshoe Bend','Horseshoe Bend hike guide')},
+      tips:[
+        {who:'money', text:T('<b>הפאס של הפארקים לא תקף כאן</b> — החניון שייך לעיריית פייג׳, 10$ במזומן או בכרטיס. לא לחנות על כביש 89: גוררים.','<b>The parks pass does not work here</b> — the car park belongs to the City of Page, $10 cash or card. Don’t park on US-89: they tow.')},
+        {who:'or', warn:true, text:T('<b>רוב שפת הצוק כאן לא מגודרת ויש 300 מטר נפילה.</b> יש קטע אחד עם מעקה — נשארים שם. ובדרך חזרה זו העלייה, אז שומרים לו מים וחטיף לסוף.','<b>Most of the rim here is unfenced with a 300 m drop.</b> There is one railed section — stay on it. And the return leg is the uphill one, so save water and a snack for the end.')},
+        {who:'all', text:T('אין מים ואין חנות בשביל — רק שירותים בחניון. ליטר לאדם מינימום, גם להליכה של שעה.','No water and no shop on the trail — only restrooms at the car park. One litre per person minimum, even for a one-hour walk.')},
+        {who:'all', warn:true, text:T('<b>השער מפסיק להכניס בשקיעה — 19:06.</b> להיות בחניון עד 18:15 לכל המאוחר. מותר להישאר ולסיים אחרי השקיעה, אבל לא להיכנס. וקחו פנס או פנס-טלפון: החזרה לחניון תהיה בדמדומים.','<b>The gate stops admitting at sunset — 19:06.</b> Be in the car park by 18:15 at the latest. You may stay and finish after sunset, but you can’t enter. And bring a torch or use your phone: the walk back will be in dusk.')},
+        {who:'all', text:T('<b>שקיעה זו השעה הכי עמוסה כאן.</b> זה המחיר של האור הטוב — ב-06:30 החניון היה ריק. אם החניון מלא, לא לחנות על כביש 89 בשום מצב: גוררים.','<b>Sunset is the busiest hour here.</b> That’s the price of the good light — at 06:30 the car park would have been empty. If it’s full, do not park on US-89 under any circumstances: they tow.')}
+      ],
+      shots:[
+        {who:'itamar', text:T('<b>השעה הזהובה כאן היא 18:34–19:06.</b> להגיע ב-18:00 נותן זמן ללכת את הקילומטר ולהתמקם לפני שהאור הטוב מתחיל. אל תעזבו ברגע שהשמש נעלמת — עשר הדקות שאחרי השקיעה נותנות את השמיים הוורודים מעל הסלע האדום.','<b>Golden hour here is 18:34–19:06.</b> Arriving at 18:00 gives you time to walk the kilometre and get set before the good light starts. Don’t leave the moment the sun goes — the ten minutes after sunset give you pink sky over red rock.')},
+        {who:'itamar', text:T('צריך <b>אולטרה-רחב</b> (0.5x בטלפון) כדי להכניס את כל הפרסה — בעדשה רגילה זה פשוט לא נכנס. ולצלם מ<b>עמידה מאחורי המעקה</b>: כל שנה נהרגים שם אנשים שנסוגו צעד אחורה כדי ״להכניס הכל״.','You need the <b>ultra-wide</b> (0.5x on a phone) to fit the whole bend in — a normal lens simply won’t hold it. And shoot from <b>behind the railing</b>: people die there every year stepping back to “fit it all in”.')},
+        {who:'tali', text:T('התמונה המשפחתית הטובה כאן היא <b>מהצד</b>, עם הפרסה מאחור ולא מתחת — ככה רואים גם אתכם וגם למה באתם. בערב השמש נמוכה ממול, אז לצלם <b>קצת מהצד</b> ולא ישירות נגדה, אחרת תצאו צלליות. או — לאמץ את זה ולעשות צללית מכוונת של ארבעתכם על רקע השמיים.','The good family shot here is <b>from the side</b>, with the bend behind you rather than below you — that way both you and the reason you came are visible. In the evening the sun is low and in front of you, so shoot <b>slightly off-axis</b> rather than straight into it, or you’ll all come out as silhouettes. Or lean into it and do a deliberate silhouette of the four of you against the sky.')}
       ]
     }
   ]
