@@ -461,7 +461,7 @@ const DAYS = [
       chips:[T('שאטל 15–20 דק׳','Shuttle 15–20 min'), T('Hertz סוויטה 573','Hertz suite 573'), T('☎ 310-568-5100','☎ 310-568-5100')],
       tips:[
         {who:'or', warn:true, text:T('<b>מושב הגבהה לאור — חובה חוקית</b> בקליפורניה, אריזונה, יוטה ונבדה — כל המדינות שתעברו בהן. <b>חייב לשבת מאחור</b>. לבקש מ-Hertz בדלפק. אם מעדיפים לקנות, יש Walmart ביציאה בברסטו.','<b>Booster seat for Or is legally required</b> in California, Arizona, Utah and Nevada — every state you’ll drive through. He <b>must sit in the back</b>. Ask Hertz at the counter. If you’d rather buy one, there’s a Walmart at the Barstow exit.')},
-        {who:'itamar', text:T('לפני שיוצאים מהחניון: לצלם את הרכב מכל הצדדים ולוודא שיש גלגל חילוף. <b>אגרות הכביש כלולות בשובר (PlatePass)</b>, אז נתיבי האגרה בלוס אנג׳לס כבר לא סיפור — אבל אין סיבה להיכנס אליהם בכוונה.','Before leaving the stall: photograph the car from all sides and check there’s a spare. <b>Toll fees are included on the voucher (PlatePass)</b>, so LA’s toll lanes are no longer a problem — but there’s still no reason to enter them deliberately.')},
+        {who:'itamar', warn:true, text:T('לפני שיוצאים מהחניון: לצלם את הרכב מכל הצדדים ולוודא שיש גלגל חילוף. ⚠️ ובדלפק — <b>לשאול כמה עולה ה-Drop Off Fee</b>. השכרה בכיוון אחד מלוס אנג׳לס ללאס וגאס, והוא <b>לא כלול בשובר</b>. עדיף לדעת את המספר לפני החתימה.','Before leaving the stall: photograph the car from all sides and check there’s a spare. ⚠️ And at the counter — <b>ask what the Drop Off Fee costs</b>. This is a one-way rental from Los Angeles to Las Vegas, and it is <b>not included on the voucher</b>. Better to know the number before you sign.')},
         {who:'drive', text:T('נתיבי ה-ExpressLanes בכביש I-10/I-110 הם <b>הנתיבים השמאליים ביותר</b>, מופרדים בקו לבן כפול. פשוט לא נכנסים אליהם.','The I-10/I-110 ExpressLanes are the <b>leftmost lanes</b>, separated by a double white line. Simply don’t enter them.')}
       ]
     },
@@ -1295,11 +1295,25 @@ function viewCar(){
     </div>
   </div>
 
-  <div class="alert amber">
-    <b>🛡️ ${L?'הביטוח היחיד שלכם עכשיו הוא של Hertz':'Your only cover now is Hertz’s'}</b>
-    ${L
-      ? 'RentalCover בוטלה וההזמנה של Budget בוטלה — נשאר מה שכלול בשובר של Hertz: <b>LDW (ביטוח נזק) ו-LIS (ביטוח צד שלישי מורחב)</b>, וגם אגרות כביש (PlatePass), נהגים נוספים וק״מ ללא הגבלה.<br><br><b>מה שכן כדאי לברר בדלפק:</b> מה <b>ההשתתפות העצמית</b> ב-LDW. זה הסכום שתשלמו מכיסכם אם יש נזק, וכרגע אין ביטוח משלים מאחוריו. אם המספר גבוה ולא נוח לכם איתו — שם המקום להוסיף כיסוי, לא אחר כך.'
-      : 'RentalCover is cancelled and the Budget booking is cancelled — what remains is what the Hertz voucher includes: <b>LDW (damage waiver) and LIS (extended liability)</b>, plus toll fees (PlatePass), additional drivers and unlimited mileage.<br><br><b>Worth asking at the counter:</b> what the <b>LDW excess</b> is. That’s what you’d pay out of pocket if there’s damage, and there is no longer a top-up policy sitting behind it. If the number is high and you’re not comfortable, the counter is where you’d add cover — not afterwards.'}
+  <div class="card">
+    <div class="card-pad">
+      <div class="eyebrow">${L?'מה כלול ומה לא':'What’s included and what isn’t'}</div>
+      <h3>${L?'שתי הרשימות בשובר':'The two lists on the voucher'}</h3>
+      <ul class="tips" style="margin-top:10px">
+        <li><span class="who">✅</span><span><b>${L?'כלול':'Included'}</b><br>${L
+          ? 'מיסים מקומיים · ק״מ ללא הגבלה · אגרת רישוי ואגרת שדה תעופה · <b>LIS</b> (צד שלישי מורחב) · <b>LDW</b> (ביטוח נזק לרכב)'
+          : 'Local tax · Unlimited mileage · Vehicle licence &amp; airport fees · <b>LIS</b> (extended liability) · <b>LDW</b> (damage waiver)'}</span></li>
+        <li class="warn"><span class="who">❌</span><span><b>${L?'לא כלול — משלמים בדלפק':'Not included — payable at the counter'}</b><br>${L
+          ? '<b>Drop Off Fee</b> (החזרה בכיוון אחד!) · <b>נהגים נוספים</b> · <b>אגרות כביש / PlatePass</b> · Fuel Purchase Option · טעינת רכב חשמלי'
+          : '<b>Drop Off Fee</b> (the one-way return!) · <b>Additional drivers</b> · <b>Toll roads / PlatePass</b> · Fuel Purchase Option · EV charging'}</span></li>
+      </ul>
+      <div class="alert amber" style="margin-top:14px">${L
+        ? '<b>💵 שלוש שאלות לדלפק</b>1. כמה עולה ה-Drop Off Fee? זו השכרה בכיוון אחד ל-נבדה — זה הסעיף שיכול להפתיע בחשבון.<br>2. מה ההשתתפות העצמית ב-LDW? RentalCover בוטלה, אז אין כיסוי משלים מאחוריו.<br>3. לרשום את טלי כנהגת — בלי תשלום, לפי חוק קליפורניה לבני זוג.'
+        : '<b>💵 Three questions for the counter</b>1. How much is the Drop Off Fee? This is a one-way rental into Nevada — that’s the line that can surprise you on the bill.<br>2. What is the LDW excess? RentalCover is cancelled, so nothing sits behind it now.<br>3. Register Tali as a driver — at no charge, under California’s spouse rule.'}</div>
+      <p class="tiny" style="margin-top:10px">${L
+        ? 'ℹ️ תודה על התיקון — קודם קראתי את שתי העמודות בשובר כרשימה אחת של דברים כלולים, וזה היה שגוי.'
+        : 'ℹ️ Thanks for the correction — I had originally read the voucher’s two columns as a single “included” list, which was wrong.'}</p>
+    </div>
   </div>
 
   <div class="card">
@@ -1340,9 +1354,10 @@ function viewCar(){
       <ul class="tips">
         <li class="warn"><span class="who">🪪</span><span>${L?'<b>רישיון ישראלי + רישיון בינלאומי + דרכון.</b> Hertz דורשים במפורש רישיון בינלאומי כשהרישיון המקורי אינו באנגלית — אצלם זו דרישה, לא המלצה. בלי זה עלולים לסרב למסור את הרכב.':'<b>Israeli licence + International Driving Permit + passport.</b> Hertz explicitly require an IDP when the licence isn’t in English — for them it’s a requirement, not a suggestion. Without it they can refuse to release the car.'}</span></li>
         <li><span class="who">💳</span><span>${L?'<b>כרטיס האשראי של הנהג הראשי</b>, על שמו. Hertz יחסמו מסגרת לפיקדון.':'<b>The main driver’s credit card</b>, in his name. Hertz will place a hold for the deposit.'}</span></li>
-        <li><span class="who">👩</span><span>${L?'<b>נהגים נוספים כלולים במחיר</b> — אז אם טלי רוצה לנהוג, כדאי לרשום אותה עכשיו. זה חינם, וזה מחלק נסיעה של 5 שעות ביום שני. היא צריכה רישיון + רישיון בינלאומי.':'<b>Additional drivers are included</b> — so if Tali wants to drive, register her now. It’s free, and it splits Monday’s 5-hour drive. She needs her licence plus an IDP.'}</span></li>
+        <li class="warn"><span class="who">👩</span><span>${L?'<b>נהגים נוספים אינם כלולים בשובר.</b> אבל חוק קליפורניה אוסר לגבות תוספת עבור <b>בן/בת זוג</b> של השוכר, וההשכרה נפתחת בקליפורניה — אז זה אמור לחול על טלי. היא עדיין חייבת להירשם בהסכם בדלפק, עם רישיון ורישיון בינלאומי. פטור מתשלום זה לא אישור אוטומטי.':'<b>Additional drivers are NOT included on the voucher.</b> But California law bars charging a fee for the renter’s <b>spouse</b>, and the rental starts in California — so that should cover Tali. She must still be added to the agreement at the counter, with her licence and IDP. A fee waiver is not automatic authorisation.'}</span></li>
         <li class="warn"><span class="who">🧒</span><span>${L?'<b>מושב הגבהה לאור.</b> חובה חוקית בקליפורניה, אריזונה, יוטה ונבדה — כל ארבע המדינות שתעברו בהן. חייב לשבת מאחור. לבקש מ-Hertz בדלפק.':'<b>Booster seat for Or.</b> Legally required in California, Arizona, Utah and Nevada — all four states you’ll drive through. He must sit in the back. Ask Hertz at the counter.'}</span></li>
-        <li><span class="who">🛣️</span><span>${L?'<b>אגרות כביש כלולות (PlatePass).</b> זה מוריד את הדאגה מנתיבי האגרה בלוס אנג׳לס — אבל עדיין לא צריך להיכנס אליהם בכוונה.':'<b>Toll fees are included (PlatePass).</b> That removes the worry about LA’s toll lanes — though there’s still no reason to enter them deliberately.'}</span></li>
+        <li class="warn"><span class="who">🛣️</span><span>${L?'<b>אגרות כביש אינן כלולות.</b> אם תיכנסו לנתיב אגרה, PlatePass יחייב דרך Hertz בתוספת דמי טיפול. במסלול שלכם אין אגרות אמיתיות — רק ה-ExpressLanes בלוס אנג׳לס, ואותם פשוט לא חוצים.':'<b>Toll fees are NOT included.</b> If you enter a toll lane, PlatePass bills you through Hertz plus an admin fee. There are no real tolls on your route — only LA’s ExpressLanes, and you simply don’t cross into them.'}</span></li>
+        <li class="warn"><span class="who">💵</span><span>${L?'<b>לשאול כמה עולה ה-Drop Off Fee.</b> הוא מופיע באותה רשימה של דברים שאינם כלולים, וזו השכרה בכיוון אחד מלוס אנג׳לס ללאס וגאס — בדיוק המקרה שבו הוא נגבה. תבררו את הסכום <b>לפני</b> שחותמים, לא בחשבון הסופי.':'<b>Ask what the Drop Off Fee costs.</b> It sits in the same not-included list, and this is a one-way rental from Los Angeles to Las Vegas — precisely when that fee applies. Find out the amount <b>before</b> you sign, not on the final bill.'}</span></li>
         <li><span class="who">📸</span><span>${L?'<b>לצלם את הרכב מכל הצדדים</b> לפני שיוצאים מהחניון, כולל שריטות קיימות ומצב הצמיגים.':'<b>Photograph the car from every side</b> before leaving the stall, including existing scratches and the state of the tyres.'}</span></li>
       </ul>
     </div>
